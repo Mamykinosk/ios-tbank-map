@@ -21,6 +21,18 @@ final class AuthSessionStore {
                 self.currentUser = user
             }
         }
+        
+        let service = MapboxService()
+
+        service.searchPlace(query: "Moscow") { result in
+            if let result = result {
+                print("Место: \(result.name)")
+                print("Lng: \(result.longitude)")
+                print("Lat: \(result.latitude)")
+            } else {
+                print("Ничего не найдено или ошибка запроса")
+            }
+        }
     }
 
     deinit {
