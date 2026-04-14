@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		771F9DF42F72B02D00E4D71E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 771F9DF32F72B02D00E4D71E /* README.md */; };
+		77832EEF2F7B3A990070B1F2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 77832EEE2F7B3A990070B1F2 /* FirebaseAuth */; };
+		77832EF12F7B3A990070B1F2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 77832EF02F7B3A990070B1F2 /* FirebaseFirestore */; };
+		77832EF32F7B3A990070B1F2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 77832EF22F7B3A990070B1F2 /* FirebaseStorage */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +60,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				77832EEF2F7B3A990070B1F2 /* FirebaseAuth in Frameworks */,
+				77832EF12F7B3A990070B1F2 /* FirebaseFirestore in Frameworks */,
+				77832EF32F7B3A990070B1F2 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +124,9 @@
 			);
 			name = MapApp;
 			packageProductDependencies = (
+				77832EEE2F7B3A990070B1F2 /* FirebaseAuth */,
+				77832EF02F7B3A990070B1F2 /* FirebaseFirestore */,
+				77832EF22F7B3A990070B1F2 /* FirebaseStorage */,
 			);
 			productName = MapApp;
 			productReference = 771F9DA32F72AEA300E4D71E /* MapApp.app */;
@@ -201,6 +210,9 @@
 			);
 			mainGroup = 771F9D9A2F72AEA300E4D71E;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				77832EED2F7B3A990070B1F2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 771F9DA42F72AEA300E4D71E /* Products */;
 			projectDirPath = "";
@@ -414,7 +426,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = lol.MapApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tbank.travelmemorize;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -441,7 +453,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = lol.MapApp;
+				PRODUCT_BUNDLE_IDENTIFIER = com.tbank.travelmemorize;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -557,6 +569,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		77832EED2F7B3A990070B1F2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.11.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		77832EEE2F7B3A990070B1F2 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 77832EED2F7B3A990070B1F2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		77832EF02F7B3A990070B1F2 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 77832EED2F7B3A990070B1F2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		77832EF22F7B3A990070B1F2 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 77832EED2F7B3A990070B1F2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 771F9D9B2F72AEA300E4D71E /* Project object */;
 }
