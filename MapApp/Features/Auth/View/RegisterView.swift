@@ -67,14 +67,14 @@ struct RegisterView: View {
             }
             .padding(.bottom, 24)
 
-            Text("Create Account")
+            Text(L10n.Auth.Register.registerTitle)
                 .font(.system(size: 36, weight: .bold))
                 .tracking(-0.9)
                 .foregroundStyle(Color.appTitle)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 8)
 
-            Text("Start archiving your journeys today")
+            Text(L10n.Auth.Register.registerSubtitle)
                 .font(.system(size: 16, weight: .medium))
                 .foregroundStyle(Color.appSecondary.opacity(0.8))
                 .multilineTextAlignment(.center)
@@ -85,28 +85,28 @@ struct RegisterView: View {
     private var formCard: some View {
         VStack(spacing: 20) {
             RegisterInputField(
-                title: "USERNAME (NICKNAME)",
+                title: L10n.Auth.Register.usernameTitle,
                 text: $authViewModel.username,
-                placeholder: "explorer_01",
+                placeholder: L10n.Auth.Register.usernamePlaceholder,
                 systemImage: "person"
             )
 
             RegisterInputField(
-                title: "EMAIL",
+                title: L10n.Auth.Common.emailTitle,
                 text: $authViewModel.email,
-                placeholder: "hello@travelmemorize.com",
+                placeholder: LocalizedStringKey("hello@travelmemorize.com"),
                 systemImage: "at"
             )
 
             RegisterSecureField(
-                title: "PASSWORD",
+                title: L10n.Auth.Common.passwordTitle,
                 text: $authViewModel.password,
                 placeholder: "••••••••",
                 systemImage: "lock"
             )
 
             RegisterSecureField(
-                title: "CONFIRM PASSWORD",
+                title: L10n.Auth.Register.confirmPasswordTitle,
                 text: $authViewModel.confirmPassword,
                 placeholder: "••••••••",
                 systemImage: "checkmark.shield"
@@ -120,7 +120,7 @@ struct RegisterView: View {
                 AuthFeedbackBanner(message: infoMessage, tone: .success)
             }
 
-            Button {
+            Button { //
                 authViewModel.registerUser()
             } label: {
                 Group {
@@ -128,7 +128,7 @@ struct RegisterView: View {
                         ProgressView()
                             .tint(.white)
                     } else {
-                        Text("Register")
+                        Text(L10n.Auth.Register.registerAction)
                             .font(.system(size: 16, weight: .semibold))
                             .tracking(0.4)
                     }
@@ -159,11 +159,11 @@ struct RegisterView: View {
 
     private var footerSection: some View {
         HStack(spacing: 4) {
-            Text("Already have an account?")
+            Text(L10n.Auth.Register.alreadyHaveAccount)
                 .font(.system(size: 14, weight: .regular))
                 .foregroundStyle(Color.appSecondary)
 
-            Button("Login now") {
+            Button(L10n.Auth.Register.loginNow) {
                 router.showLogin()
             }
             .buttonStyle(.plain)
@@ -175,9 +175,9 @@ struct RegisterView: View {
 }
 
 private struct RegisterInputField: View {
-    let title: String
+    let title: LocalizedStringKey
     @Binding var text: String
-    let placeholder: String
+    let placeholder: LocalizedStringKey
     let systemImage: String
 
     var body: some View {
@@ -207,9 +207,9 @@ private struct RegisterInputField: View {
 }
 
 private struct RegisterSecureField: View {
-    let title: String
+    let title: LocalizedStringKey
     @Binding var text: String
-    let placeholder: String
+    let placeholder: LocalizedStringKey
     let systemImage: String
 
     @State private var isSecure = true
@@ -254,4 +254,8 @@ private struct RegisterSecureField: View {
 private extension Color {
     static let registerGreenGlow = Color.appGreenGlow
     static let registerBlueGlow = Color.appBlueGlow
+}
+
+#Preview {
+    RegisterView(authViewModel: AuthViewModel())
 }

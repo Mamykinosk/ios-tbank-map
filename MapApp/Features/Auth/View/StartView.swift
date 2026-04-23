@@ -32,14 +32,7 @@ struct StartView: View {
 
                         actionButton
                             .frame(width: contentWidth, height: 68)
-
-                        Spacer()
-
-                        Text("Join a community of 2M+ explorers")
-                            .font(.system(size: 12, weight: .regular))
-                            .foregroundStyle(Color.appSecondary.opacity(0.6))
-                            .frame(maxWidth: .infinity)
-                            .multilineTextAlignment(.center)
+                        
                     }
                     .frame(maxWidth: 448)
                     .padding(.horizontal, 32)
@@ -128,14 +121,14 @@ struct StartView: View {
 
     private var textSection: some View {
         VStack(spacing: 8) {
-            Text("CURATE YOUR JOURNEY")
+            Text(L10n.Start.curateYourJorney)
                 .font(.system(size: 12, weight: .medium))
                 .tracking(2.4)
                 .textCase(.uppercase)
                 .foregroundStyle(Color.appPrimary.opacity(0.6))
                 .multilineTextAlignment(.center)
 
-            Text("Every mile a memory, every\ndestination a story.")
+            Text(L10n.Start.startSubtitle)
                 .font(.system(size: 18, weight: .medium))
                 .foregroundStyle(Color.appSecondary)
                 .multilineTextAlignment(.center)
@@ -149,7 +142,7 @@ struct StartView: View {
             router.showLogin()
         } label: {
             HStack(spacing: 8) {
-                Text("Get Started")
+                Text(L10n.Start.getStartedAction)
                     .font(.system(size: 18, weight: .bold))
                     .tracking(0.45)
 

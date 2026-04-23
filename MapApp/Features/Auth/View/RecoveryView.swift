@@ -65,12 +65,12 @@ struct RecoveryView: View {
 
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Reset Password")
+            Text(L10n.Auth.Recovery.resetPasswordTitle)
                 .font(.system(size: 36, weight: .bold))
                 .tracking(-0.9)
                 .foregroundStyle(Color.appTitle)
 
-            Text("Enter your email to receive a reset link.")
+            Text(L10n.Auth.Recovery.resetPasswordSubtitle)
                 .font(.system(size: 16, weight: .regular))
                 .foregroundStyle(Color.appSecondary.opacity(0.8))
                 .lineSpacing(4)
@@ -81,7 +81,7 @@ struct RecoveryView: View {
     private var formSection: some View {
         VStack(alignment: .leading, spacing: 32) {
             VStack(alignment: .leading, spacing: 8) {
-                Text("EMAIL")
+                Text(L10n.Auth.Common.emailTitle)
                     .font(.system(size: 12, weight: .bold))
                     .tracking(1.2)
                     .foregroundStyle(Color.appPrimary)
@@ -127,7 +127,7 @@ struct RecoveryView: View {
                             ProgressView()
                                 .tint(.white)
                         } else {
-                            Text("Send reset link")
+                            Text(L10n.Auth.Recovery.sendResetLinkAction)
                                 .font(.system(size: 16, weight: .semibold))
                             Image(systemName: "paperplane")
                                 .font(.system(size: 14, weight: .semibold))
@@ -152,7 +152,7 @@ struct RecoveryView: View {
                 Button {
                     router.showLogin()
                 } label: {
-                    Text("Back to Sign In")
+                    Text(L10n.Auth.Recovery.backToSingIn)
                         .font(.system(size: 16, weight: .medium))
                         .foregroundStyle(Color.appSecondaryAction)
                         .frame(maxWidth: .infinity)

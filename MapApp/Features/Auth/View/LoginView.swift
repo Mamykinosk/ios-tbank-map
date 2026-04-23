@@ -35,14 +35,14 @@ struct LoginView: View {
                         }
                         .padding(.bottom, 24)
 
-                        Text("Welcome Back")
+                        Text(L10n.Auth.Login.loginTitle)
                             .font(.system(size: 36, weight: .bold))
                             .kerning(-0.9)
                             .foregroundStyle(Color.appTitle)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 8)
 
-                        Text("Continue your journey through memories")
+                        Text(L10n.Auth.Login.loginSubtitle)
                             .font(.system(size: 16, weight: .medium))
                             .foregroundStyle(Color.appSecondary.opacity(0.8))
                             .multilineTextAlignment(.center)
@@ -53,7 +53,7 @@ struct LoginView: View {
                     VStack(alignment: .leading, spacing: 32) {
                         VStack(alignment: .leading, spacing: 24) {
                             VStack(alignment: .leading, spacing: 8) {
-                                Text("EMAIL")
+                                Text(L10n.Auth.Common.emailTitle)
                                     .font(.system(size: 11, weight: .bold))
                                     .kerning(1.1)
                                     .foregroundStyle(Color.appPrimary)
@@ -78,7 +78,7 @@ struct LoginView: View {
 
                             VStack(alignment: .leading, spacing: 8) {
                                 HStack {
-                                    Text("PASSWORD")
+                                    Text(L10n.Auth.Common.passwordTitle)
                                         .font(.system(size: 11, weight: .bold))
                                         .kerning(1.1)
                                         .foregroundStyle(Color.appPrimary)
@@ -88,7 +88,7 @@ struct LoginView: View {
                                     Button {
                                         router.goToRecovery()
                                     } label: {
-                                        Text("FORGOT PASSWORD?")
+                                        Text(L10n.Auth.Login.forgotPassword)
                                             .font(.system(size: 11, weight: .bold))
                                             .kerning(0.55)
                                             .foregroundStyle(Color.appSecondaryAction)
@@ -126,7 +126,7 @@ struct LoginView: View {
                                         ProgressView()
                                             .tint(.white)
                                     } else {
-                                        Text("Login")
+                                        Text(L10n.Auth.Login.loginAction)
                                             .font(.system(size: 16, weight: .semibold))
                                     }
                                 }
@@ -153,7 +153,7 @@ struct LoginView: View {
                                 .frame(height: 1)
                                 .padding(.horizontal, 56)
 
-                            Text("OR CONNECT WITH")
+                            Text(L10n.Auth.Login.orConnectWith)
                                 .font(.system(size: 10, weight: .bold))
                                 .kerning(1)
                                 .foregroundStyle(Color.appPlaceholder)
@@ -175,14 +175,14 @@ struct LoginView: View {
                     .shadow(color: Color.black.opacity(0.04), radius: 20, x: 0, y: 8)
 
                     HStack(spacing: 4) {
-                        Text("Don't have an account?")
+                        Text(L10n.Auth.Login.noAnyAccount)
                             .font(.system(size: 14, weight: .regular))
                             .foregroundStyle(Color.appSecondary)
 
                         Button {
                             router.goToRegister()
                         } label: {
-                            Text("Register now")
+                            Text(L10n.Auth.Login.registerNow)
                                 .font(.system(size: 14, weight: .bold))
                                 .foregroundStyle(Color.appPrimary)
                         }
