@@ -10,7 +10,7 @@ import FirebaseCore
 
 @main
 struct TravelMemorizeApp: App {
-    @State private var router = AppRouter()
+    @State private var router = AppCoordinator()
     @State private var authSession: AuthSessionStore
 
     init() {

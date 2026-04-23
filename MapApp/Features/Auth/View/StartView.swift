@@ -1,18 +1,7 @@
-//
-//  StartView.swift
-//  MapApp
-//
-//  Created by Иван Метальников on 10.04.2026.
-//
-
 import SwiftUI
 
 struct StartView: View {
-    @Environment(AppRouter.self) var router
-    private let backgroundColor = Color(red: 252 / 255, green: 249 / 255, blue: 244 / 255)
-    private let titleColor = Color(red: 28 / 255, green: 28 / 255, blue: 25 / 255)
-    private let accentColor = Color(red: 45 / 255, green: 75 / 255, blue: 63 / 255)
-    private let secondaryTextColor = Color(red: 65 / 255, green: 72 / 255, blue: 69 / 255)
+    @Environment(AppCoordinator.self) var router
 
     var body: some View {
         GeometryReader { geometry in
@@ -23,11 +12,10 @@ struct StartView: View {
             let bottomInset = max(geometry.safeAreaInsets.bottom, 24)
 
             ZStack {
-                backgroundColor
+                Color.appBackground
                     .ignoresSafeArea()
 
                 VStack(spacing: 0) {
-
                     VStack(spacing: 0) {
                         header
                             .frame(maxWidth: .infinity)
@@ -49,7 +37,7 @@ struct StartView: View {
 
                         Text("Join a community of 2M+ explorers")
                             .font(.system(size: 12, weight: .regular))
-                            .foregroundStyle(secondaryTextColor.opacity(0.6))
+                            .foregroundStyle(Color.appSecondary.opacity(0.6))
                             .frame(maxWidth: .infinity)
                             .multilineTextAlignment(.center)
                     }
@@ -68,7 +56,7 @@ struct StartView: View {
         VStack(spacing: 0) {
             Image("Stars")
                 .font(.system(size: 33, weight: .medium))
-                .foregroundStyle(accentColor)
+                .foregroundStyle(Color.appAccent)
                 .frame(width: 33, height: 33)
 
             Spacer()
@@ -76,13 +64,13 @@ struct StartView: View {
             Text("Travel Memorize")
                 .font(.system(size: 30, weight: .heavy))
                 .tracking(-0.75)
-                .foregroundStyle(titleColor)
+                .foregroundStyle(Color.appTitle)
                 .multilineTextAlignment(.center)
 
             Spacer()
 
             Capsule()
-                .fill(Color(red: 229 / 255, green: 226 / 255, blue: 221 / 255).opacity(0.4))
+                .fill(Color.appMuted.opacity(0.4))
                 .frame(width: 48, height: 2)
         }
     }
@@ -90,7 +78,7 @@ struct StartView: View {
     private func heroSection(contentWidth: CGFloat, heroHeight: CGFloat, thumbSize: CGFloat) -> some View {
         ZStack {
             RoundedRectangle(cornerRadius: 48, style: .continuous)
-                .fill(Color(red: 246 / 255, green: 243 / 255, blue: 238 / 255).opacity(0.4))
+                .fill(Color.startCardBackground.opacity(0.4))
                 .blur(radius: 32)
 
             ZStack {
@@ -102,8 +90,8 @@ struct StartView: View {
 
                 LinearGradient(
                     colors: [
-                        backgroundColor.opacity(0.4),
-                        backgroundColor.opacity(0)
+                        Color.appBackground.opacity(0.4),
+                        Color.appBackground.opacity(0)
                     ],
                     startPoint: .bottom,
                     endPoint: .top
@@ -124,11 +112,11 @@ struct StartView: View {
                 .clipped()
                 .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
                 .padding(4)
-                .background(backgroundColor)
+                .background(Color.appBackground)
                 .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
                 .overlay(
                     RoundedRectangle(cornerRadius: 32, style: .continuous)
-                        .stroke(backgroundColor, lineWidth: 4)
+                        .stroke(Color.appBackground, lineWidth: 4)
                 )
                 .rotationEffect(.degrees(3))
                 .shadow(color: .black.opacity(0.10), radius: 25, x: 0, y: 12)
@@ -144,12 +132,12 @@ struct StartView: View {
                 .font(.system(size: 12, weight: .medium))
                 .tracking(2.4)
                 .textCase(.uppercase)
-                .foregroundStyle(Color(red: 22 / 255, green: 52 / 255, blue: 41 / 255).opacity(0.6))
+                .foregroundStyle(Color.appPrimary.opacity(0.6))
                 .multilineTextAlignment(.center)
 
             Text("Every mile a memory, every\ndestination a story.")
                 .font(.system(size: 18, weight: .medium))
-                .foregroundStyle(secondaryTextColor)
+                .foregroundStyle(Color.appSecondary)
                 .multilineTextAlignment(.center)
                 .lineSpacing(5)
                 .frame(maxWidth: 280)
@@ -157,9 +145,9 @@ struct StartView: View {
     }
 
     private var actionButton: some View {
-        Button(action: {
+        Button {
             router.showLogin()
-        }) {
+        } label: {
             HStack(spacing: 8) {
                 Text("Get Started")
                     .font(.system(size: 18, weight: .bold))
@@ -172,10 +160,7 @@ struct StartView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
                 LinearGradient(
-                    colors: [
-                        Color(red: 22 / 255, green: 52 / 255, blue: 41 / 255),
-                        Color(red: 45 / 255, green: 75 / 255, blue: 63 / 255)
-                    ],
+                    colors: [Color.appPrimary, Color.appAccent],
                     startPoint: UnitPoint(x: 0.0, y: 0.5),
                     endPoint: UnitPoint(x: 1.0, y: 0.5)
                 )
@@ -187,6 +172,6 @@ struct StartView: View {
     }
 }
 
-#Preview {
-    StartView()
+private extension Color {
+    static let startCardBackground = Color(red: 246 / 255, green: 243 / 255, blue: 238 / 255)
 }

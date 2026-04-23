@@ -1,20 +1,13 @@
-//
-//  RecoveryView.swift
-//  MapApp
-//
-//  Created by Иван Метальников on 14.04.2026.
-//
-
 import Foundation
 import SwiftUI
 
 struct RecoveryView: View {
-    @Environment(AppRouter.self) var router
+    @Environment(AppCoordinator.self) var router
     @Bindable var authViewModel: AuthViewModel
 
     var body: some View {
         ZStack {
-            Color(hex: "FCF9F4")
+            Color.appBackground
                 .ignoresSafeArea()
 
             contentCanvas
@@ -57,9 +50,9 @@ struct RecoveryView: View {
 
             LinearGradient(
                 colors: [
-                    Color(hex: "FCF9F4"),
-                    Color(hex: "FCF9F4").opacity(0),
-                    Color(hex: "FCF9F4").opacity(0)
+                    Color.appBackground,
+                    Color.appBackground.opacity(0),
+                    Color.appBackground.opacity(0)
                 ],
                 startPoint: .bottom,
                 endPoint: .top
@@ -75,11 +68,11 @@ struct RecoveryView: View {
             Text("Reset Password")
                 .font(.system(size: 36, weight: .bold))
                 .tracking(-0.9)
-                .foregroundStyle(Color(hex: "1C1C19"))
+                .foregroundStyle(Color.appTitle)
 
             Text("Enter your email to receive a reset link.")
                 .font(.system(size: 16, weight: .regular))
-                .foregroundStyle(Color(hex: "414845").opacity(0.8))
+                .foregroundStyle(Color.appSecondary.opacity(0.8))
                 .lineSpacing(4)
         }
         .frame(maxWidth: .infinity, alignment: .leading)
@@ -91,7 +84,7 @@ struct RecoveryView: View {
                 Text("EMAIL")
                     .font(.system(size: 12, weight: .bold))
                     .tracking(1.2)
-                    .foregroundStyle(Color(hex: "163429"))
+                    .foregroundStyle(Color.appPrimary)
                     .padding(.leading, 4)
 
                 VStack(alignment: .leading, spacing: 8) {
@@ -99,19 +92,19 @@ struct RecoveryView: View {
                         "",
                         text: $authViewModel.email,
                         prompt: Text("hello@travelmemorize.com")
-                            .foregroundStyle(Color(hex: "A8A29E"))
+                            .foregroundStyle(Color.appPlaceholder)
                     )
                     .font(.system(size: 16, weight: .regular))
-                    .foregroundStyle(Color(hex: "1C1C19"))
+                    .foregroundStyle(Color.appTitle)
                     .textInputAutocapitalization(.never)
                     .keyboardType(.emailAddress)
                     .autocorrectionDisabled()
                     .padding(.horizontal, 24)
                     .frame(height: 56)
-                    .background(Color(hex: "EBE8E3"))
+                    .background(Color.appFieldBackground)
                     .overlay {
                         Capsule()
-                            .stroke(Color(hex: "163429").opacity(0.05), lineWidth: 1)
+                            .stroke(Color.appPrimary.opacity(0.05), lineWidth: 1)
                     }
                     .clipShape(Capsule())
 
@@ -145,13 +138,13 @@ struct RecoveryView: View {
                     .frame(height: 56)
                     .background(
                         LinearGradient(
-                            colors: [Color(hex: "163429"), Color(hex: "2D4B3F")],
+                            colors: [Color.appPrimary, Color.appAccent],
                             startPoint: .leading,
                             endPoint: .trailing
                         )
                     )
                     .clipShape(Capsule())
-                    .shadow(color: Color(hex: "163429").opacity(0.1), radius: 15, x: 0, y: 10)
+                    .shadow(color: Color.appPrimary.opacity(0.1), radius: 15, x: 0, y: 10)
                 }
                 .buttonStyle(.plain)
                 .disabled(authViewModel.isLoading)
@@ -161,56 +154,12 @@ struct RecoveryView: View {
                 } label: {
                     Text("Back to Sign In")
                         .font(.system(size: 16, weight: .medium))
-                        .foregroundStyle(Color(hex: "43664D"))
+                        .foregroundStyle(Color.appSecondaryAction)
                         .frame(maxWidth: .infinity)
                         .frame(height: 56)
                 }
                 .buttonStyle(.plain)
             }
         }
-    }
-
-    private var decorativeAccent: some View {
-        HStack {
-            Spacer()
-            Capsule()
-                .fill(Color(hex: "E5E2DD"))
-                .frame(width: 64, height: 2)
-            Spacer()
-        }
-        .opacity(0.2)
-    }
-}
-
-private extension Color {
-    init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3:
-            (a, r, g, b) = (
-                255,
-                (int >> 8) * 17,
-                (int >> 4 & 0xF) * 17,
-                (int & 0xF) * 17
-            )
-        case 6:
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8:
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (255, 0, 0, 0)
-        }
-
-        self.init(
-            .sRGB,
-            red: Double(r) / 255,
-            green: Double(g) / 255,
-            blue: Double(b) / 255,
-            opacity: Double(a) / 255
-        )
     }
 }

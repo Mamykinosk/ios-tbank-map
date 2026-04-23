@@ -2,7 +2,7 @@ import SwiftUI
 
 struct MainView: View {
     @Environment(AuthSessionStore.self) private var authSession
-    @Environment(AppRouter.self) private var router
+    @Environment(AppCoordinator.self) private var router
 
     @State private var errorMessage: String?
     @State private var isSigningOut = false
@@ -10,7 +10,8 @@ struct MainView: View {
     var body: some View {
         NavigationStack {
             ZStack {
-                Color(red: 252 / 255, green: 249 / 255, blue: 244 / 255)
+            
+            Color.appBackground
                     .ignoresSafeArea()
 
                 VStack(alignment: .leading, spacing: 24) {
@@ -47,7 +48,7 @@ struct MainView: View {
                         .foregroundStyle(.white)
                         .frame(maxWidth: .infinity)
                         .frame(height: 56)
-                        .background(Color(red: 22 / 255, green: 52 / 255, blue: 41 / 255))
+                        .background(Color.appPrimary)
                         .clipShape(Capsule())
                     }
                     .buttonStyle(.plain)

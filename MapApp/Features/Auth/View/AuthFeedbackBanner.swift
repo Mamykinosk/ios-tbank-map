@@ -8,27 +8,27 @@ struct AuthFeedbackBanner: View {
         var backgroundColor: Color {
             switch self {
             case .error:
-                return Color(red: 254 / 255, green: 237 / 255, blue: 237 / 255)
+                return .appErrorBackground
             case .success:
-                return Color(red: 235 / 255, green: 247 / 255, blue: 238 / 255)
+                return .appSuccessBackground
             }
         }
 
         var borderColor: Color {
             switch self {
             case .error:
-                return Color(red: 186 / 255, green: 26 / 255, blue: 26 / 255).opacity(0.18)
+                return .appError.opacity(0.18)
             case .success:
-                return Color(red: 67 / 255, green: 102 / 255, blue: 77 / 255).opacity(0.18)
+                return .appSecondaryAction.opacity(0.18)
             }
         }
 
         var foregroundColor: Color {
             switch self {
             case .error:
-                return Color(red: 186 / 255, green: 26 / 255, blue: 26 / 255)
+                return .appError
             case .success:
-                return Color(red: 45 / 255, green: 75 / 255, blue: 63 / 255)
+                return .appAccent
             }
         }
 

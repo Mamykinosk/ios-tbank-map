@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct RegisterView: View {
-    @Environment(AppRouter.self) var router
+    @Environment(AppCoordinator.self) var router
     @Bindable var authViewModel: AuthViewModel
 
     var body: some View {
@@ -30,7 +30,7 @@ struct RegisterView: View {
                 .frame(maxWidth: .infinity)
             }
         }
-        .background(Color(hex: "FCF9F4"))
+        .background(Color.appBackground)
         .navigationBarTitleDisplayMode(.inline)
         .onAppear {
             authViewModel.clearFeedback()
@@ -40,13 +40,13 @@ struct RegisterView: View {
     private var backgroundDecorations: some View {
         ZStack {
             Ellipse()
-                .fill(Color(red: 194 / 255, green: 233 / 255, blue: 201 / 255).opacity(0.2))
+                .fill(Color.registerGreenGlow.opacity(0.2))
                 .frame(width: 234, height: 392)
                 .blur(radius: 50)
                 .offset(x: -120, y: -220)
 
             Ellipse()
-                .fill(Color(red: 189 / 255, green: 233 / 255, blue: 255 / 255).opacity(0.1))
+                .fill(Color.registerBlueGlow.opacity(0.1))
                 .frame(width: 195, height: 294)
                 .blur(radius: 40)
                 .offset(x: 150, y: 420)
@@ -58,25 +58,25 @@ struct RegisterView: View {
         VStack(spacing: 0) {
             ZStack {
                 Circle()
-                    .fill(Color(hex: "E5E2DD"))
+                    .fill(Color.appMuted)
                     .frame(width: 64, height: 64)
 
                 Image(systemName: "leaf.fill")
                     .font(.system(size: 21, weight: .semibold))
-                    .foregroundStyle(Color(hex: "163429"))
+                    .foregroundStyle(Color.appPrimary)
             }
             .padding(.bottom, 24)
 
             Text("Create Account")
                 .font(.system(size: 36, weight: .bold))
                 .tracking(-0.9)
-                .foregroundStyle(Color(hex: "1C1C19"))
+                .foregroundStyle(Color.appTitle)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 8)
 
             Text("Start archiving your journeys today")
                 .font(.system(size: 16, weight: .medium))
-                .foregroundStyle(Color(hex: "414845").opacity(0.8))
+                .foregroundStyle(Color.appSecondary.opacity(0.8))
                 .multilineTextAlignment(.center)
         }
         .frame(maxWidth: .infinity)
@@ -120,9 +120,9 @@ struct RegisterView: View {
                 AuthFeedbackBanner(message: infoMessage, tone: .success)
             }
 
-            Button(action: {
+            Button {
                 authViewModel.registerUser()
-            }) {
+            } label: {
                 Group {
                     if authViewModel.isLoading {
                         ProgressView()
@@ -138,13 +138,13 @@ struct RegisterView: View {
                 .frame(height: 56)
                 .background(
                     LinearGradient(
-                        colors: [Color(hex: "163429"), Color(hex: "2D4B3F")],
+                        colors: [Color.appPrimary, Color.appAccent],
                         startPoint: .leading,
                         endPoint: .trailing
                     )
                 )
                 .clipShape(Capsule())
-                .shadow(color: Color(hex: "163429").opacity(0.1), radius: 15, x: 0, y: 8)
+                .shadow(color: Color.appPrimary.opacity(0.1), radius: 15, x: 0, y: 8)
             }
             .buttonStyle(.plain)
             .disabled(authViewModel.isLoading)
@@ -161,14 +161,14 @@ struct RegisterView: View {
         HStack(spacing: 4) {
             Text("Already have an account?")
                 .font(.system(size: 14, weight: .regular))
-                .foregroundStyle(Color(hex: "414845"))
+                .foregroundStyle(Color.appSecondary)
 
             Button("Login now") {
                 router.showLogin()
             }
             .buttonStyle(.plain)
             .font(.system(size: 14, weight: .bold))
-            .foregroundStyle(Color(hex: "163429"))
+            .foregroundStyle(Color.appPrimary)
         }
         .frame(maxWidth: .infinity)
     }
@@ -185,27 +185,26 @@ private struct RegisterInputField: View {
             Text(title)
                 .font(.system(size: 11, weight: .bold))
                 .tracking(1.1)
-                .foregroundStyle(Color(hex: "163429"))
+                .foregroundStyle(Color.appPrimary)
                 .padding(.horizontal, 4)
 
             HStack(spacing: 12) {
-                TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(Color(hex: "A8A29E")))
+                TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(Color.appPlaceholder))
                     .font(.system(size: 16, weight: .regular))
-                    .foregroundStyle(Color(hex: "1C1C19"))
+                    .foregroundStyle(Color.appTitle)
                     .textInputAutocapitalization(.never)
                     .autocorrectionDisabled()
 
                 Image(systemName: systemImage)
                     .font(.system(size: 16, weight: .medium))
-                    .foregroundStyle(Color(hex: "A8A29E"))
+                    .foregroundStyle(Color.appPlaceholder)
             }
             .padding(.horizontal, 20)
             .frame(height: 55)
-            .background(Color(hex: "EBE8E3"))
+            .background(Color.appFieldBackground)
         }
     }
 }
-
 
 private struct RegisterSecureField: View {
     let title: String
@@ -220,67 +219,39 @@ private struct RegisterSecureField: View {
             Text(title)
                 .font(.system(size: 11, weight: .bold))
                 .tracking(1.1)
-                .foregroundStyle(Color(hex: "163429"))
+                .foregroundStyle(Color.appPrimary)
                 .padding(.horizontal, 4)
 
             HStack(spacing: 12) {
                 Group {
                     if isSecure {
-                        SecureField("", text: $text, prompt: Text(placeholder).foregroundStyle(Color(hex: "A8A29E")))
+                        SecureField("", text: $text, prompt: Text(placeholder).foregroundStyle(Color.appPlaceholder))
                     } else {
-                        TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(Color(hex: "A8A29E")))
+                        TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(Color.appPlaceholder))
                             .textInputAutocapitalization(.never)
                             .autocorrectionDisabled()
                     }
                 }
                 .font(.system(size: 16, weight: .regular))
-                .foregroundStyle(Color(hex: "1C1C19"))
+                .foregroundStyle(Color.appTitle)
 
                 Button {
                     isSecure.toggle()
                 } label: {
                     Image(systemName: systemImage)
                         .font(.system(size: 16, weight: .medium))
-                        .foregroundStyle(Color(hex: "A8A29E"))
+                        .foregroundStyle(Color.appPlaceholder)
                 }
                 .buttonStyle(.plain)
             }
             .padding(.horizontal, 20)
             .frame(height: 55)
-            .background(Color(hex: "EBE8E3"))
+            .background(Color.appFieldBackground)
         }
     }
 }
 
 private extension Color {
-    init(hex: String) {
-        let hex = hex.trimmingCharacters(in: CharacterSet.alphanumerics.inverted)
-        var int: UInt64 = 0
-        Scanner(string: hex).scanHexInt64(&int)
-
-        let a, r, g, b: UInt64
-        switch hex.count {
-        case 3:
-            (a, r, g, b) = (
-                255,
-                (int >> 8) * 17,
-                (int >> 4 & 0xF) * 17,
-                (int & 0xF) * 17
-            )
-        case 6:
-            (a, r, g, b) = (255, int >> 16, int >> 8 & 0xFF, int & 0xFF)
-        case 8:
-            (a, r, g, b) = (int >> 24, int >> 16 & 0xFF, int >> 8 & 0xFF, int & 0xFF)
-        default:
-            (a, r, g, b) = (255, 0, 0, 0)
-        }
-
-        self.init(
-            .sRGB,
-            red: Double(r) / 255,
-            green: Double(g) / 255,
-            blue: Double(b) / 255,
-            opacity: Double(a) / 255
-        )
-    }
+    static let registerGreenGlow = Color.appGreenGlow
+    static let registerBlueGlow = Color.appBlueGlow
 }

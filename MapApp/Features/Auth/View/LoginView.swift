@@ -1,23 +1,22 @@
 import SwiftUI
 
-
 struct LoginView: View {
-    @Environment(AppRouter.self) var router
+    @Environment(AppCoordinator.self) var router
     @Bindable var authViewModel: AuthViewModel
 
     var body: some View {
         ZStack {
-            Color(red: 252 / 255, green: 249 / 255, blue: 244 / 255)
+            Color.appBackground
                 .ignoresSafeArea()
 
             Circle()
-                .fill(Color(red: 194 / 255, green: 233 / 255, blue: 201 / 255).opacity(0.35))
+                .fill(Color.loginGreenGlow.opacity(0.35))
                 .frame(width: 234, height: 391)
                 .blur(radius: 50)
                 .offset(x: -120, y: -330)
 
             Circle()
-                .fill(Color(red: 189 / 255, green: 233 / 255, blue: 255 / 255).opacity(0.25))
+                .fill(Color.loginBlueGlow.opacity(0.25))
                 .frame(width: 195, height: 293)
                 .blur(radius: 40)
                 .offset(x: 145, y: 390)
@@ -27,25 +26,25 @@ struct LoginView: View {
                     VStack(spacing: 0) {
                         ZStack {
                             Circle()
-                                .fill(Color(red: 229 / 255, green: 226 / 255, blue: 221 / 255))
+                                .fill(Color.appMuted)
                                 .frame(width: 64, height: 64)
 
                             Image(systemName: "leaf.fill")
                                 .font(.system(size: 22, weight: .medium))
-                                .foregroundStyle(Color(red: 22 / 255, green: 52 / 255, blue: 41 / 255))
+                                .foregroundStyle(Color.appPrimary)
                         }
                         .padding(.bottom, 24)
 
                         Text("Welcome Back")
                             .font(.system(size: 36, weight: .bold))
                             .kerning(-0.9)
-                            .foregroundStyle(Color(red: 28 / 255, green: 28 / 255, blue: 25 / 255))
+                            .foregroundStyle(Color.appTitle)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 8)
 
                         Text("Continue your journey through memories")
                             .font(.system(size: 16, weight: .medium))
-                            .foregroundStyle(Color(red: 65 / 255, green: 72 / 255, blue: 69 / 255).opacity(0.8))
+                            .foregroundStyle(Color.appSecondary.opacity(0.8))
                             .multilineTextAlignment(.center)
                     }
                     .padding(.top, 10)
@@ -57,7 +56,7 @@ struct LoginView: View {
                                 Text("EMAIL")
                                     .font(.system(size: 11, weight: .bold))
                                     .kerning(1.1)
-                                    .foregroundStyle(Color(red: 22 / 255, green: 52 / 255, blue: 41 / 255))
+                                    .foregroundStyle(Color.appPrimary)
                                     .padding(.horizontal, 4)
 
                                 ZStack(alignment: .trailing) {
@@ -68,11 +67,11 @@ struct LoginView: View {
                                         .autocorrectionDisabled(true)
                                         .padding(.horizontal, 20)
                                         .frame(height: 55)
-                                        .background(Color(red: 235 / 255, green: 232 / 255, blue: 227 / 255))
+                                        .background(Color.appFieldBackground)
 
                                     Image(systemName: "at")
                                         .font(.system(size: 17, weight: .semibold))
-                                        .foregroundStyle(Color(red: 168 / 255, green: 162 / 255, blue: 158 / 255))
+                                        .foregroundStyle(Color.appPlaceholder)
                                         .padding(.trailing, 16)
                                 }
                             }
@@ -82,17 +81,17 @@ struct LoginView: View {
                                     Text("PASSWORD")
                                         .font(.system(size: 11, weight: .bold))
                                         .kerning(1.1)
-                                        .foregroundStyle(Color(red: 22 / 255, green: 52 / 255, blue: 41 / 255))
+                                        .foregroundStyle(Color.appPrimary)
 
                                     Spacer()
 
-                                    Button(action: {
+                                    Button {
                                         router.goToRecovery()
-                                    }) {
+                                    } label: {
                                         Text("FORGOT PASSWORD?")
                                             .font(.system(size: 11, weight: .bold))
                                             .kerning(0.55)
-                                            .foregroundStyle(Color(red: 67 / 255, green: 102 / 255, blue: 77 / 255))
+                                            .foregroundStyle(Color.appSecondaryAction)
                                     }
                                 }
                                 .padding(.horizontal, 4)
@@ -102,11 +101,11 @@ struct LoginView: View {
                                         .font(.system(size: 16, weight: .regular))
                                         .padding(.horizontal, 20)
                                         .frame(height: 55)
-                                        .background(Color(red: 235 / 255, green: 232 / 255, blue: 227 / 255))
+                                        .background(Color.appFieldBackground)
 
                                     Image(systemName: "lock")
                                         .font(.system(size: 16, weight: .medium))
-                                        .foregroundStyle(Color(red: 168 / 255, green: 162 / 255, blue: 158 / 255))
+                                        .foregroundStyle(Color.appPlaceholder)
                                         .padding(.trailing, 16)
                                 }
                             }
@@ -119,9 +118,9 @@ struct LoginView: View {
                                 AuthFeedbackBanner(message: infoMessage, tone: .success)
                             }
 
-                            Button(action: {
+                            Button {
                                 authViewModel.loginUser()
-                            }) {
+                            } label: {
                                 Group {
                                     if authViewModel.isLoading {
                                         ProgressView()
@@ -136,16 +135,13 @@ struct LoginView: View {
                                 .frame(height: 56)
                                 .background(
                                     LinearGradient(
-                                        colors: [
-                                            Color(red: 22 / 255, green: 52 / 255, blue: 41 / 255),
-                                            Color(red: 45 / 255, green: 75 / 255, blue: 63 / 255)
-                                        ],
+                                        colors: [Color.appPrimary, Color.appAccent],
                                         startPoint: .leading,
                                         endPoint: .trailing
                                     )
                                 )
                                 .clipShape(Capsule())
-                                .shadow(color: Color(red: 22 / 255, green: 52 / 255, blue: 41 / 255).opacity(0.12), radius: 12, x: 0, y: 8)
+                                .shadow(color: Color.appPrimary.opacity(0.12), radius: 12, x: 0, y: 8)
                             }
                             .buttonStyle(.plain)
                             .disabled(authViewModel.isLoading)
@@ -153,14 +149,14 @@ struct LoginView: View {
 
                         ZStack {
                             Rectangle()
-                                .fill(Color(red: 229 / 255, green: 226 / 255, blue: 221 / 255).opacity(0.4))
+                                .fill(Color.appMuted.opacity(0.4))
                                 .frame(height: 1)
                                 .padding(.horizontal, 56)
 
                             Text("OR CONNECT WITH")
                                 .font(.system(size: 10, weight: .bold))
                                 .kerning(1)
-                                .foregroundStyle(Color(red: 168 / 255, green: 162 / 255, blue: 158 / 255))
+                                .foregroundStyle(Color.appPlaceholder)
                                 .padding(.horizontal, 16)
                                 .background(Color.white)
                         }
@@ -181,14 +177,14 @@ struct LoginView: View {
                     HStack(spacing: 4) {
                         Text("Don't have an account?")
                             .font(.system(size: 14, weight: .regular))
-                            .foregroundStyle(Color(red: 65 / 255, green: 72 / 255, blue: 69 / 255))
+                            .foregroundStyle(Color.appSecondary)
 
-                        Button(action: {
+                        Button {
                             router.goToRegister()
-                        }) {
+                        } label: {
                             Text("Register now")
                                 .font(.system(size: 14, weight: .bold))
-                                .foregroundStyle(Color(red: 22 / 255, green: 52 / 255, blue: 41 / 255))
+                                .foregroundStyle(Color.appPrimary)
                         }
                     }
                     .padding(.top, 20)
@@ -212,15 +208,21 @@ struct LoginView: View {
         Button(action: {}) {
             ZStack {
                 Circle()
-                    .fill(Color(red: 240 / 255, green: 237 / 255, blue: 232 / 255))
+                    .fill(Color.loginSocialBackground)
                     .frame(width: 48, height: 48)
 
                 Image(systemName: icon)
                     .font(.system(size: 18, weight: .semibold))
-                    .foregroundStyle(Color(red: 65 / 255, green: 72 / 255, blue: 69 / 255))
+                    .foregroundStyle(Color.appSecondary)
             }
         }
         .buttonStyle(.plain)
         .disabled(authViewModel.isLoading)
     }
+}
+
+private extension Color {
+    static let loginGreenGlow = Color.appGreenGlow
+    static let loginBlueGlow = Color.appBlueGlow
+    static let loginSocialBackground = Color(red: 240 / 255, green: 237 / 255, blue: 232 / 255)
 }

@@ -1,24 +1,9 @@
 import SwiftUI
 import Observation
 
-enum AppScreen {
-    case auth
-    case main
-}
-
-enum AuthRoute: Hashable {
-    case register
-    case login
-    case recovery
-}
-
-enum MainRoute: Hashable {
-    case profile
-    case settings
-}
 
 @Observable
-final class AppRouter {
+final class AppCoordinator {
     var appScreen: AppScreen = .auth
 
     var authPath = NavigationPath()

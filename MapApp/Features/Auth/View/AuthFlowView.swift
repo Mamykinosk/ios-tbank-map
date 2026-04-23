@@ -8,7 +8,7 @@ import SwiftUI
 
 
 struct AuthFlowView: View {
-    @Environment(AppRouter.self) var router
+    @Environment(AppCoordinator.self) var router
     
     @State var authViewModel = AuthViewModel()
 
