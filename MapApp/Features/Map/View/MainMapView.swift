@@ -67,33 +67,33 @@ struct MainMapView: View {
     }
 
     private var bottomNavigationBar: some View {
-        HStack(spacing: 28) {
+        HStack(spacing: 0) {
             bottomNavItem(
-                title: "MAP",
+                title: L10n.TabBar.map,
                 systemImage: "map",
                 isSelected: true
             )
 
             bottomNavItem(
-                title: "FEED",
+                title: L10n.TabBar.feed,
                 systemImage: "book",
                 isSelected: false
             )
 
             bottomNavItem(
-                title: "FRIENDS",
+                title: L10n.TabBar.friends,
                 systemImage: "person.2",
                 isSelected: false
             )
 
             bottomNavItem(
-                title: "PROFILE",
+                title: L10n.TabBar.profile,
                 systemImage: "person",
                 isSelected: false
             )
         }
         .padding(.top, 12)
-        .padding(.horizontal, 28)
+        .padding(.horizontal, 16)
         .padding(.bottom, 24)
         .frame(maxWidth: .infinity)
         .background(Color.white.opacity(0.95))
@@ -108,29 +108,32 @@ struct MainMapView: View {
     }
 
     private func bottomNavItem(
-        title: String,
+        title: LocalizedStringKey,
         systemImage: String,
         isSelected: Bool
     ) -> some View {
         Button {
             // TODO: switch tab later
         } label: {
-            VStack(spacing: 2) {
+            VStack(spacing: 3) {
                 Image(systemName: systemImage)
-                    .font(.system(size: 18, weight: .medium))
+                    .font(.system(size: 22, weight: .medium))
 
                 Text(title)
-                    .font(.system(size: 11, weight: .medium))
-                    .tracking(0.55)
+                    .font(.system(size: 10, weight: .medium))
+                    .tracking(0.4)
+                    .lineLimit(1)
+                    .minimumScaleFactor(0.75)
+                    .fixedSize(horizontal: false, vertical: true)
             }
             .foregroundStyle(isSelected ? Color.mapSelectedNav : Color.mapInactiveNav)
-            .padding(.horizontal, isSelected ? 16 : 0)
-            .padding(.vertical, isSelected ? 4 : 0)
-            .frame(height: 43)
+            .frame(maxWidth: .infinity)
+            .frame(height: 48)
             .background {
                 if isSelected {
                     Capsule()
                         .fill(Color.mapSelectedNavBackground)
+                        .frame(width: 76, height: 48)
                 }
             }
         }
