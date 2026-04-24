@@ -15,7 +15,7 @@ struct RootView: View {
     var body: some View {
         Group {
             if authSession.isAuthenticated {
-                MainView()
+                MainMapView()
             } else {
                 AuthFlowView()
             }
