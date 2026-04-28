@@ -6,16 +6,25 @@ struct MainFlowView: View {
     var body: some View {
         @Bindable var router = router
 
-        NavigationStack(path: $router.mainPath) {
-            ZStack(alignment: .bottom) {
+        ZStack(alignment: .bottom) {
+            NavigationStack(path: $router.mainPath) {
                 currentTabView
-
-                MainBottomNavigationBar(
-                    selectedTab: router.selectedMainTab,
-                    onSelect: router.selectMainTab
-                )
+                    .navigationDestination(for: MainRoute.self) { route in
+                        switch route {
+                        case .profile:
+                            ProfileView()
+                        case .editProfile:
+                            EditProfileView()
+                        case .settings:
+                            MainPlaceholderView(title: "Settings", systemImage: "gearshape")
+                        }
+                    }
             }
-            .ignoresSafeArea(edges: .bottom)
+
+            MainBottomNavigationBar(
+                selectedTab: router.selectedMainTab,
+                onSelect: router.selectMainTab
+            )
         }
     }
 
@@ -29,7 +38,7 @@ struct MainFlowView: View {
         case .friends:
             MainPlaceholderView(title: L10n.TabBar.friends, systemImage: "person.2")
         case .profile:
-            MainPlaceholderView(title: L10n.TabBar.profile, systemImage: "person")
+            ProfileView()
         }
     }
 }

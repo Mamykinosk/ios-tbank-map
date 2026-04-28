@@ -21,7 +21,10 @@ final class AuthService {
                 "username": username,
                 "searchUsername": username.lowercased(),
                 "email": email,
+                "bio": "",
+                "location": "",
                 "createdAt": FieldValue.serverTimestamp(),
+                "updatedAt": FieldValue.serverTimestamp(),
                 "stats": [
                     "countries": 0,
                     "cities": 0,
