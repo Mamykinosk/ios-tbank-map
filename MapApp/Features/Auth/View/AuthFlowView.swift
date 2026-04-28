@@ -8,14 +8,14 @@ import SwiftUI
 
 
 struct AuthFlowView: View {
-    @Environment(AppCoordinator.self) var router
+    @Environment(AppCoordinator.self) var coordinator
     
     @State var authViewModel = AuthViewModel()
 
     var body: some View {
-        @Bindable var router = router
+        @Bindable var coordinator = coordinator
 
-        NavigationStack(path: $router.authPath) {
+        NavigationStack(path: $coordinator.authPath) {
             StartView()
                 .navigationDestination(for: AuthRoute.self) { route in
                     switch route {

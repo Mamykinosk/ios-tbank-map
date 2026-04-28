@@ -43,4 +43,11 @@ enum L10n {
             static let emailPlaceholder: LocalizedStringKey = "auth.common.email.placeholder"
         }
     }
+
+    enum TabBar {
+        static let map: LocalizedStringKey = "logged.tabBar.map"
+        static let feed: LocalizedStringKey = "logged.tabBar.feed"
+        static let friends: LocalizedStringKey = "logged.tabBar.friends"
+        static let profile: LocalizedStringKey = "logged.tabBar.profile"
+    }
 }

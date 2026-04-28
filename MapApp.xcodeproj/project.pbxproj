@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		770498922F9B90BF00B2DE9F /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 770498912F9B90BF00B2DE9F /* MapboxMaps */; };
 		771F9DF42F72B02D00E4D71E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 771F9DF32F72B02D00E4D71E /* README.md */; };
 		77832EEF2F7B3A990070B1F2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 77832EEE2F7B3A990070B1F2 /* FirebaseAuth */; };
 		77832EF12F7B3A990070B1F2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 77832EF02F7B3A990070B1F2 /* FirebaseFirestore */; };
@@ -37,9 +38,22 @@
 		771F9DF32F72B02D00E4D71E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		770498412F9B8E4300B2DE9F /* Exceptions for "MapApp" folder in "MapApp" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Resources/Info.plist,
+			);
+			target = 771F9DA22F72AEA300E4D71E /* MapApp */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		771F9DA52F72AEA300E4D71E /* MapApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				770498412F9B8E4300B2DE9F /* Exceptions for "MapApp" folder in "MapApp" target */,
+			);
 			path = MapApp;
 			sourceTree = "<group>";
 		};
@@ -62,6 +76,7 @@
 			files = (
 				77832EEF2F7B3A990070B1F2 /* FirebaseAuth in Frameworks */,
 				77832EF12F7B3A990070B1F2 /* FirebaseFirestore in Frameworks */,
+				770498922F9B90BF00B2DE9F /* MapboxMaps in Frameworks */,
 				77832EF32F7B3A990070B1F2 /* FirebaseStorage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -127,6 +142,7 @@
 				77832EEE2F7B3A990070B1F2 /* FirebaseAuth */,
 				77832EF02F7B3A990070B1F2 /* FirebaseFirestore */,
 				77832EF22F7B3A990070B1F2 /* FirebaseStorage */,
+				770498912F9B90BF00B2DE9F /* MapboxMaps */,
 			);
 			productName = MapApp;
 			productReference = 771F9DA32F72AEA300E4D71E /* MapApp.app */;
@@ -213,6 +229,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				77832EED2F7B3A990070B1F2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				770498442F9B8FC300B2DE9F /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 771F9DA42F72AEA300E4D71E /* Products */;
@@ -419,6 +436,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ./MapApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -446,6 +464,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = ./MapApp/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -574,6 +593,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		770498442F9B8FC300B2DE9F /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-maps-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.0.0;
+			};
+		};
 		77832EED2F7B3A990070B1F2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -585,6 +612,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		770498912F9B90BF00B2DE9F /* MapboxMaps */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 770498442F9B8FC300B2DE9F /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */;
+			productName = MapboxMaps;
+		};
 		77832EEE2F7B3A990070B1F2 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 77832EED2F7B3A990070B1F2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
