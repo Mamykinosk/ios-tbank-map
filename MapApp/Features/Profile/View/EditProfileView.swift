@@ -44,11 +44,11 @@ struct EditProfileView: View {
                     .frame(width: 32, height: 32)
             }
             .buttonStyle(.plain)
-            .accessibilityLabel("Back")
+            .accessibilityLabel(Text(L10n.EditProfile.back))
 
             Spacer()
 
-            Text("Edit Profile")
+            Text(L10n.EditProfile.title)
                 .font(.system(size: 20, weight: .semibold))
                 .tracking(-0.5)
                 .foregroundStyle(Color.editProfileHeader)
@@ -64,7 +64,7 @@ struct EditProfileView: View {
                     .frame(width: 36, height: 36)
             }
             .buttonStyle(.plain)
-            .accessibilityLabel("Settings")
+            .accessibilityLabel(Text(L10n.EditProfile.settings))
         }
         .padding(.horizontal, 24)
         .frame(height: 64)
@@ -99,10 +99,10 @@ struct EditProfileView: View {
                     .frame(width: 36, height: 36)
                 }
                 .buttonStyle(.plain)
-                .accessibilityLabel("Change profile picture")
+                .accessibilityLabel(Text(L10n.EditProfile.changeProfilePicture))
             }
 
-            Text("Personal Identity")
+            Text(L10n.EditProfile.personalIdentity)
                 .font(.system(size: 16, weight: .bold))
                 .tracking(1.6)
                 .textCase(.uppercase)
@@ -116,15 +116,15 @@ struct EditProfileView: View {
 
         return VStack(spacing: 32) {
             EditProfileTextField(
-                title: "Username",
+                title: L10n.EditProfile.usernameTitle,
                 text: $viewModel.username,
-                helper: "Only English letters, numbers and underscores allowed."
+                helper: L10n.EditProfile.usernameHelper
             )
             .textInputAutocapitalization(.never)
             .autocorrectionDisabled()
 
             EditProfileTextField(
-                title: "Email Address",
+                title: L10n.EditProfile.emailTitle,
                 text: $viewModel.email,
                 keyboardType: .emailAddress
             )
@@ -132,15 +132,15 @@ struct EditProfileView: View {
             .autocorrectionDisabled()
 
             EditProfileTextField(
-                title: "Location",
+                title: L10n.EditProfile.locationTitle,
                 text: $viewModel.location,
                 icon: "mappin",
-                placeholder: "Lisbon, Portugal",
+                placeholder: L10n.EditProfile.locationPlaceholder,
                 placeholderColor: Color.appPlaceholder
             )
 
             EditProfileBioField(
-                title: "Bio",
+                title: L10n.EditProfile.bioTitle,
                 text: $viewModel.bio,
                 limit: viewModel.bioLimit
             )
@@ -165,7 +165,7 @@ struct EditProfileView: View {
                             .font(.system(size: 20, weight: .semibold))
                     }
 
-                    Text("Save Changes")
+                    Text(L10n.EditProfile.saveChangesAction)
                         .font(.system(size: 16, weight: .semibold))
                 }
                 .foregroundStyle(.white)
@@ -206,12 +206,12 @@ struct EditProfileView: View {
 
     private var privacySection: some View {
         VStack(spacing: 0) {
-            Text("Account Privacy")
+            Text(L10n.EditProfile.accountPrivacyTitle)
                 .font(.system(size: 14, weight: .bold))
                 .foregroundStyle(Color.appTitle)
                 .padding(.bottom, 8)
 
-            Text("Manage your data visibility and account permanence.")
+            Text(L10n.EditProfile.accountPrivacySubtitle)
                 .font(.system(size: 12, weight: .regular))
                 .lineSpacing(0)
                 .multilineTextAlignment(.center)
@@ -222,7 +222,7 @@ struct EditProfileView: View {
             Button {
                 // Account deactivation flow will be added with backend support.
             } label: {
-                Text("Deactivate Account")
+                Text(L10n.EditProfile.deactivateAccount)
                     .font(.system(size: 12, weight: .bold))
                     .tracking(1.2)
                     .textCase(.uppercase)
@@ -243,11 +243,11 @@ struct EditProfileView: View {
 }
 
 private struct EditProfileTextField: View {
-    let title: String
+    let title: LocalizedStringKey
     @Binding var text: String
-    var helper: String?
+    var helper: LocalizedStringKey?
     var icon: String?
-    var placeholder: String?
+    var placeholder: LocalizedStringKey?
     var placeholderColor: Color?
     var keyboardType: UIKeyboardType = .default
 
@@ -297,7 +297,7 @@ private struct EditProfileTextField: View {
 }
 
 private struct EditProfileBioField: View {
-    let title: String
+    let title: LocalizedStringKey
     @Binding var text: String
     let limit: Int
 
@@ -330,7 +330,7 @@ private struct EditProfileBioField: View {
                     }
 
                 if text.isEmpty {
-                    Text("Share your journey...")
+                    Text(L10n.EditProfile.bioPlaceholder)
                         .font(.system(size: 16, weight: .regular))
                         .foregroundStyle(Color.appPlaceholder)
                         .padding(.horizontal, 20)

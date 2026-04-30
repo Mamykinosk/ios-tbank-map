@@ -5,6 +5,7 @@ struct ProfileView: View {
     @Environment(AuthSessionStore.self) private var authSession
 
     @State private var viewModel = ProfileViewModel()
+    @State private var isLanguagePickerPresented = false
 
     var body: some View {
         @Bindable var viewModel = viewModel
@@ -45,6 +46,23 @@ struct ProfileView: View {
         .onAppear {
             Task {
                 await viewModel.loadProfile(user: authSession.currentUser)
+            }
+        }
+        .confirmationDialog(
+            L10n.Profile.language,
+            isPresented: $isLanguagePickerPresented,
+            titleVisibility: .visible
+        ) {
+            ForEach(ProfileLanguage.allCases) { language in
+                Button {
+                    viewModel.selectLanguage(language)
+                } label: {
+                    Text(language.title)
+                }
+            }
+
+            Button(role: .cancel) {} label: {
+                Text(L10n.EditProfile.back)
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -110,7 +128,7 @@ struct ProfileView: View {
 
     private func preferencesSection(isDarkModeEnabled: Binding<Bool>) -> some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Preferences")
+            Text(L10n.Profile.preferencesTitle)
                 .font(.system(size: 12, weight: .bold))
                 .tracking(2.4)
                 .textCase(.uppercase)
@@ -120,24 +138,20 @@ struct ProfileView: View {
             VStack(spacing: 8) {
                 ProfilePreferenceRow(
                     systemImage: "moon",
-                    title: "Dark Mode"
+                    title: L10n.Profile.darkMode
                 ) {
                     ProfileSwitch(isOn: isDarkModeEnabled)
                 }
 
-                Menu {
-                    ForEach(ProfileLanguage.allCases) { language in
-                        Button(language.rawValue) {
-                            viewModel.selectLanguage(language)
-                        }
-                    }
+                Button {
+                    isLanguagePickerPresented = true
                 } label: {
                     ProfilePreferenceRow(
                         systemImage: "globe",
-                        title: "Language"
+                        title: L10n.Profile.language
                     ) {
                         HStack(spacing: 8) {
-                            Text(viewModel.selectedLanguage.rawValue)
+                            Text(viewModel.selectedLanguage.title)
                                 .font(.system(size: 12, weight: .semibold))
                                 .foregroundStyle(Color.appPrimary)
 
@@ -164,7 +178,7 @@ struct ProfileView: View {
                     Image(systemName: "pencil")
                         .font(.system(size: 15, weight: .semibold))
 
-                    Text("Edit Profile")
+                    Text(L10n.Profile.editProfileAction)
                         .font(.system(size: 14, weight: .semibold))
                 }
                 .foregroundStyle(.white)
@@ -185,7 +199,7 @@ struct ProfileView: View {
                     Image(systemName: "rectangle.portrait.and.arrow.right")
                         .font(.system(size: 15, weight: .semibold))
 
-                    Text("Logout")
+                    Text(L10n.Profile.logoutAction)
                         .font(.system(size: 14, weight: .semibold))
                 }
                 .foregroundStyle(Color.appError)
@@ -256,12 +270,12 @@ private struct ProfileAvatarView: View {
 
 private struct ProfilePreferenceRow<Trailing: View>: View {
     let systemImage: String
-    let title: String
+    let title: LocalizedStringKey
     let trailing: Trailing
 
     init(
         systemImage: String,
-        title: String,
+        title: LocalizedStringKey,
         @ViewBuilder trailing: () -> Trailing
     ) {
         self.systemImage = systemImage

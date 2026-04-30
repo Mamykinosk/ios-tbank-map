@@ -1,18 +1,19 @@
 import Foundation
 import Observation
+import SwiftUI
 import FirebaseAuth
 
 @MainActor
 @Observable
 final class ProfileViewModel {
-    var displayName = "Traveler"
-    var username = "@traveler"
+    var displayName = String(localized: "profile.defaultDisplayName")
+    var username = String(localized: "profile.defaultUsername")
     var bio = ""
     var avatarImageName: String?
     var stats: [ProfileStat] = [
-        ProfileStat(value: "0", title: "Countries"),
-        ProfileStat(value: "0", title: "Cities"),
-        ProfileStat(value: "0", title: "Memories")
+        ProfileStat(value: "0", title: L10n.Profile.Stats.countries),
+        ProfileStat(value: "0", title: L10n.Profile.Stats.cities),
+        ProfileStat(value: "0", title: L10n.Profile.Stats.memories)
     ]
 
     var isDarkModeEnabled = false
@@ -65,7 +66,7 @@ final class ProfileViewModel {
             try AuthService.shared.signOut()
             return true
         } catch {
-            errorMessage = "Unable to logout. Please try again."
+            errorMessage = String(localized: L10n.Profile.logoutError)
             return false
         }
     }
@@ -84,9 +85,9 @@ final class ProfileViewModel {
         username = "@" + profile.username
         bio = profile.bio
         stats = [
-            ProfileStat(value: "\(profile.stats.countries)", title: "Countries"),
-            ProfileStat(value: "\(profile.stats.cities)", title: "Cities"),
-            ProfileStat(value: "\(profile.stats.memoriesCount)", title: "Memories")
+            ProfileStat(value: "\(profile.stats.countries)", title: L10n.Profile.Stats.countries),
+            ProfileStat(value: "\(profile.stats.cities)", title: L10n.Profile.Stats.cities),
+            ProfileStat(value: "\(profile.stats.memoriesCount)", title: L10n.Profile.Stats.memories)
         ]
     }
 }
@@ -94,7 +95,16 @@ final class ProfileViewModel {
 struct ProfileStat: Identifiable, Hashable {
     let id = UUID()
     let value: String
-    let title: String
+    let title: LocalizedStringKey
+
+    static func == (lhs: ProfileStat, rhs: ProfileStat) -> Bool {
+        lhs.id == rhs.id && lhs.value == rhs.value
+    }
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+        hasher.combine(value)
+    }
 }
 
 enum ProfileLanguage: String, CaseIterable, Identifiable {
@@ -103,5 +113,14 @@ enum ProfileLanguage: String, CaseIterable, Identifiable {
 
     var id: String {
         rawValue
+    }
+
+    var title: LocalizedStringKey {
+        switch self {
+        case .english:
+            L10n.Profile.Language.english
+        case .russian:
+            L10n.Profile.Language.russian
+        }
     }
 }
