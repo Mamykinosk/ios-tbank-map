@@ -50,4 +50,54 @@ enum L10n {
         static let friends: LocalizedStringKey = "logged.tabBar.friends"
         static let profile: LocalizedStringKey = "logged.tabBar.profile"
     }
+
+    enum Profile {
+        static let preferencesTitle: LocalizedStringKey = "profile.preferences.title"
+        static let darkMode: LocalizedStringKey = "profile.preferences.darkMode"
+        static let language: LocalizedStringKey = "profile.preferences.language"
+        static let editProfileAction: LocalizedStringKey = "profile.editProfile.action"
+        static let logoutAction: LocalizedStringKey = "profile.logout.action"
+        static let logoutError: String.LocalizationValue = "profile.logout.error"
+
+        enum Stats {
+            static let countries: LocalizedStringKey = "profile.stats.countries"
+            static let cities: LocalizedStringKey = "profile.stats.cities"
+            static let memories: LocalizedStringKey = "profile.stats.memories"
+        }
+
+        enum Language {
+            static let english: LocalizedStringKey = "profile.language.english"
+            static let russian: LocalizedStringKey = "profile.language.russian"
+        }
+
+        static let defaultDisplayName: String.LocalizationValue = "profile.defaultDisplayName"
+        static let defaultUsername: String.LocalizationValue = "profile.defaultUsername"
+    }
+
+    enum EditProfile {
+        static let title: LocalizedStringKey = "editProfile.title"
+        static let back: LocalizedStringKey = "editProfile.back"
+        static let settings: LocalizedStringKey = "editProfile.settings"
+        static let changeProfilePicture: LocalizedStringKey = "editProfile.changeProfilePicture"
+        static let personalIdentity: LocalizedStringKey = "editProfile.personalIdentity"
+        static let usernameTitle: LocalizedStringKey = "editProfile.username.title"
+        static let usernameHelper: LocalizedStringKey = "editProfile.username.helper"
+        static let emailTitle: LocalizedStringKey = "editProfile.email.title"
+        static let locationTitle: LocalizedStringKey = "editProfile.location.title"
+        static let locationPlaceholder: LocalizedStringKey = "editProfile.location.placeholder"
+        static let bioTitle: LocalizedStringKey = "editProfile.bio.title"
+        static let bioPlaceholder: LocalizedStringKey = "editProfile.bio.placeholder"
+        static let saveChangesAction: LocalizedStringKey = "editProfile.saveChanges.action"
+        static let accountPrivacyTitle: LocalizedStringKey = "editProfile.accountPrivacy.title"
+        static let accountPrivacySubtitle: LocalizedStringKey = "editProfile.accountPrivacy.subtitle"
+        static let deactivateAccount: LocalizedStringKey = "editProfile.deactivateAccount.action"
+
+        enum Message {
+            static let profileUpdated: String.LocalizationValue = "editProfile.message.profileUpdated"
+            static let updateFailed: String.LocalizationValue = "editProfile.error.updateFailed"
+            static let emailInUse: String.LocalizationValue = "editProfile.error.emailInUse"
+            static let requiresRecentLogin: String.LocalizationValue = "editProfile.error.requiresRecentLogin"
+            static let networkError: String.LocalizationValue = "editProfile.error.network"
+        }
+    }
 }

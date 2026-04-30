@@ -23,13 +23,22 @@ final class AuthSessionStore {
         }
     }
 
+    func refreshCurrentUser() async {
+        do {
+            try await auth.currentUser?.reload()
+        } catch {
+            // Keep the current auth state if Firebase cannot refresh right now.
+        }
+
+        currentUser = auth.currentUser
+    }
+
     deinit {
         if let authStateHandle {
             auth.removeStateDidChangeListener(authStateHandle)
         }
     }
 }
-
 
 
 

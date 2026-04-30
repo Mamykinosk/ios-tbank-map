@@ -48,6 +48,11 @@ final class AppCoordinator {
         selectMainTab(.profile)
     }
 
+    func goToEditProfile() {
+        selectedMainTab = .profile
+        mainPath.append(MainRoute.editProfile)
+    }
+
     func goToSettings() {
         mainPath.append(MainRoute.settings)
     }
@@ -60,5 +65,10 @@ final class AppCoordinator {
     func backAuth() {
         guard !authPath.isEmpty else { return }
         authPath.removeLast()
+    }
+
+    func backMain() {
+        guard !mainPath.isEmpty else { return }
+        mainPath.removeLast()
     }
 }
