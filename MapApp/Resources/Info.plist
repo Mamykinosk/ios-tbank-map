@@ -5,7 +5,7 @@
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Нам нужен доступ к геолокации, чтобы показывать ваше местоположение на карте.</string>
 	<key>MBXAccessToken</key>
-	<string></string>
+	<string>pk.eyJ1IjoibXlyc3VzIiwiYSI6ImNtbXg4OXM2cjJpeTMycnIyOXYyYmU3dnAifQ.CA-uRfEAZJnSBeLTFpOBNg</string>
 	<key>CFBundleIdentifier</key>
 	<string></string>
 	<key>CFBundleURLTypes</key>

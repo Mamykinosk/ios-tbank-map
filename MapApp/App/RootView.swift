@@ -1,10 +1,3 @@
-//
-//  RootView.swift
-//  MapApp
-//
-//  Created by Иван Метальников on 10.04.2026.
-//
-
 import Foundation
 import SwiftUI
 
@@ -15,7 +8,7 @@ struct RootView: View {
     var body: some View {
         Group {
             if authSession.isAuthenticated {
-                MainFlowView()
+                MainTabView()
             } else {
                 AuthFlowView()
             }
