@@ -5,7 +5,7 @@ import Observation
 @Observable
 final class AppCoordinator {
     var appScreen: AppScreen = .auth
-    var selectedMainTab: MainTab = .map
+    var selectedMainTab: AppTab = .map
 
     var authPath = NavigationPath()
     var mainPath = NavigationPath()
@@ -48,11 +48,16 @@ final class AppCoordinator {
         selectMainTab(.profile)
     }
 
+    func goToEditProfile() {
+        selectedMainTab = .profile
+        mainPath.append(MainRoute.editProfile)
+    }
+
     func goToSettings() {
         mainPath.append(MainRoute.settings)
     }
 
-    func selectMainTab(_ tab: MainTab) {
+    func selectMainTab(_ tab: AppTab) {
         selectedMainTab = tab
         mainPath = NavigationPath()
     }
@@ -60,5 +65,10 @@ final class AppCoordinator {
     func backAuth() {
         guard !authPath.isEmpty else { return }
         authPath.removeLast()
+    }
+
+    func backMain() {
+        guard !mainPath.isEmpty else { return }
+        mainPath.removeLast()
     }
 }

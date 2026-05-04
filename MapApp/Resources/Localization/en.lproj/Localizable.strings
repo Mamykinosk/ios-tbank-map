@@ -148,3 +148,11 @@
 
 /* User */
 "userTitle" = "User profile";
+
+/* Added from existing Xcode localization */
+"" = "";
+"••••••••" = "••••••••";
+"hello@travelmemorize.com" = "hello@travelmemorize.com";
+"Sign Out" = "Sign Out";
+"Travel Memorize" = "Travel Memorize";
+"Вы вошли в приложение" = "You are signed in";

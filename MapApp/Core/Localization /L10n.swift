@@ -13,7 +13,7 @@ enum L10n {
         static let done: LocalizedStringKey = "common.done"
         static let search: LocalizedStringKey = "common.search"
     }
-
+    
     enum Start {
         static let getStartedAction: LocalizedStringKey = "start.getStarted.action"
         static let curateYourJorney: LocalizedStringKey = "start.curateYourJorney"
@@ -55,7 +55,6 @@ enum L10n {
             static let emailPlaceholder: LocalizedStringKey = "auth.common.email.placeholder"
         }
     }
-
     enum Main {
         static let signedInTitle: LocalizedStringKey = "main.signedIn.title"
         static let email: LocalizedStringKey = "main.email"
@@ -64,7 +63,7 @@ enum L10n {
         static let notFound: LocalizedStringKey = "main.notFound"
         static let signOut: LocalizedStringKey = "main.signOut"
     }
-
+    
     enum Message {
         static var friendRequestSent: String { String(localized: "friends.message.requestSent") }
         static var friendRemoved: String { String(localized: "friends.message.removed") }
@@ -83,7 +82,7 @@ enum L10n {
         static var memoryCoordinateMissing: String { String(localized: "memories.error.coordinateMissing") }
         static var unknownMemoryServiceError: String { String(localized: "memories.error.unknown") }
     }
-
+    
     enum TabBar {
         static let map: LocalizedStringKey = "logged.tabBar.map"
         static let feed: LocalizedStringKey = "logged.tabBar.feed"
@@ -93,44 +92,41 @@ enum L10n {
 
     enum Memories {
         static let appTitle: LocalizedStringKey = "memories.appTitle"
-
-        static let searchPlaceholder: LocalizedStringKey = "memories.search.placeholder"
-        static let recentArchive: LocalizedStringKey = "memories.recentArchive"
-        static let feedTitle: LocalizedStringKey = "memories.feed.title"
-        static let emptyFeed: LocalizedStringKey = "memories.emptyFeed"
-
+        
         static let newMemoryTitle: LocalizedStringKey = "memories.newMemoryTitle"
         static let editMarkerTitle: LocalizedStringKey = "memories.editMarkerTitle"
         static let editTitle: LocalizedStringKey = "memories.editTitle"
-
+        
         static let capture: LocalizedStringKey = "memories.capture"
         static let addPhotos: LocalizedStringKey = "memories.addPhotos"
         static let photoGallery: LocalizedStringKey = "memories.photoGallery"
         static let add: LocalizedStringKey = "memories.add"
-
+        
         static let placeName: LocalizedStringKey = "memories.placeName"
         static let placeNameRequired: LocalizedStringKey = "memories.placeNameRequired"
         static let placeNamePlaceholder: LocalizedStringKey = "memories.placeNamePlaceholder"
-
+        
         static let visitDate: LocalizedStringKey = "memories.visitDate"
         static let visitDateRequired: LocalizedStringKey = "memories.visitDateRequired"
-
+        
         static let historyStory: LocalizedStringKey = "memories.historyStory"
         static let theStory: LocalizedStringKey = "memories.theStory"
         static let storyPlaceholder: LocalizedStringKey = "memories.storyPlaceholder"
-
+        
+        
+        
         static let saveMemory: LocalizedStringKey = "memories.saveMemory"
         static let saveChanges: LocalizedStringKey = "memories.saveChanges"
         static let deleteMarker: LocalizedStringKey = "memories.deleteMarker"
         static let deletePermanently: LocalizedStringKey = "memories.deletePermanently"
-
+        
         static let chooseLocation: LocalizedStringKey = "memories.chooseLocation"
         static let longPressHint: LocalizedStringKey = "memories.longPressHint"
-
+        
         static let lastSummer: LocalizedStringKey = "memories.lastSummer"
         static let defaultPreviewTitle: LocalizedStringKey = "memories.defaultPreviewTitle"
         static let defaultPreviewSubtitle: LocalizedStringKey = "memories.defaultPreviewSubtitle"
-
+        
         static let cancelEditConfirmation: LocalizedStringKey = "memories.cancelEditConfirmation"
         static let cancelAddConfirmation: LocalizedStringKey = "memories.cancelAddConfirmation"
         static let deleteConfirmation: LocalizedStringKey = "memories.deleteConfirmation"
@@ -142,6 +138,59 @@ enum L10n {
         static let searchNoResultsHint: LocalizedStringKey = "memories.searchNoResultsHint"
         static let noStoryAdded: LocalizedStringKey = "memories.noStoryAdded"
         static let memoryTitle: LocalizedStringKey = "memories.memoryTitle"
+    }
+    
+    //<<<<<<< HEAD
+    enum Profile {
+        static let preferencesTitle: LocalizedStringKey = "profile.preferences.title"
+        static let darkMode: LocalizedStringKey = "profile.preferences.darkMode"
+        static let language: LocalizedStringKey = "profile.preferences.language"
+        static let editProfileAction: LocalizedStringKey = "profile.editProfile.action"
+        static let logoutAction: LocalizedStringKey = "profile.logout.action"
+        static let logoutError: String.LocalizationValue = "profile.logout.error"
+        
+        enum Stats {
+            static let countries: LocalizedStringKey = "profile.stats.countries"
+            static let cities: LocalizedStringKey = "profile.stats.cities"
+            static let memories: LocalizedStringKey = "profile.stats.memories"
+        }
+        
+        enum Language {
+            static let english: LocalizedStringKey = "profile.language.english"
+            static let russian: LocalizedStringKey = "profile.language.russian"
+        }
+        
+        static let defaultDisplayName: String.LocalizationValue = "profile.defaultDisplayName"
+        static let defaultUsername: String.LocalizationValue = "profile.defaultUsername"
+    }
+    
+    enum EditProfile {
+        static let title: LocalizedStringKey = "editProfile.title"
+        static let back: LocalizedStringKey = "editProfile.back"
+        static let settings: LocalizedStringKey = "editProfile.settings"
+        static let changeProfilePicture: LocalizedStringKey = "editProfile.changeProfilePicture"
+        static let personalIdentity: LocalizedStringKey = "editProfile.personalIdentity"
+        static let usernameTitle: LocalizedStringKey = "editProfile.username.title"
+        static let usernameHelper: LocalizedStringKey = "editProfile.username.helper"
+        static let emailTitle: LocalizedStringKey = "editProfile.email.title"
+        static let locationTitle: LocalizedStringKey = "editProfile.location.title"
+        static let locationPlaceholder: LocalizedStringKey = "editProfile.location.placeholder"
+        static let bioTitle: LocalizedStringKey = "editProfile.bio.title"
+        static let bioPlaceholder: LocalizedStringKey = "editProfile.bio.placeholder"
+        static let saveChangesAction: LocalizedStringKey = "editProfile.saveChanges.action"
+        static let accountPrivacyTitle: LocalizedStringKey = "editProfile.accountPrivacy.title"
+        static let accountPrivacySubtitle: LocalizedStringKey = "editProfile.accountPrivacy.subtitle"
+        static let deactivateAccount: LocalizedStringKey = "editProfile.deactivateAccount.action"
+        
+        enum Message {
+            static let profileUpdated: String.LocalizationValue = "editProfile.message.profileUpdated"
+            static let updateFailed: String.LocalizationValue = "editProfile.error.updateFailed"
+            static let emailInUse: String.LocalizationValue = "editProfile.error.emailInUse"
+            static let requiresRecentLogin: String.LocalizationValue = "editProfile.error.requiresRecentLogin"
+            static let networkError: String.LocalizationValue = "editProfile.error.network"
+        }
+        //=======
+        
     }
 
     enum Friends {
@@ -172,5 +221,6 @@ enum L10n {
     }
     
     static let profileTitle: LocalizedStringKey = "userTitle"
-}
+        //>>>>>>> 0bfca34 (Added memories functionality to app)
+    }
 

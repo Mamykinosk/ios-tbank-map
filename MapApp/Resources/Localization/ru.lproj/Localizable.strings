@@ -12,6 +12,7 @@
 
 /* Start */
 "start.getStarted.action" = "Начать";
+<<<<<<< HEAD
 "start.curateYourJorney" = "Сохраняйте свои путешествия";
 "start.startSubtitle" = "Каждая миля - воспоминание, каждое место - история.";
 
@@ -20,6 +21,16 @@
 "auth.register.subtitle" = "Начните сохранять свои путешествия уже сегодня";
 "auth.register.username.title" = "Имя пользователя";
 "auth.register.confirmPassword.title" = "Повторите пароль";
+=======
+"start.curateYourJorney" = "Собери своё путешествие";
+"start.startSubtitle" = "Сохраняй любимые места, истории и моменты на личной карте путешествий.";
+
+/* Auth - Register */
+"auth.register.title" = "Создать аккаунт";
+"auth.register.subtitle" = "Присоединяйся и начни собирать свои воспоминания.";
+"auth.register.username.title" = "Имя пользователя";
+"auth.register.confirmPassword.title" = "Подтвердите пароль";
+>>>>>>> origin/main
 "auth.register.username.placeholder" = "Введите имя пользователя";
 "auth.register.alreadyHaveAccount" = "Уже есть аккаунт?";
 "auth.register.loginNow" = "Войти";
@@ -27,7 +38,11 @@
 
 /* Auth - Login */
 "auth.login.title" = "С возвращением";
+<<<<<<< HEAD
 "auth.login.subtitle" = "Продолжите путешествие по своим воспоминаниям";
+=======
+"auth.login.subtitle" = "Войдите, чтобы продолжить путешествие.";
+>>>>>>> origin/main
 "auth.login.login.action" = "Войти";
 "auth.login.forgotPassword" = "Забыли пароль?";
 "auth.login.orConnectWith" = "Или войдите через";
@@ -35,8 +50,13 @@
 "auth.login.registerNow" = "Зарегистрироваться";
 
 /* Auth - Recovery */
+<<<<<<< HEAD
 "auth.recovery.title" = "Восстановление пароля";
 "auth.recovery.subtitle" = "Введите email, и мы отправим ссылку для восстановления пароля.";
+=======
+"auth.recovery.title" = "Сброс пароля";
+"auth.recovery.subtitle" = "Введите email, и мы отправим ссылку для сброса пароля.";
+>>>>>>> origin/main
 "auth.recovery.sendResetLink.action" = "Отправить ссылку";
 "auth.recovery.backToSingIn" = "Вернуться ко входу";
 
@@ -148,3 +168,11 @@
 
 /* User */
 "userTitle" = "Профиль пользователя";
+
+/* Added from existing Xcode localization */
+"" = "";
+"••••••••" = "••••••••";
+"hello@travelmemorize.com" = "hello@travelmemorize.com";
+"Sign Out" = "Выйти";
+"Travel Memorize" = "Travel Memorize";
+"Вы вошли в приложение" = "Вы вошли в приложение";
