@@ -4,9 +4,3 @@ enum MainRoute: Hashable {
     case settings
 }
 
-enum MainTab: CaseIterable, Hashable {
-    case map
-    case feed
-    case friends
-    case profile
-}
