@@ -1,148 +1,98 @@
 import SwiftUI
 
-struct MainFlowView: View {
+struct MainView: View {
+    @Environment(AuthSessionStore.self) private var authSession
     @Environment(AppCoordinator.self) private var router
 
-    var body: some View {
-        @Bindable var router = router
+    @Binding var selectedTab: AppTab
 
-        NavigationStack(path: $router.mainPath) {
-            ZStack(alignment: .bottom) {
-                currentTabView
-
-                MainBottomNavigationBar(
-                    selectedTab: router.selectedMainTab,
-                    onSelect: router.selectMainTab
-                )
-            }
-            .ignoresSafeArea(edges: .bottom)
-        }
-    }
-
-    @ViewBuilder
-    private var currentTabView: some View {
-        switch router.selectedMainTab {
-        case .map:
-            MainMapView()
-        case .feed:
-            MainPlaceholderView(title: L10n.TabBar.feed, systemImage: "book")
-        case .friends:
-            MainPlaceholderView(title: L10n.TabBar.friends, systemImage: "person.2")
-        case .profile:
-            MainPlaceholderView(title: L10n.TabBar.profile, systemImage: "person")
-        }
-    }
-}
-
-private struct MainBottomNavigationBar: View {
-    let selectedTab: MainTab
-    let onSelect: (MainTab) -> Void
-
-    var body: some View {
-        HStack(spacing: 0) {
-            bottomNavItem(for: .map)
-            bottomNavItem(for: .feed)
-            bottomNavItem(for: .friends)
-            bottomNavItem(for: .profile)
-        }
-        .padding(.top, 12)
-        .padding(.horizontal, 16)
-        .padding(.bottom, 24)
-        .frame(maxWidth: .infinity)
-        .background(Color.white.opacity(0.95))
-        .clipShape(
-            UnevenRoundedRectangle(
-                topLeadingRadius: 32,
-                topTrailingRadius: 32,
-                style: .continuous
-            )
-        )
-        .shadow(color: Color.appTitle.opacity(0.08), radius: 40, x: 0, y: -8)
-    }
-
-    private func bottomNavItem(for tab: MainTab) -> some View {
-        Button {
-            onSelect(tab)
-        } label: {
-            VStack(spacing: 3) {
-                Image(systemName: tab.systemImage)
-                    .font(.system(size: 22, weight: .medium))
-
-                Text(tab.title)
-                    .font(.system(size: 10, weight: .medium))
-                    .tracking(0.4)
-                    .lineLimit(1)
-                    .minimumScaleFactor(0.75)
-                    .fixedSize(horizontal: false, vertical: true)
-            }
-            .foregroundStyle(selectedTab == tab ? Color.mainSelectedNav : Color.mainInactiveNav)
-            .frame(maxWidth: .infinity)
-            .frame(height: 48)
-            .background {
-                if selectedTab == tab {
-                    Capsule()
-                        .fill(Color.mainSelectedNavBackground)
-                        .frame(width: 76, height: 48)
-                }
-            }
-        }
-        .buttonStyle(.plain)
-    }
-}
-
-private struct MainPlaceholderView: View {
-    let title: LocalizedStringKey
-    let systemImage: String
+    @State private var errorMessage: String?
+    @State private var isSigningOut = false
 
     var body: some View {
         ZStack {
             Color.appBackground
                 .ignoresSafeArea()
 
-            VStack(spacing: 16) {
-                Image(systemName: systemImage)
-                    .font(.system(size: 44, weight: .medium))
-                    .foregroundStyle(Color.appPrimary)
-
-                Text(title)
-                    .font(.system(size: 28, weight: .bold))
+            VStack(alignment: .leading, spacing: 24) {
+                Text(L10n.Main.signedInTitle)
+                    .font(.system(size: 30, weight: .bold))
                     .foregroundStyle(Color.appTitle)
+
+                VStack(alignment: .leading, spacing: 12) {
+                    infoRow(title: L10n.Main.email, value: authSession.currentUser?.email ?? String(localized: "main.notSpecified"))
+                    infoRow(title: L10n.Main.uid, value: authSession.currentUser?.uid ?? String(localized: "main.notFound"))
+                }
+                .padding(20)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .background(Color.white)
+                .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+
+                if let errorMessage {
+                    Text(errorMessage)
+                        .font(.system(size: 14, weight: .medium))
+                        .foregroundStyle(Color.appError)
+                }
+
+                Button {
+                    signOut()
+                } label: {
+                    Group {
+                        if isSigningOut {
+                            ProgressView()
+                                .tint(.white)
+                        } else {
+                            Text(L10n.Main.signOut)
+                                .font(.system(size: 16, weight: .semibold))
+                        }
+                    }
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
+                    .background(Color.appPrimary)
+                    .clipShape(Capsule())
+                }
+                .buttonStyle(.plain)
+                .disabled(isSigningOut)
+
+                Spacer()
             }
-            .padding(.bottom, 96)
-        }
-    }
-}
+            .padding(24)
+            .padding(.bottom, 120)
 
-private extension MainTab {
-    var title: LocalizedStringKey {
-        switch self {
-        case .map:
-            L10n.TabBar.map
-        case .feed:
-            L10n.TabBar.feed
-        case .friends:
-            L10n.TabBar.friends
-        case .profile:
-            L10n.TabBar.profile
+            VStack {
+                Spacer()
+
+                AppBottomTabBar(selectedTab: $selectedTab)
+            }
+            .ignoresSafeArea(edges: .bottom)
         }
     }
 
-    var systemImage: String {
-        switch self {
-        case .map:
-            "map"
-        case .feed:
-            "book"
-        case .friends:
-            "person.2"
-        case .profile:
-            "person"
+    private func infoRow(title: LocalizedStringKey, value: String) -> some View {
+        VStack(alignment: .leading, spacing: 4) {
+            Text(title)
+                .font(.system(size: 12, weight: .semibold))
+                .foregroundStyle(Color.secondary)
+
+            Text(value)
+                .font(.system(size: 16, weight: .medium))
+                .foregroundStyle(Color.appTitle)
+                .textSelection(.enabled)
         }
     }
-}
 
-private extension Color {
-    static let mainSelectedNav = Color(red: 6 / 255, green: 78 / 255, blue: 59 / 255)
-    static let mainSelectedNavBackground = Color(red: 209 / 255, green: 250 / 255, blue: 229 / 255).opacity(0.5)
-    static let mainInactiveNav = Color(red: 120 / 255, green: 113 / 255, blue: 108 / 255)
+    private func signOut() {
+        errorMessage = nil
+        isSigningOut = true
+
+        do {
+            try AuthService.shared.signOut()
+            router.showAuth()
+        } catch {
+            errorMessage = error.localizedDescription
+        }
+
+        isSigningOut = false
+    }
 }

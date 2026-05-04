@@ -1,0 +1,150 @@
+/* Common */
+"common.cancel" = "Cancel";
+"common.save" = "Save";
+"common.delete" = "Delete";
+"common.edit" = "Edit";
+"common.add" = "Add";
+"common.loading" = "Loading...";
+"common.error" = "Error";
+"common.clear" = "Clear";
+"common.done" = "Done";
+"common.search" = "Search";
+
+/* Start */
+"start.getStarted.action" = "Get started";
+"start.curateYourJorney" = "Curate your journey";
+"start.startSubtitle" = "Save your favorite places, stories, and moments on a personal travel map.";
+
+/* Auth - Register */
+"auth.register.title" = "Create account";
+"auth.register.subtitle" = "Join us and start collecting your memories.";
+"auth.register.username.title" = "Username";
+"auth.register.confirmPassword.title" = "Confirm password";
+"auth.register.username.placeholder" = "Enter your username";
+"auth.register.alreadyHaveAccount" = "Already have an account?";
+"auth.register.loginNow" = "Log in now";
+"auth.register.action" = "Register";
+
+/* Auth - Login */
+"auth.login.title" = "Welcome back";
+"auth.login.subtitle" = "Sign in to continue your journey.";
+"auth.login.login.action" = "Log in";
+"auth.login.forgotPassword" = "Forgot password?";
+"auth.login.orConnectWith" = "Or connect with";
+"auth.login.noAnyAccount" = "Don’t have an account?";
+"auth.login.registerNow" = "Register now";
+
+/* Auth - Recovery */
+"auth.recovery.title" = "Reset password";
+"auth.recovery.subtitle" = "Enter your email and we’ll send you a reset link.";
+"auth.recovery.sendResetLink.action" = "Send reset link";
+"auth.recovery.backToSingIn" = "Back to sign in";
+
+/* Auth - Common */
+"auth.common.email.title" = "Email";
+"auth.common.password.title" = "Password";
+"auth.common.email.placeholder" = "Enter your email";
+
+/* Main */
+"main.signedIn.title" = "Signed in";
+"main.email" = "Email";
+"main.uid" = "UID";
+"main.notSpecified" = "Not specified";
+"main.notFound" = "Not found";
+"main.signOut" = "Sign out";
+
+/* Tab bar */
+"logged.tabBar.map" = "Map";
+"logged.tabBar.feed" = "Feed";
+"logged.tabBar.friends" = "Friends";
+"logged.tabBar.profile" = "Profile";
+
+/* Messages */
+"friends.message.requestSent" = "Friend request sent";
+"friends.message.removed" = "Friend removed";
+"friends.message.accepted" = "Friend request accepted";
+"friends.message.rejected" = "Friend request rejected";
+"memories.message.saved" = "Memory saved";
+"memories.message.updated" = "Memory updated";
+"memories.message.deleted" = "Memory deleted";
+
+/* Errors */
+"error.userNotAuthenticated" = "User is not authenticated";
+"friends.error.cannotAddYourself" = "You can’t add yourself as a friend";
+"friends.error.alreadyFriends" = "You are already friends";
+"friends.error.requestAlreadySent" = "Friend request already sent";
+"error.noPermission" = "You don’t have permission to do this";
+"friends.error.unknown" = "Something went wrong with friends service";
+"memories.error.coordinateMissing" = "Memory location is missing";
+"memories.error.unknown" = "Something went wrong with memories service";
+
+/* Memories */
+"memories.appTitle" = "Memories";
+"memories.search.placeholder" = "Search memories";
+"memories.recentArchive" = "Recent archive";
+"memories.feed.title" = "Memories feed";
+"memories.emptyFeed" = "No memories yet";
+"memories.newMemoryTitle" = "New memory";
+"memories.editMarkerTitle" = "Edit marker";
+"memories.editTitle" = "Edit memory";
+"memories.capture" = "Capture";
+"memories.addPhotos" = "Add photos";
+"memories.photoGallery" = "Photo gallery";
+"memories.add" = "Add";
+"memories.placeName" = "Place name";
+"memories.placeNameRequired" = "Place name is required";
+"memories.placeNamePlaceholder" = "Enter place name";
+"memories.visitDate" = "Visit date";
+"memories.visitDateRequired" = "Visit date is required";
+"memories.historyStory" = "History story";
+"memories.theStory" = "The story";
+"memories.storyPlaceholder" = "Tell the story behind this memory";
+"memories.saveMemory" = "Save memory";
+"memories.saveChanges" = "Save changes";
+"memories.deleteMarker" = "Delete marker";
+"memories.deletePermanently" = "Delete permanently";
+"memories.chooseLocation" = "Choose location";
+"memories.longPressHint" = "Long press on the map to choose a location";
+"memories.lastSummer" = "Last summer";
+"memories.defaultPreviewTitle" = "Untitled memory";
+"memories.defaultPreviewSubtitle" = "No story yet";
+"memories.cancelEditConfirmation" = "Discard changes?";
+"memories.cancelAddConfirmation" = "Discard this memory?";
+"memories.deleteConfirmation" = "This memory will be permanently deleted.";
+"memories.stay" = "Stay";
+"memories.photos" = "photos";
+"memories.items" = "items";
+"memories.searchMemories.title" = "Search memories";
+"memories.noMemoriesFound" = "No memories found";
+"memories.searchNoResultsHint" = "Try searching by place, city, country, or story.";
+"memories.noStoryAdded" = "No story added";
+"memories.memoryTitle" = "Memory";
+
+/* Friends */
+"friends.title" = "Friends";
+"friends.profile.title" = "Friend profile";
+"friends.search.placeholder" = "Search friends";
+"friends.emptyFriends" = "No friends yet";
+"friends.noUsersFound" = "No users found";
+"friends.addFriend" = "Add friend";
+"friends.removeFriend" = "Remove friend";
+"friends.removeConfirmation" = "Remove this friend?";
+"friends.showMap" = "Show map";
+"friends.userMap" = "User map";
+"friends.emptyUserMap" = "This user has no memories on the map yet";
+"friends.memories" = "Memories";
+"friends.countries" = "Countries";
+"friends.cities" = "Cities";
+"friends.social" = "Social";
+"friends.yourFriends" = "Your friends";
+"friends.requests" = "Requests";
+"friends.unknownUser" = "Unknown user";
+"friends.friendRequest" = "Friend request";
+"friends.allFriends" = "All friends";
+"friends.emptyFriendsTitle" = "No friends yet";
+"friends.emptyFriendsHint" = "Find people and add them to see their travel memories.";
+"friends.friend" = "Friend";
+"friends.sent" = "Sent";
+
+/* User */
+"userTitle" = "User profile";

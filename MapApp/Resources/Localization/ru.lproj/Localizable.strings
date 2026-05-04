@@ -1,0 +1,150 @@
+/* Common */
+"common.cancel" = "Отмена";
+"common.save" = "Сохранить";
+"common.delete" = "Удалить";
+"common.edit" = "Редактировать";
+"common.add" = "Добавить";
+"common.loading" = "Загрузка...";
+"common.error" = "Ошибка";
+"common.clear" = "Очистить";
+"common.done" = "Готово";
+"common.search" = "Поиск";
+
+/* Start */
+"start.getStarted.action" = "Начать";
+"start.curateYourJorney" = "Сохраняйте свои путешествия";
+"start.startSubtitle" = "Каждая миля - воспоминание, каждое место - история.";
+
+/* Auth - Register */
+"auth.register.title" = "Создать аккаунт";
+"auth.register.subtitle" = "Начните сохранять свои путешествия уже сегодня";
+"auth.register.username.title" = "Имя пользователя";
+"auth.register.confirmPassword.title" = "Повторите пароль";
+"auth.register.username.placeholder" = "Введите имя пользователя";
+"auth.register.alreadyHaveAccount" = "Уже есть аккаунт?";
+"auth.register.loginNow" = "Войти";
+"auth.register.action" = "Зарегистрироваться";
+
+/* Auth - Login */
+"auth.login.title" = "С возвращением";
+"auth.login.subtitle" = "Продолжите путешествие по своим воспоминаниям";
+"auth.login.login.action" = "Войти";
+"auth.login.forgotPassword" = "Забыли пароль?";
+"auth.login.orConnectWith" = "Или войдите через";
+"auth.login.noAnyAccount" = "Нет аккаунта?";
+"auth.login.registerNow" = "Зарегистрироваться";
+
+/* Auth - Recovery */
+"auth.recovery.title" = "Восстановление пароля";
+"auth.recovery.subtitle" = "Введите email, и мы отправим ссылку для восстановления пароля.";
+"auth.recovery.sendResetLink.action" = "Отправить ссылку";
+"auth.recovery.backToSingIn" = "Вернуться ко входу";
+
+/* Auth - Common */
+"auth.common.email.title" = "Email";
+"auth.common.password.title" = "Пароль";
+"auth.common.email.placeholder" = "Введите email";
+
+/* Main */
+"main.signedIn.title" = "Вы вошли";
+"main.email" = "Email";
+"main.uid" = "UID";
+"main.notSpecified" = "Не указано";
+"main.notFound" = "Не найдено";
+"main.signOut" = "Выйти";
+
+/* Tab bar */
+"logged.tabBar.map" = "Карта";
+"logged.tabBar.feed" = "Лента";
+"logged.tabBar.friends" = "Друзья";
+"logged.tabBar.profile" = "Профиль";
+
+/* Messages */
+"friends.message.requestSent" = "Запрос в друзья отправлен";
+"friends.message.removed" = "Друг удалён";
+"friends.message.accepted" = "Запрос в друзья принят";
+"friends.message.rejected" = "Запрос в друзья отклонён";
+"memories.message.saved" = "Воспоминание сохранено";
+"memories.message.updated" = "Воспоминание обновлено";
+"memories.message.deleted" = "Воспоминание удалено";
+
+/* Errors */
+"error.userNotAuthenticated" = "Пользователь не авторизован";
+"friends.error.cannotAddYourself" = "Нельзя добавить себя в друзья";
+"friends.error.alreadyFriends" = "Вы уже друзья";
+"friends.error.requestAlreadySent" = "Запрос в друзья уже отправлен";
+"error.noPermission" = "У вас нет прав на это действие";
+"friends.error.unknown" = "Что-то пошло не так в сервисе друзей";
+"memories.error.coordinateMissing" = "Не указано место воспоминания";
+"memories.error.unknown" = "Что-то пошло не так в сервисе воспоминаний";
+
+/* Memories */
+"memories.appTitle" = "Воспоминания";
+"memories.search.placeholder" = "Искать воспоминания";
+"memories.recentArchive" = "Недавний архив";
+"memories.feed.title" = "Лента воспоминаний";
+"memories.emptyFeed" = "Пока нет воспоминаний";
+"memories.newMemoryTitle" = "Новое воспоминание";
+"memories.editMarkerTitle" = "Редактировать метку";
+"memories.editTitle" = "Редактировать воспоминание";
+"memories.capture" = "Снять";
+"memories.addPhotos" = "Добавить фото";
+"memories.photoGallery" = "Фотогалерея";
+"memories.add" = "Добавить";
+"memories.placeName" = "Название места";
+"memories.placeNameRequired" = "Укажите название места";
+"memories.placeNamePlaceholder" = "Введите название места";
+"memories.visitDate" = "Дата посещения";
+"memories.visitDateRequired" = "Укажите дату посещения";
+"memories.historyStory" = "История";
+"memories.theStory" = "История";
+"memories.storyPlaceholder" = "Расскажите историю этого воспоминания";
+"memories.saveMemory" = "Сохранить воспоминание";
+"memories.saveChanges" = "Сохранить изменения";
+"memories.deleteMarker" = "Удалить метку";
+"memories.deletePermanently" = "Удалить навсегда";
+"memories.chooseLocation" = "Выбрать место";
+"memories.longPressHint" = "Зажмите карту, чтобы выбрать место";
+"memories.lastSummer" = "Прошлым летом";
+"memories.defaultPreviewTitle" = "Без названия";
+"memories.defaultPreviewSubtitle" = "Истории пока нет";
+"memories.cancelEditConfirmation" = "Отменить изменения?";
+"memories.cancelAddConfirmation" = "Удалить это воспоминание?";
+"memories.deleteConfirmation" = "Это воспоминание будет удалено навсегда.";
+"memories.stay" = "Остаться";
+"memories.photos" = "фото";
+"memories.items" = "элементов";
+"memories.searchMemories.title" = "Поиск воспоминаний";
+"memories.noMemoriesFound" = "Воспоминания не найдены";
+"memories.searchNoResultsHint" = "Попробуйте поискать по месту, городу, стране или истории.";
+"memories.noStoryAdded" = "История не добавлена";
+"memories.memoryTitle" = "Воспоминание";
+
+/* Friends */
+"friends.title" = "Друзья";
+"friends.profile.title" = "Профиль друга";
+"friends.search.placeholder" = "Искать друзей";
+"friends.emptyFriends" = "Пока нет друзей";
+"friends.noUsersFound" = "Пользователи не найдены";
+"friends.addFriend" = "Добавить в друзья";
+"friends.removeFriend" = "Удалить из друзей";
+"friends.removeConfirmation" = "Удалить этого друга?";
+"friends.showMap" = "Показать карту";
+"friends.userMap" = "Карта пользователя";
+"friends.emptyUserMap" = "У этого пользователя пока нет воспоминаний на карте";
+"friends.memories" = "Воспоминания";
+"friends.countries" = "Страны";
+"friends.cities" = "Города";
+"friends.social" = "Соцсети";
+"friends.yourFriends" = "Ваши друзья";
+"friends.requests" = "Запросы";
+"friends.unknownUser" = "Неизвестный пользователь";
+"friends.friendRequest" = "Запрос в друзья";
+"friends.allFriends" = "Все друзья";
+"friends.emptyFriendsTitle" = "Пока нет друзей";
+"friends.emptyFriendsHint" = "Найдите людей и добавьте их, чтобы видеть их воспоминания о путешествиях.";
+"friends.friend" = "Друг";
+"friends.sent" = "Отправлено";
+
+/* User */
+"userTitle" = "Профиль пользователя";
