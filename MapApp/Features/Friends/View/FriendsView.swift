@@ -190,6 +190,9 @@ struct FriendsView: View {
                     request: request,
                     acceptRequest: {
                         viewModel.acceptRequest(request)
+                        if request.sender != nil {
+                            viewModel.friends.append(request.sender!)
+                        }
                         viewModel.incomingRequests.removeAll(where: { $0.id == request.id } )
                     },
                     rejectRequest: {

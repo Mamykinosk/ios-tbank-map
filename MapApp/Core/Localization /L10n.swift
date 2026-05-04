@@ -92,10 +92,14 @@ enum L10n {
 
     enum Memories {
         static let appTitle: LocalizedStringKey = "memories.appTitle"
+        static let emptyFeed: LocalizedStringKey = "memories.emptyFeed"
+        static let recentArchive: LocalizedStringKey = "memories.recentArchive"
         
         static let newMemoryTitle: LocalizedStringKey = "memories.newMemoryTitle"
         static let editMarkerTitle: LocalizedStringKey = "memories.editMarkerTitle"
         static let editTitle: LocalizedStringKey = "memories.editTitle"
+        static let feedTitle: LocalizedStringKey = "memories.feed.title"
+        static let searchPlaceholder: LocalizedStringKey = "memories.search.placeholder"
         
         static let capture: LocalizedStringKey = "memories.capture"
         static let addPhotos: LocalizedStringKey = "memories.addPhotos"
