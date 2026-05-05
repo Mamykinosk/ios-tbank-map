@@ -15,7 +15,7 @@ struct MainView: View {
                 .ignoresSafeArea()
 
             VStack(alignment: .leading, spacing: 24) {
-                Text(L10n.Main.signedInTitle)
+                Text(L10n.Main.SignedIn.title)
                     .font(.system(size: 30, weight: .bold))
                     .foregroundStyle(Color.appTitle)
 
@@ -69,7 +69,7 @@ struct MainView: View {
         }
     }
 
-    private func infoRow(title: LocalizedStringKey, value: String) -> some View {
+    private func infoRow(title: String, value: String) -> some View {
         VStack(alignment: .leading, spacing: 4) {
             Text(title)
                 .font(.system(size: 12, weight: .semibold))

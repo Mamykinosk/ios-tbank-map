@@ -36,7 +36,7 @@ struct FriendProfileView: View {
                 topBar
             }
         }
-        .navigationTitle(showsCustomBackButton ? LocalizedStringKey("") : L10n.Friends.profileTitle)
+        .navigationTitle(showsCustomBackButton ? "" : L10n.Friends.Profile.title)
         .navigationBarTitleDisplayMode(.inline)
         .task {
             viewModel.startListening()
@@ -69,7 +69,7 @@ struct FriendProfileView: View {
 
             Spacer()
 
-            Text(L10n.Friends.profileTitle)
+            Text(L10n.Friends.Profile.title)
                 .font(.system(size: 20, weight: .semibold))
                 .tracking(-0.5)
                 .foregroundStyle(Color.appPrimary)
@@ -142,7 +142,7 @@ struct FriendProfileView: View {
         .padding(.top, 12)
     }
 
-    private func statCard(value: String, title: LocalizedStringKey) -> some View {
+    private func statCard(value: String, title: String) -> some View {
         VStack(spacing: 6) {
             Text(value)
                 .font(.system(size: 22, weight: .bold))

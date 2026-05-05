@@ -84,7 +84,7 @@ final class FriendProfileViewModel {
 
                 await MainActor.run {
                     self.isLoading = false
-                    self.successMessage = L10n.Message.friendRequestSent
+                    self.successMessage = L10n.Friends.Message.requestSent
                 }
             } catch {
                 await MainActor.run {
@@ -128,7 +128,7 @@ final class FriendProfileViewModel {
 
                 await MainActor.run {
                     self.isLoading = false
-                    self.successMessage = L10n.Message.friendRemoved
+                    self.successMessage = L10n.Friends.Message.removed
                 }
             } catch {
                 await MainActor.run {

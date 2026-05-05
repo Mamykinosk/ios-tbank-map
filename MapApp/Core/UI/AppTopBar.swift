@@ -1,7 +1,7 @@
 import SwiftUI
 
 struct AppTopBar: View {
-    let title: LocalizedStringKey
+    let title: String
     var showsBackButton = true
     var showsSettingsButton = true
     var onBack: (() -> Void)?

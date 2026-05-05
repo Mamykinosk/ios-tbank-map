@@ -115,7 +115,7 @@ final class FriendsViewModel {
     
     func searchUsers() {
         guard let currentUserId else {
-            errorMessage = L10n.Message.userNotAuthenticated
+            errorMessage = L10n.Error.userNotAuthenticated
             return
         }
         
@@ -185,7 +185,7 @@ final class FriendsViewModel {
 
                 await MainActor.run {
                     self.isLoading = false
-                    self.successMessage = L10n.Message.friendRequestSent
+                    self.successMessage = L10n.Friends.Message.requestSent
                     self.outgoingRequestIds.insert(user.id)
                 }
             } catch {
@@ -210,7 +210,7 @@ final class FriendsViewModel {
 
                 await MainActor.run {
                     self.isLoading = false
-                    self.successMessage = L10n.Message.friendRequestAccepted
+                    self.successMessage = L10n.Friends.Message.accepted
                     self.incomingRequests.removeAll { $0.id == request.id }
                 }
             } catch {
@@ -235,7 +235,7 @@ final class FriendsViewModel {
 
                 await MainActor.run {
                     self.isLoading = false
-                    self.successMessage = L10n.Message.friendRequestRejected
+                    self.successMessage = L10n.Friends.Message.rejected
                     self.incomingRequests.removeAll { $0.id == request.id }
                 }
             } catch {
@@ -260,7 +260,7 @@ final class FriendsViewModel {
 
                 await MainActor.run {
                     self.isLoading = false
-                    self.successMessage = L10n.Message.friendRemoved
+                    self.successMessage = L10n.Friends.Message.removed
                     self.friends.removeAll { $0.id == friend.id }
                 }
             } catch {

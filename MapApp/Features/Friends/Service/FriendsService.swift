@@ -369,15 +369,15 @@ enum FriendServiceError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .userNotAuthenticated:
-            return L10n.Message.userNotAuthenticated
+            return L10n.Error.userNotAuthenticated
         case .cannotAddYourself:
-            return L10n.Message.cannotAddYourself
+            return L10n.Friends.Error.cannotAddYourself
         case .requestAlreadySent:
-            return L10n.Message.friendRequestAlreadySent
+            return L10n.Friends.Error.requestAlreadySent
         case .permissionDenied:
-            return L10n.Message.noPermission
+            return L10n.Error.noPermission
         case .unknown:
-            return L10n.Message.unknownFriendsServiceError
+            return L10n.Friends.Error.unknown
         }
     }
 }

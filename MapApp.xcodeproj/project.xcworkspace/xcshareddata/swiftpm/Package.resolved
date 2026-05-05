@@ -1,5 +1,5 @@
 {
-  "originHash" : "ffc276e5d5d630280da168fc332856d00e349b91a6acc6e705d12bae863b6a17",
+  "originHash" : "bc64351fd212c4f22ccf7876877c2022fe295455630e733909d8b0450a7915a7",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -143,6 +143,15 @@
       "state" : {
         "revision" : "540318ecedd63d883069ae7f1ed811a2df00b6ac",
         "version" : "2.4.0"
+      }
+    },
+    {
+      "identity" : "swiftgenplugin",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/SwiftGen/SwiftGenPlugin",
+      "state" : {
+        "revision" : "879b85a470cacd70c19e22eb7e11a3aed66f4068",
+        "version" : "6.6.2"
       }
     },
     {

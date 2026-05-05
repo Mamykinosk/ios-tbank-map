@@ -85,7 +85,7 @@ struct MemoriesFeedView: View {
                 .foregroundStyle(Color.appPrimary)
 
             HStack(alignment: .center) {
-                Text(L10n.Memories.feedTitle)
+                Text(L10n.Memories.Feed.title)
                     .font(.system(size: 30, weight: .heavy))
                     .tracking(-1.1)
                     .foregroundStyle(Color.appTitle)

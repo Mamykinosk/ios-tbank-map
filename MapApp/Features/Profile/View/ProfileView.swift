@@ -49,7 +49,7 @@ struct ProfileView: View {
             }
         }
         .confirmationDialog(
-            L10n.Profile.language,
+            L10n.Profile.Preferences.language,
             isPresented: $isLanguagePickerPresented,
             titleVisibility: .visible
         ) {
@@ -128,7 +128,7 @@ struct ProfileView: View {
 
     private func preferencesSection(isDarkModeEnabled: Binding<Bool>) -> some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(L10n.Profile.preferencesTitle)
+            Text(L10n.Profile.Preferences.title)
                 .font(.system(size: 12, weight: .bold))
                 .tracking(2.4)
                 .textCase(.uppercase)
@@ -138,7 +138,7 @@ struct ProfileView: View {
             VStack(spacing: 8) {
                 ProfilePreferenceRow(
                     systemImage: "moon",
-                    title: L10n.Profile.darkMode
+                    title: L10n.Profile.Preferences.darkMode
                 ) {
                     ProfileSwitch(isOn: isDarkModeEnabled)
                 }
@@ -148,7 +148,7 @@ struct ProfileView: View {
                 } label: {
                     ProfilePreferenceRow(
                         systemImage: "globe",
-                        title: L10n.Profile.language
+                        title: L10n.Profile.Preferences.language
                     ) {
                         HStack(spacing: 8) {
                             Text(viewModel.selectedLanguage.title)
@@ -178,7 +178,7 @@ struct ProfileView: View {
                     Image(systemName: "pencil")
                         .font(.system(size: 15, weight: .semibold))
 
-                    Text(L10n.Profile.editProfileAction)
+                    Text(L10n.Profile.EditProfile.action)
                         .font(.system(size: 14, weight: .semibold))
                 }
                 .foregroundStyle(.white)
@@ -199,7 +199,7 @@ struct ProfileView: View {
                     Image(systemName: "rectangle.portrait.and.arrow.right")
                         .font(.system(size: 15, weight: .semibold))
 
-                    Text(L10n.Profile.logoutAction)
+                    Text(L10n.Profile.Logout.action)
                         .font(.system(size: 14, weight: .semibold))
                 }
                 .foregroundStyle(Color.appError)
@@ -270,12 +270,12 @@ private struct ProfileAvatarView: View {
 
 private struct ProfilePreferenceRow<Trailing: View>: View {
     let systemImage: String
-    let title: LocalizedStringKey
+    let title: String
     let trailing: Trailing
 
     init(
         systemImage: String,
-        title: LocalizedStringKey,
+        title: String,
         @ViewBuilder trailing: () -> Trailing
     ) {
         self.systemImage = systemImage

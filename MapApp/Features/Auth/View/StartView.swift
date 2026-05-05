@@ -142,7 +142,7 @@ struct StartView: View {
             router.showLogin()
         } label: {
             HStack(spacing: 8) {
-                Text(L10n.Start.getStartedAction)
+                Text(L10n.Start.GetStarted.action)
                     .font(.system(size: 18, weight: .bold))
                     .tracking(0.45)
 

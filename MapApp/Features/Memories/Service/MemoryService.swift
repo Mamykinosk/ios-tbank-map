@@ -261,13 +261,13 @@ enum MemoryServiceError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .userNotAuthenticated:
-            return L10n.Message.userNotAuthenticated
+            return L10n.Error.userNotAuthenticated
         case .missingCoordinate:
-            return L10n.Message.memoryCoordinateMissing
+            return L10n.Memories.Error.coordinateMissing
         case .permissionDenied:
-            return L10n.Message.noPermission
+            return L10n.Error.noPermission
         case .unknown:
-            return L10n.Message.unknownMemoryServiceError
+            return L10n.Memories.Error.unknown
         }
     }
 }

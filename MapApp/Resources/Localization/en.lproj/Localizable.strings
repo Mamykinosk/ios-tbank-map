@@ -145,14 +145,58 @@
 "friends.emptyFriendsHint" = "Find people and add them to see their travel memories.";
 "friends.friend" = "Friend";
 "friends.sent" = "Sent";
+"friends.alreadyAdded" = "Request already sent";
 
 /* User */
 "userTitle" = "User profile";
 
-/* Added from existing Xcode localization */
-"" = "";
-"••••••••" = "••••••••";
-"hello@travelmemorize.com" = "hello@travelmemorize.com";
-"Sign Out" = "Sign Out";
-"Travel Memorize" = "Travel Memorize";
-"Вы вошли в приложение" = "You are signed in";
+/* Character count */
+"%lld / %lld" = "%1$lld / %2$lld";
+
+/* Edit Profile */
+"editProfile.title" = "Edit Profile";
+"editProfile.back" = "Back";
+"editProfile.settings" = "Settings";
+"editProfile.personalIdentity" = "Personal Identity";
+"editProfile.changeProfilePicture" = "Change profile picture";
+"editProfile.saveChanges.action" = "Save Changes";
+
+"editProfile.username.title" = "Username";
+"editProfile.username.helper" = "Only English letters, numbers and underscores allowed.";
+"editProfile.email.title" = "Email Address";
+"editProfile.bio.title" = "Bio";
+"editProfile.bio.placeholder" = "Share your journey...";
+"editProfile.location.title" = "Location";
+"editProfile.location.placeholder" = "Lisbon, Portugal";
+
+"editProfile.accountPrivacy.title" = "Account Privacy";
+"editProfile.accountPrivacy.subtitle" = "Manage your data visibility and account permanence.";
+"editProfile.deactivateAccount.action" = "Deactivate Account";
+
+"editProfile.message.profileUpdated" = "Profile updated.";
+
+"editProfile.error.emailInUse" = "This email is already in use.";
+"editProfile.error.network" = "Network error. Check your connection and try again.";
+"editProfile.error.requiresRecentLogin" = "For security, sign in again before changing your email.";
+"editProfile.error.updateFailed" = "Unable to update profile. Please try again.";
+
+/* Profile */
+"profile.defaultDisplayName" = "Traveler";
+"profile.defaultUsername" = "@traveler";
+"profile.editProfile.action" = "Edit Profile";
+"profile.logout.action" = "Logout";
+"profile.logout.error" = "Unable to logout. Please try again.";
+
+"profile.preferences.title" = "Preferences";
+"profile.preferences.language" = "Language";
+"profile.preferences.darkMode" = "Dark Mode";
+
+"profile.language.english" = "English";
+"profile.language.russian" = "Russian";
+
+"profile.stats.memories" = "Memories";
+"profile.stats.countries" = "Countries";
+"profile.stats.cities" = "Cities";
+
+/* Settings */
+"Settings" = "Settings";

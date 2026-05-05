@@ -38,7 +38,7 @@ struct UserProfileView: View {
                 topBar
             }
         }
-        .navigationTitle(showsCustomBackButton ? LocalizedStringKey("") : L10n.Friends.profileTitle)
+        .navigationTitle(showsCustomBackButton ? "" : L10n.userTitle)
         .navigationBarTitleDisplayMode(.inline)
         .task {
             viewModel.startListening()
@@ -74,7 +74,7 @@ struct UserProfileView: View {
 
             Spacer()
 
-            Text(L10n.profileTitle)
+            Text(L10n.userTitle)
                 .font(.system(size: 20, weight: .semibold))
                 .tracking(-0.5)
                 .foregroundStyle(Color.appPrimary)
@@ -147,7 +147,7 @@ struct UserProfileView: View {
         .padding(.top, 12)
     }
 
-    private func statCard(value: String, title: LocalizedStringKey) -> some View {
+    private func statCard(value: String, title: String) -> some View {
         VStack(spacing: 6) {
             Text(value)
                 .font(.system(size: 22, weight: .bold))
@@ -169,30 +169,37 @@ struct UserProfileView: View {
 
     private var actionSection: some View {
         VStack(spacing: 16) {
-            Button {
-                viewModel.sendRequest()
-                sendDisabled = true
-            } label: {
-                HStack(spacing: 8) {
-                    if viewModel.isLoading {
-                        ProgressView()
-                            .tint(.white)
-                    } else {
-                        Image(systemName: "person.badge.plus")
-                            .font(.system(size: 15, weight: .semibold))
-
-                        Text(L10n.Friends.addFriend)
-                            .font(.system(size: 16, weight: .semibold))
+            if !sendDisabled && !viewModel.isAlreadySent {
+                Button {
+                    viewModel.sendRequest()
+                    viewModel.isAlreadySent = true
+                } label: {
+                    HStack(spacing: 8) {
+                        if viewModel.isLoading {
+                            ProgressView()
+                                .tint(.white)
+                        } else {
+                            Image(systemName: "person.badge.plus")
+                                .font(.system(size: 15, weight: .semibold))
+                            
+                            Text(L10n.Friends.addFriend)
+                                .font(.system(size: 16, weight: .semibold))
+                        }
                     }
+                    .foregroundStyle(.white)
+                    .frame(maxWidth: .infinity)
+                    .frame(height: 56)
+                    .background(Color.appPrimary)
+                    .clipShape(Capsule())
                 }
-                .foregroundStyle(.white)
-                .frame(maxWidth: .infinity)
-                .frame(height: 56)
-                .background(Color.appPrimary)
-                .clipShape(Capsule())
+                .buttonStyle(.plain)
+                .disabled(viewModel.isLoading || sendDisabled || viewModel.isAlreadySent)
             }
-            .buttonStyle(.plain)
-            .disabled(viewModel.isLoading || sendDisabled || viewModel.isAlreadySent)
+            else if sendDisabled {
+                Text(L10n.Friends.alreadyAdded)
+                    .font(.system(size: 16, weight: .semibold))
+                    .foregroundStyle(Color.appAccent)
+            }
         }
         .padding(.top, 8)
     }

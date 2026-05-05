@@ -130,7 +130,7 @@ struct FriendsView: View {
                 .font(.system(size: 18, weight: .medium))
                 .foregroundStyle(Color.appPlaceholder)
 
-            TextField(L10n.Friends.searchPlaceholder, text: $viewModel.searchFriendText)
+            TextField(L10n.Friends.Search.placeholder, text: $viewModel.searchFriendText)
                 .font(.system(size: 16, weight: .medium))
                 .foregroundStyle(Color.appTitle)
                 .textInputAutocapitalization(.never)
@@ -294,7 +294,7 @@ struct FriendsView: View {
                             .font(.system(size: 18, weight: .medium))
                             .foregroundStyle(Color.appPlaceholder)
 
-                        TextField(L10n.Friends.searchPlaceholder, text: $viewModel.searchUserText)
+                        TextField(L10n.Friends.Search.placeholder, text: $viewModel.searchUserText)
                             .font(.system(size: 16, weight: .medium))
                             .foregroundStyle(Color.appTitle)
                             .textInputAutocapitalization(.never)

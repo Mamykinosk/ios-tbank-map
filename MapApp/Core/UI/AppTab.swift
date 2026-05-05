@@ -6,16 +6,16 @@ enum AppTab: CaseIterable, Hashable {
     case friends
     case profile
 
-    var title: LocalizedStringKey {
+    var title: String {
         switch self {
         case .map:
-            return L10n.TabBar.map
+            return L10n.Logged.TabBar.map
         case .feed:
-            return L10n.TabBar.feed
+            return L10n.Logged.TabBar.feed
         case .friends:
-            return L10n.TabBar.friends
+            return L10n.Logged.TabBar.friends
         case .profile:
-            return L10n.TabBar.profile
+            return L10n.Logged.TabBar.profile
         }
     }
 

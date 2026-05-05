@@ -67,7 +67,7 @@ final class EditProfileViewModel {
                 location: location
             )
             apply(profile)
-            infoMessage = String(localized: L10n.EditProfile.Message.profileUpdated)
+            infoMessage =  L10n.EditProfile.Message.profileUpdated
             isLoading = false
             return true
         } catch {
@@ -117,18 +117,18 @@ final class EditProfileViewModel {
         let nsError = error as NSError
         guard nsError.domain == AuthErrorDomain,
               let code = AuthErrorCode(rawValue: nsError.code) else {
-            return String(localized: L10n.EditProfile.Message.updateFailed)
+            return L10n.EditProfile.Error.updateFailed
         }
 
         switch code {
         case .emailAlreadyInUse:
-            return String(localized: L10n.EditProfile.Message.emailInUse)
+            return L10n.EditProfile.Error.emailInUse
         case .invalidEmail:
             return ProfileServiceError.invalidEmail.localizedDescription
         case .requiresRecentLogin:
-            return String(localized: L10n.EditProfile.Message.requiresRecentLogin)
+            return L10n.EditProfile.Error.requiresRecentLogin
         case .networkError:
-            return String(localized: L10n.EditProfile.Message.networkError)
+            return L10n.EditProfile.Error.network
         default:
             return nsError.localizedDescription
         }
