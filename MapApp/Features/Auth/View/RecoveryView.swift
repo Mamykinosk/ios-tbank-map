@@ -102,6 +102,7 @@ struct RecoveryView: View {
                     .padding(.horizontal, 24)
                     .frame(height: 56)
                     .background(Color.appFieldBackground)
+                    .cornerRadius(28)
                     .overlay {
                         Capsule()
                             .stroke(Color.appPrimary.opacity(0.05), lineWidth: 1)

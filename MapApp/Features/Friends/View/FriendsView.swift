@@ -8,11 +8,14 @@ struct FriendsView: View {
     @State private var isSearchPresented = false
     @State var selectedSearchFriend: FriendUser?
     @State var selectedSearchUser: FriendUser?
+    @State private var selectedIncomingRequestForProfile: FriendRequest?
+    @State private var selectedSearchRequestForProfile: FriendRequest?
 
     @Bindable var viewModel: FriendsViewModel
 
     var body: some View {
-        ZStack {
+        NavigationStack {
+            ZStack {
             Color.appBackground
                 .ignoresSafeArea()
 
@@ -57,12 +60,20 @@ struct FriendsView: View {
                 AppBottomTabBar(selectedTab: $selectedTab)
             }
             .ignoresSafeArea(edges: .bottom)
+            }
+            .navigationDestination(item: $viewModel.selectedFriendForProfile) { friend in
+                FriendProfileView(friend: friend, showsCustomBackButton: true)
+                    .navigationBarBackButtonHidden(true)
+                    .toolbar(.hidden, for: .navigationBar)
+            }
+            .navigationDestination(item: $selectedIncomingRequestForProfile) { request in
+                RequestProfileView(request: request)
+                    .navigationBarBackButtonHidden(true)
+                    .toolbar(.hidden, for: .navigationBar)
+            }
         }
         .sheet(isPresented: $isSearchPresented) {
             searchSheet
-        }
-        .sheet(item: $viewModel.selectedFriendForProfile) { friend in
-            FriendProfileView(friend: friend)
         }
         .task(id: authSession.currentUser?.uid) {
             if let userId = authSession.currentUser?.uid {
@@ -188,16 +199,20 @@ struct FriendsView: View {
             ForEach(viewModel.incomingRequests) { request in
                 RequestRow(
                     request: request,
+                    openProfile: {
+                        selectedIncomingRequestForProfile = request
+                    },
                     acceptRequest: {
                         viewModel.acceptRequest(request)
-                        if request.sender != nil {
-                            viewModel.friends.append(request.sender!)
+                        if let sender = request.sender,
+                           !viewModel.friends.contains(where: { $0.id == sender.id }) {
+                            viewModel.friends.append(sender)
                         }
-                        viewModel.incomingRequests.removeAll(where: { $0.id == request.id } )
+                        viewModel.incomingRequests.removeAll { $0.id == request.id }
                     },
                     rejectRequest: {
                         viewModel.rejectRequest(request)
-                        viewModel.incomingRequests.removeAll(where: { $0.id == request.id } )
+                        viewModel.incomingRequests.removeAll { $0.id == request.id }
                     }
                 )
             }
@@ -337,14 +352,14 @@ struct FriendsView: View {
                                         user: user,
                                         viewModel: viewModel,
                                         isSearchPresented: true,
-                                        onSelect:
-                                        {
-                                        if viewModel.isAlreadyFriend(user) {
-                                            selectedSearchFriend = user
-                                        }
-                                        else {
-                                            selectedSearchUser = user
-                                        }
+                                        onSelect: {
+                                            if let request = viewModel.incomingRequests.first(where: { $0.senderId == user.id }) {
+                                                selectedSearchRequestForProfile = request
+                                            } else if viewModel.isAlreadyFriend(user) {
+                                                selectedSearchFriend = user
+                                            } else {
+                                                selectedSearchUser = user
+                                            }
                                         }
                                     )
                                 }
@@ -361,6 +376,11 @@ struct FriendsView: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(item: $selectedSearchFriend) { friend in
                 FriendProfileView(friend: friend, showsCustomBackButton: true)
+                    .navigationBarBackButtonHidden(true)
+                    .toolbar(.hidden, for: .navigationBar)
+            }
+            .navigationDestination(item: $selectedSearchRequestForProfile) { request in
+                RequestProfileView(request: request, showsCustomBackButton: true)
                     .navigationBarBackButtonHidden(true)
                     .toolbar(.hidden, for: .navigationBar)
             }

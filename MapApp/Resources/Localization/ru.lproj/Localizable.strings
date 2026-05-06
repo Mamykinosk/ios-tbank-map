@@ -197,6 +197,8 @@
 "profile.stats.memories" = "Воспоминания";
 "profile.stats.countries" = "Страны";
 "profile.stats.cities" = "Города";
+"friends.accept" = "Принять заявку";
+"friends.reject" = "Отклонить заявку";
 
 /* Settings */
 "Settings" = "Настройки";

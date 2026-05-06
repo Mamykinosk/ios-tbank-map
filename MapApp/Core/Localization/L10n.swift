@@ -175,6 +175,8 @@ internal enum L10n {
     internal static let userNotAuthenticated = L10n.tr("Localizable", "error.userNotAuthenticated", fallback: "User is not authenticated")
   }
   internal enum Friends {
+    /// Accept request
+    internal static let accept = L10n.tr("Localizable", "friends.accept", fallback: "Accept request")
     /// Add friend
     internal static let addFriend = L10n.tr("Localizable", "friends.addFriend", fallback: "Add friend")
     /// All friends
@@ -201,6 +203,8 @@ internal enum L10n {
     internal static let memories = L10n.tr("Localizable", "friends.memories", fallback: "Memories")
     /// No users found
     internal static let noUsersFound = L10n.tr("Localizable", "friends.noUsersFound", fallback: "No users found")
+    /// Reject request
+    internal static let reject = L10n.tr("Localizable", "friends.reject", fallback: "Reject request")
     /// Remove this friend?
     internal static let removeConfirmation = L10n.tr("Localizable", "friends.removeConfirmation", fallback: "Remove this friend?")
     /// Remove friend

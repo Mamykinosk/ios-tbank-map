@@ -2,10 +2,11 @@ import SwiftUI
 
 struct RequestRow: View {
     let request: FriendRequest
-    
+
+    let openProfile: () -> Void
     let acceptRequest: () -> Void
     let rejectRequest: () -> Void
-    
+
     var body: some View {
         HStack(spacing: 14) {
             avatar(senderName: request.sender?.username ?? "U")
@@ -50,22 +51,26 @@ struct RequestRow: View {
         .padding(14)
         .background(Color.white.opacity(0.9))
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
+        .contentShape(Rectangle())
+        .onTapGesture {
+            openProfile()
+        }
     }
 }
 
 private func avatar(senderName: String) -> some View {
     let firstLetter = String(senderName.prefix(1)).uppercased()
-  
+
     return Text(firstLetter.isEmpty ? "U" : firstLetter)
-          .font(.system(size: 18, weight: .bold))
-          .foregroundStyle(Color.appPrimary)
-          .frame(width: 52, height: 52)
-          .background(Color.friendAvatarBackground)
-          .clipShape(Circle())
-          .overlay {
-              Circle()
-                  .stroke(Color.white, lineWidth: 2)
-    }
+        .font(.system(size: 18, weight: .bold))
+        .foregroundStyle(Color.appPrimary)
+        .frame(width: 52, height: 52)
+        .background(Color.friendAvatarBackground)
+        .clipShape(Circle())
+        .overlay {
+            Circle()
+                .stroke(Color.white, lineWidth: 2)
+        }
 }
 
 private extension Color {

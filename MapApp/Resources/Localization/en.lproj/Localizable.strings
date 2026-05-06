@@ -198,5 +198,8 @@
 "profile.stats.countries" = "Countries";
 "profile.stats.cities" = "Cities";
 
+"friends.accept" = "Accept request";
+"friends.reject" = "Reject request";
+
 /* Settings */
 "Settings" = "Settings";

@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 struct SearchResultRow: View {
     let user: FriendUser
     let viewModel: FriendsViewModel
@@ -10,10 +9,7 @@ struct SearchResultRow: View {
     var body: some View {
         HStack(spacing: 14) {
             Button {
-                if viewModel.incomingRequests.contains(where: { $0.senderId == user.id }) { }
-                else {
-                    onSelect()
-                }
+                onSelect()
             } label: {
                 HStack(spacing: 14) {
                     avatar(for: user.username)
@@ -43,12 +39,13 @@ struct SearchResultRow: View {
                     .font(.system(size: 13, weight: .semibold))
                     .foregroundStyle(Color.appPlaceholder)
             } else if viewModel.incomingRequests.contains(where: { $0.senderId == user.id }) {
-                
-                let request = viewModel.incomingRequests.first(where: { $0.senderId == user.id } )!
-                            
+                let request = viewModel.incomingRequests.first(where: { $0.senderId == user.id })!
+
                 Button {
                     viewModel.acceptRequest(request)
-                    viewModel.friends.append(user)
+                    if !viewModel.friends.contains(where: { $0.id == user.id }) {
+                        viewModel.friends.append(user)
+                    }
                 } label: {
                     Image(systemName: "checkmark")
                         .font(.system(size: 14, weight: .bold))
@@ -70,7 +67,6 @@ struct SearchResultRow: View {
                         .clipShape(Circle())
                 }
                 .buttonStyle(.plain)
-    
             } else {
                 Button {
                     viewModel.sendRequest(to: user)
@@ -84,7 +80,6 @@ struct SearchResultRow: View {
                         .clipShape(Capsule())
                 }
                 .buttonStyle(.plain)
-                //.disabled(viewModel.isLoading)
             }
         }
         .padding(14)

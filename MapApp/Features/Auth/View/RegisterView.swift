@@ -202,6 +202,7 @@ private struct RegisterInputField: View {
             .padding(.horizontal, 20)
             .frame(height: 55)
             .background(Color.appFieldBackground)
+            .cornerRadius(28)
         }
     }
 }
@@ -226,6 +227,7 @@ private struct RegisterSecureField: View {
                 Group {
                     if isSecure {
                         SecureField("", text: $text, prompt: Text(placeholder).foregroundStyle(Color.appPlaceholder))
+                            .cornerRadius(28)
                     } else {
                         TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(Color.appPlaceholder))
                             .textInputAutocapitalization(.never)
@@ -247,6 +249,7 @@ private struct RegisterSecureField: View {
             .padding(.horizontal, 20)
             .frame(height: 55)
             .background(Color.appFieldBackground)
+            .cornerRadius(28)
         }
     }
 }

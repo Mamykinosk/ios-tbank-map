@@ -68,6 +68,7 @@ struct LoginView: View {
                                         .padding(.horizontal, 20)
                                         .frame(height: 55)
                                         .background(Color.appFieldBackground)
+                                        .cornerRadius(28)
 
                                     Image(systemName: "at")
                                         .font(.system(size: 17, weight: .semibold))
@@ -102,6 +103,7 @@ struct LoginView: View {
                                         .padding(.horizontal, 20)
                                         .frame(height: 55)
                                         .background(Color.appFieldBackground)
+                                        .cornerRadius(28)
 
                                     Image(systemName: "lock")
                                         .font(.system(size: 16, weight: .medium))
