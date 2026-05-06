@@ -6,8 +6,8 @@ struct FriendsView: View {
     @Binding var selectedTab: AppTab
 
     @State private var isSearchPresented = false
-    @State private var selectedSearchFriend: FriendUser?
-    @State private var selectedSearchUser: FriendUser?
+    @State var selectedSearchFriend: FriendUser?
+    @State var selectedSearchUser: FriendUser?
 
     @Bindable var viewModel: FriendsViewModel
 

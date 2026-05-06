@@ -7,7 +7,7 @@ struct UserProfileView: View {
     @State private var viewModel: FriendProfileViewModel
     @State private var selectedMemoryForDetails: Memory?
     
-    @State private var sendDisabled: Bool 
+    @State private var sendDisabled: Bool
 
     let showsCustomBackButton: Bool
 

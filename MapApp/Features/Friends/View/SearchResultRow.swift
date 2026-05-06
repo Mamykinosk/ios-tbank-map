@@ -10,7 +10,10 @@ struct SearchResultRow: View {
     var body: some View {
         HStack(spacing: 14) {
             Button {
-                onSelect()
+                if viewModel.incomingRequests.contains(where: { $0.senderId == user.id }) { }
+                else {
+                    onSelect()
+                }
             } label: {
                 HStack(spacing: 14) {
                     avatar(for: user.username)
