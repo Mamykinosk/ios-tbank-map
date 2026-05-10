@@ -59,6 +59,9 @@ struct ProfileView: View {
                 await viewModel.loadProfile(user: authSession.currentUser)
             }
         }
+        .onDisappear {
+            viewModel.stopStatsListening()
+        }
         .navigationBarBackButtonHidden(true)
     }
 
