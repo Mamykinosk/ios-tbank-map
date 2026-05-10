@@ -23,7 +23,7 @@ struct RequestProfileView: View {
 
         let sender = request.sender ?? FriendUser(
             id: request.senderId,
-            username: String(localized: "friends.unknownUser"),
+            username: L10n.Friends.unknownUser,
             email: ""
         )
 
@@ -56,7 +56,7 @@ struct RequestProfileView: View {
                 topBar
             }
         }
-        .navigationTitle(showsCustomBackButton ? "" : String(localized: "friends.friendRequest"))
+        .navigationTitle(showsCustomBackButton ? "" : L10n.Friends.friendRequest)
         .navigationBarTitleDisplayMode(.inline)
         .task {
             viewModel.startListening()
@@ -89,7 +89,7 @@ struct RequestProfileView: View {
 
             Spacer()
 
-            Text(String(localized: "friends.friendRequest"))
+            Text(L10n.Friends.friendRequest)
                 .font(.system(size: 20, weight: .semibold))
                 .tracking(-0.5)
                 .foregroundStyle(Color.appPrimary)

@@ -11,6 +11,7 @@ import FirebaseCore
 @main
 struct TravelMemorizeApp: App {
     @State private var router = AppCoordinator()
+    @State private var languageStore = AppLanguageStore()
     @State private var authSession: AuthSessionStore
 
     init() {
@@ -24,6 +25,7 @@ struct TravelMemorizeApp: App {
     var body: some Scene {
         WindowGroup {
             RootView()
+                .environment(languageStore)
                 .environment(authSession)
         }
         .environment(router)

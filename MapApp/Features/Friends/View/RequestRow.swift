@@ -12,11 +12,11 @@ struct RequestRow: View {
             avatar(senderName: request.sender?.username ?? "U")
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(request.sender?.username ?? String(localized: "friends.unknownUser"))
+                Text(request.sender?.username ?? L10n.Friends.unknownUser)
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(Color.appTitle)
 
-                Text(request.sender?.email ?? String(localized: "friends.friendRequest"))
+                Text(request.sender?.email ?? L10n.Friends.friendRequest)
                     .font(.system(size: 13, weight: .medium))
                     .foregroundStyle(Color.appSecondary)
                     .lineLimit(1)

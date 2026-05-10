@@ -20,8 +20,8 @@ struct MainView: View {
                     .foregroundStyle(Color.appTitle)
 
                 VStack(alignment: .leading, spacing: 12) {
-                    infoRow(title: L10n.Main.email, value: authSession.currentUser?.email ?? String(localized: "main.notSpecified"))
-                    infoRow(title: L10n.Main.uid, value: authSession.currentUser?.uid ?? String(localized: "main.notFound"))
+                    infoRow(title: L10n.Main.email, value: authSession.currentUser?.email ?? L10n.Main.notSpecified)
+                    infoRow(title: L10n.Main.uid, value: authSession.currentUser?.uid ?? L10n.Main.notFound)
                 }
                 .padding(20)
                 .frame(maxWidth: .infinity, alignment: .leading)

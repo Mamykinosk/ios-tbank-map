@@ -2,10 +2,11 @@ import SwiftUI
 
 struct ProfileView: View {
     @Environment(AppCoordinator.self) private var router
+    @Environment(AppLanguageStore.self) private var languageStore
     @Environment(AuthSessionStore.self) private var authSession
 
     @State private var viewModel = ProfileViewModel()
-    @State private var isLanguagePickerPresented = false
+    @State private var isLanguageSelectorExpanded = false
 
     var body: some View {
         @Bindable var router = router
@@ -54,23 +55,6 @@ struct ProfileView: View {
         .onAppear {
             Task {
                 await viewModel.loadProfile(user: authSession.currentUser)
-            }
-        }
-        .confirmationDialog(
-            L10n.Profile.Preferences.language,
-            isPresented: $isLanguagePickerPresented,
-            titleVisibility: .visible
-        ) {
-            ForEach(ProfileLanguage.allCases) { language in
-                Button {
-                    viewModel.selectLanguage(language)
-                } label: {
-                    Text(language.title)
-                }
-            }
-
-            Button(role: .cancel) {} label: {
-                Text(L10n.EditProfile.back)
             }
         }
         .navigationBarBackButtonHidden(true)
@@ -152,29 +136,78 @@ struct ProfileView: View {
                 }
 
                 Button {
-                    isLanguagePickerPresented = true
+                    withAnimation(.snappy(duration: 0.22)) {
+                        isLanguageSelectorExpanded.toggle()
+                    }
                 } label: {
                     ProfilePreferenceRow(
                         systemImage: "globe",
                         title: L10n.Profile.Preferences.language
                     ) {
                         HStack(spacing: 8) {
-                            Text(viewModel.selectedLanguage.title)
+                            Text(languageStore.selectedLanguage.title)
                                 .font(.system(size: 12, weight: .semibold))
                                 .foregroundStyle(Color.appPrimary)
 
                             Image(systemName: "chevron.down")
                                 .font(.system(size: 9, weight: .semibold))
                                 .foregroundStyle(Color.profileChevron)
+                                .rotationEffect(.degrees(isLanguageSelectorExpanded ? 180 : 0))
                         }
                     }
                 }
                 .buttonStyle(.plain)
+
+                if isLanguageSelectorExpanded {
+                    languageOptions
+                        .transition(.opacity.combined(with: .move(edge: .top)))
+                }
             }
             .padding(8)
             .background(Color.profileSettingsBackground)
             .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
         }
+    }
+
+    private var languageOptions: some View {
+        VStack(spacing: 4) {
+            ForEach(ProfileLanguage.allCases) { language in
+                Button {
+                    withAnimation(.snappy(duration: 0.22)) {
+                        languageStore.selectLanguage(language)
+                        isLanguageSelectorExpanded = false
+                    }
+                } label: {
+                    HStack(spacing: 12) {
+                        Text(language.title)
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundStyle(Color.appTitle)
+
+                        Spacer()
+
+                        if languageStore.selectedLanguage == language {
+                            Image(systemName: "checkmark.circle.fill")
+                                .font(.system(size: 17, weight: .semibold))
+                                .foregroundStyle(Color.appPrimary)
+                        } else {
+                            Circle()
+                                .stroke(Color.profileChevron.opacity(0.7), lineWidth: 1)
+                                .frame(width: 17, height: 17)
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                    .frame(height: 48)
+                    .background(
+                        languageStore.selectedLanguage == language
+                            ? Color.profileLanguageSelectedBackground
+                            : Color.white
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.top, 2)
     }
 
     private var actionsSection: some View {
@@ -338,6 +371,7 @@ private struct ProfileSwitch: View {
 private extension Color {
     static let profileSettingsBackground = Color(red: 246 / 255, green: 243 / 255, blue: 238 / 255)
     static let profileLogoutBackground = Color(red: 240 / 255, green: 237 / 255, blue: 232 / 255)
+    static let profileLanguageSelectedBackground = Color(red: 226 / 255, green: 246 / 255, blue: 236 / 255)
     static let profileChevron = Color(red: 193 / 255, green: 200 / 255, blue: 195 / 255)
     static let profileAvatarTop = Color(red: 36 / 255, green: 35 / 255, blue: 44 / 255)
     static let profileAvatarBottom = Color(red: 67 / 255, green: 102 / 255, blue: 77 / 255)
@@ -346,5 +380,6 @@ private extension Color {
 #Preview {
     ProfileView()
         .environment(AppCoordinator())
+        .environment(AppLanguageStore())
         .environment(AuthSessionStore())
 }

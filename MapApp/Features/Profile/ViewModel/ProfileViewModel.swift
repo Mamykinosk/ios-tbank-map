@@ -6,8 +6,8 @@ import FirebaseAuth
 @MainActor
 @Observable
 final class ProfileViewModel {
-    var displayName = String(localized: "profile.defaultDisplayName")
-    var username = String(localized: "profile.defaultUsername")
+    var displayName = L10n.Profile.defaultDisplayName
+    var username = L10n.Profile.defaultUsername
     var bio = ""
     var avatarImageName: String?
     var stats: [ProfileStat] = [
@@ -17,7 +17,6 @@ final class ProfileViewModel {
     ]
 
     var isDarkModeEnabled = false
-    var selectedLanguage: ProfileLanguage = .english
     var errorMessage: String?
     var isLoading = false
 
@@ -53,10 +52,6 @@ final class ProfileViewModel {
            !emailPrefix.isEmpty {
             username = "@" + emailPrefix.lowercased()
         }
-    }
-
-    func selectLanguage(_ language: ProfileLanguage) {
-        selectedLanguage = language
     }
 
     func logout() -> Bool {
@@ -104,23 +99,5 @@ struct ProfileStat: Identifiable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(value)
-    }
-}
-
-enum ProfileLanguage: String, CaseIterable, Identifiable {
-    case english = "English"
-    case russian = "Russian"
-
-    var id: String {
-        rawValue
-    }
-
-    var title: String {
-        switch self {
-        case .english:
-            L10n.Profile.Language.english
-        case .russian:
-            L10n.Profile.Language.russian
-        }
     }
 }

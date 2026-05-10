@@ -3,6 +3,7 @@ import SwiftUI
 
 struct RootView: View {
     @Environment(AppCoordinator.self) var router
+    @Environment(AppLanguageStore.self) var languageStore
     @Environment(AuthSessionStore.self) var authSession
 
     var body: some View {
@@ -15,5 +16,6 @@ struct RootView: View {
         }
         .environment(router)
         .environment(authSession)
+        .id(languageStore.refreshID)
     }
 }
