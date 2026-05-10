@@ -8,6 +8,7 @@ struct ProfileView: View {
     @State private var isLanguagePickerPresented = false
 
     var body: some View {
+        @Bindable var router = router
         @Bindable var viewModel = viewModel
 
         ZStack {
@@ -34,7 +35,7 @@ struct ProfileView: View {
                                 .padding(.top, 16)
                         }
 
-                        Spacer(minLength: 112)
+                        Spacer(minLength: 160)
                     }
                     .frame(maxWidth: 448)
                     .padding(.horizontal, 24)
@@ -42,6 +43,13 @@ struct ProfileView: View {
                     .frame(maxWidth: .infinity)
                 }
             }
+
+            VStack {
+                Spacer()
+
+                AppBottomTabBar(selectedTab: $router.selectedMainTab)
+            }
+            .ignoresSafeArea(edges: .bottom)
         }
         .onAppear {
             Task {
