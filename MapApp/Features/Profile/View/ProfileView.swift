@@ -3,6 +3,7 @@ import SwiftUI
 struct ProfileView: View {
     @Environment(AppCoordinator.self) private var router
     @Environment(AppLanguageStore.self) private var languageStore
+    @Environment(AppThemeStore.self) private var themeStore
     @Environment(AuthSessionStore.self) private var authSession
 
     @State private var viewModel = ProfileViewModel()
@@ -10,6 +11,7 @@ struct ProfileView: View {
 
     var body: some View {
         @Bindable var router = router
+        @Bindable var themeStore = themeStore
         @Bindable var viewModel = viewModel
 
         ZStack {
@@ -21,7 +23,7 @@ struct ProfileView: View {
                     VStack(spacing: 0) {
                         profileHeader
 
-                        preferencesSection(isDarkModeEnabled: $viewModel.isDarkModeEnabled)
+                        preferencesSection(isDarkModeEnabled: $themeStore.isDarkModeEnabled)
                             .padding(.top, 48)
 
                         actionsSection
@@ -111,7 +113,7 @@ struct ProfileView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 79)
-                .background(Color.white)
+                .background(Color.appSurface)
                 .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
                 .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
             }
@@ -200,7 +202,7 @@ struct ProfileView: View {
                     .background(
                         languageStore.selectedLanguage == language
                             ? Color.profileLanguageSelectedBackground
-                            : Color.white
+                            : Color.appSurface
                     )
                     .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
                 }
@@ -222,7 +224,7 @@ struct ProfileView: View {
                     Text(L10n.Profile.EditProfile.action)
                         .font(.system(size: 14, weight: .semibold))
                 }
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.appOnPrimary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
                 .background(Color.appPrimary)
@@ -286,7 +288,7 @@ private struct ProfileAvatarView: View {
             .frame(width: 104, height: 104)
             .clipShape(Circle())
             .padding(4)
-            .background(Color.white)
+            .background(Color.appSurface)
             .clipShape(Circle())
             .shadow(color: .black.opacity(0.10), radius: 25, x: 0, y: 20)
 
@@ -295,11 +297,11 @@ private struct ProfileAvatarView: View {
                     .fill(Color.appPrimary)
 
                 Circle()
-                    .stroke(Color.white.opacity(0.16), lineWidth: 1)
+                    .stroke(Color.appOnPrimary.opacity(0.16), lineWidth: 1)
 
                 Image(systemName: "gearshape.fill")
                     .font(.system(size: 11, weight: .bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.appOnPrimary)
             }
             .frame(width: 25, height: 25)
             .shadow(color: .black.opacity(0.10), radius: 15, x: 0, y: 10)
@@ -341,7 +343,7 @@ private struct ProfilePreferenceRow<Trailing: View>: View {
         }
         .padding(.horizontal, 16)
         .frame(height: 52)
-        .background(Color.white)
+        .background(Color.appSurface)
         .contentShape(Rectangle())
     }
 }
@@ -358,7 +360,7 @@ private struct ProfileSwitch: View {
                 .frame(width: 40, height: 20)
                 .overlay(alignment: isOn ? .trailing : .leading) {
                     Circle()
-                        .fill(Color.white)
+                        .fill(Color.appOnPrimary)
                         .frame(width: 16, height: 16)
                         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
                         .padding(.horizontal, 2)
@@ -369,17 +371,18 @@ private struct ProfileSwitch: View {
 }
 
 private extension Color {
-    static let profileSettingsBackground = Color(red: 246 / 255, green: 243 / 255, blue: 238 / 255)
-    static let profileLogoutBackground = Color(red: 240 / 255, green: 237 / 255, blue: 232 / 255)
-    static let profileLanguageSelectedBackground = Color(red: 226 / 255, green: 246 / 255, blue: 236 / 255)
-    static let profileChevron = Color(red: 193 / 255, green: 200 / 255, blue: 195 / 255)
-    static let profileAvatarTop = Color(red: 36 / 255, green: 35 / 255, blue: 44 / 255)
-    static let profileAvatarBottom = Color(red: 67 / 255, green: 102 / 255, blue: 77 / 255)
+    static let profileSettingsBackground = Color.appFieldBackground
+    static let profileLogoutBackground = Color.appMuted
+    static let profileLanguageSelectedBackground = Color.appSuccessBackground
+    static let profileChevron = Color.appPlaceholder
+    static let profileAvatarTop = Color.appMuted
+    static let profileAvatarBottom = Color.appAccent
 }
 
 #Preview {
     ProfileView()
         .environment(AppCoordinator())
         .environment(AppLanguageStore())
+        .environment(AppThemeStore())
         .environment(AuthSessionStore())
 }

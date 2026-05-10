@@ -149,7 +149,7 @@ struct StartView: View {
                 Image(systemName: "arrow.right")
                     .font(.system(size: 16, weight: .bold))
             }
-            .foregroundStyle(.white)
+            .foregroundStyle(Color.appOnPrimary)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(
                 LinearGradient(

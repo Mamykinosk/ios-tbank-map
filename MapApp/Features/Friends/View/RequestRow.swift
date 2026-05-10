@@ -29,7 +29,7 @@ struct RequestRow: View {
             } label: {
                 Image(systemName: "checkmark")
                     .font(.system(size: 14, weight: .bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.appOnPrimary)
                     .frame(width: 34, height: 34)
                     .background(Color.appPrimary)
                     .clipShape(Circle())
@@ -49,7 +49,7 @@ struct RequestRow: View {
             .buttonStyle(.plain)
         }
         .padding(14)
-        .background(Color.white.opacity(0.9))
+        .background(Color.appSurface.opacity(0.9))
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         .contentShape(Rectangle())
         .onTapGesture {

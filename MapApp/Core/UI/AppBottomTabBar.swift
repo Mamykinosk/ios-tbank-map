@@ -10,7 +10,7 @@ struct AppBottomTabBar: View {
                 topTrailingRadius: 32,
                 style: .continuous
             )
-            .fill(Color.white.opacity(0.95))
+            .fill(Color.appSurface.opacity(0.95))
             .shadow(color: Color.appTitle.opacity(0.08), radius: 40, x: 0, y: -8)
             .ignoresSafeArea(edges: .bottom)
 

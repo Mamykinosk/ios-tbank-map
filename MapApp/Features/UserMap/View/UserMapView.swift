@@ -76,7 +76,7 @@ struct UserMapView: View {
                     .font(.system(size: 17, weight: .bold))
                     .foregroundStyle(Color.appPrimary)
                     .frame(width: 44, height: 44)
-                    .background(Color.white.opacity(0.92))
+                    .background(Color.appSurface.opacity(0.92))
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
@@ -92,7 +92,7 @@ struct UserMapView: View {
             }
             .padding(.horizontal, 18)
             .frame(height: 44)
-            .background(Color.white.opacity(0.92))
+            .background(Color.appSurface.opacity(0.92))
             .clipShape(Capsule())
 
             Spacer()
@@ -108,7 +108,7 @@ struct UserMapView: View {
             .multilineTextAlignment(.center)
             .frame(maxWidth: .infinity)
             .padding(22)
-            .background(Color.white.opacity(0.92))
+            .background(Color.appSurface.opacity(0.92))
             .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 }

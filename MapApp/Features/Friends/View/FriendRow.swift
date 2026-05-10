@@ -33,7 +33,7 @@ struct FriendRow: View {
                     .clipShape(Circle())
             }
             .padding(14)
-            .background(Color.white.opacity(0.9))
+            .background(Color.appSurface.opacity(0.9))
             .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         }
         .buttonStyle(.plain)

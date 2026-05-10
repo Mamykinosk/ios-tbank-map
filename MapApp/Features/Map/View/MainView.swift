@@ -25,7 +25,7 @@ struct MainView: View {
                 }
                 .padding(20)
                 .frame(maxWidth: .infinity, alignment: .leading)
-                .background(Color.white)
+                .background(Color.appSurface)
                 .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
 
                 if let errorMessage {
@@ -40,13 +40,13 @@ struct MainView: View {
                     Group {
                         if isSigningOut {
                             ProgressView()
-                                .tint(.white)
+                                .tint(Color.appOnPrimary)
                         } else {
                             Text(L10n.Main.signOut)
                                 .font(.system(size: 16, weight: .semibold))
                         }
                     }
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.appOnPrimary)
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
                     .background(Color.appPrimary)

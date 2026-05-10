@@ -16,7 +16,6 @@ final class ProfileViewModel {
         ProfileStat(value: "0", title: L10n.Profile.Stats.memories)
     ]
 
-    var isDarkModeEnabled = false
     var errorMessage: String?
     var isLoading = false
 

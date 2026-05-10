@@ -115,7 +115,7 @@ struct FriendsView: View {
             }
             .padding(.horizontal, 24)
             .frame(height: 64)
-            .background(Color.white.opacity(0.75))
+            .background(Color.appSurface.opacity(0.75))
 
             Spacer()
         }
@@ -293,7 +293,7 @@ struct FriendsView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(32)
-        .background(Color.white.opacity(0.75))
+        .background(Color.appSurface.opacity(0.75))
         .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
     }
 
@@ -335,7 +335,7 @@ struct FriendsView: View {
                     }
                     .padding(.horizontal, 16)
                     .frame(height: 54)
-                    .background(Color.white)
+                    .background(Color.appSurface)
                     .clipShape(Capsule())
 
                     if viewModel.searchUserResults.isEmpty && !viewModel.searchUserText.isEmpty && !viewModel.isSearching {

@@ -117,7 +117,7 @@ struct MemoriesFeedView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(32)
-        .background(Color.white.opacity(0.75))
+        .background(Color.appSurface.opacity(0.75))
         .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
     }
 }

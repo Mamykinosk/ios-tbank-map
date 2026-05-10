@@ -126,13 +126,13 @@ struct LoginView: View {
                                 Group {
                                     if authViewModel.isLoading {
                                         ProgressView()
-                                            .tint(.white)
+                                            .tint(Color.appOnPrimary)
                                     } else {
                                         Text(L10n.Auth.Login.Login.action)
                                             .font(.system(size: 16, weight: .semibold))
                                     }
                                 }
-                                .foregroundStyle(.white)
+                                .foregroundStyle(Color.appOnPrimary)
                                 .frame(maxWidth: .infinity)
                                 .frame(height: 56)
                                 .background(
@@ -160,7 +160,7 @@ struct LoginView: View {
                                 .kerning(1)
                                 .foregroundStyle(Color.appPlaceholder)
                                 .padding(.horizontal, 16)
-                                .background(Color.white)
+                                .background(Color.appSurface)
                         }
                         .frame(height: 15)
 
@@ -172,7 +172,7 @@ struct LoginView: View {
                     }
                     .padding(32)
                     .frame(maxWidth: .infinity, alignment: .leading)
-                    .background(Color.white)
+                    .background(Color.appSurface)
                     .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
                     .shadow(color: Color.black.opacity(0.04), radius: 20, x: 0, y: 8)
 
@@ -192,7 +192,7 @@ struct LoginView: View {
                     .padding(.top, 20)
 
                     RoundedRectangle(cornerRadius: 32, style: .continuous)
-                        .fill(Color.white.opacity(0.6))
+                        .fill(Color.appSurface.opacity(0.6))
                         .frame(height: 128)
                         .padding(.top, 64)
                 }

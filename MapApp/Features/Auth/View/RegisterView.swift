@@ -19,7 +19,7 @@ struct RegisterView: View {
                         .padding(.top, 48)
 
                     RoundedRectangle(cornerRadius: 32, style: .continuous)
-                        .fill(Color.white.opacity(0.6))
+                        .fill(Color.appSurface.opacity(0.6))
                         .frame(maxWidth: .infinity)
                         .frame(height: 128)
                         .padding(.top, 64)
@@ -126,14 +126,14 @@ struct RegisterView: View {
                 Group {
                     if authViewModel.isLoading {
                         ProgressView()
-                            .tint(.white)
+                            .tint(Color.appOnPrimary)
                     } else {
                         Text(L10n.Auth.Register.action)
                             .font(.system(size: 16, weight: .semibold))
                             .tracking(0.4)
                     }
                 }
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.appOnPrimary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
                 .background(
@@ -152,7 +152,7 @@ struct RegisterView: View {
         .padding(.horizontal, 32)
         .padding(.top, 32)
         .padding(.bottom, 48)
-        .background(Color.white)
+        .background(Color.appSurface)
         .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
         .shadow(color: Color.black.opacity(0.04), radius: 20, x: 0, y: 8)
     }

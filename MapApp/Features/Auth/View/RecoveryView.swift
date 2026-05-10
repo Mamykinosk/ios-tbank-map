@@ -126,7 +126,7 @@ struct RecoveryView: View {
                     HStack(spacing: 8) {
                         if authViewModel.isLoading {
                             ProgressView()
-                                .tint(.white)
+                                .tint(Color.appOnPrimary)
                         } else {
                             Text(L10n.Auth.Recovery.SendResetLink.action)
                                 .font(.system(size: 16, weight: .semibold))
@@ -134,7 +134,7 @@ struct RecoveryView: View {
                                 .font(.system(size: 14, weight: .semibold))
                         }
                     }
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.appOnPrimary)
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
                     .background(

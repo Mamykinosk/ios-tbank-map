@@ -159,7 +159,7 @@ struct UserMemoryDetailsView: View {
         .padding(.top, 32)
         .padding(.bottom, 34)
         .frame(maxWidth: .infinity, alignment: .leading)
-        .background(Color.white)
+        .background(Color.appSurface)
         .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
         .shadow(color: Color.appTitle.opacity(0.06), radius: 32, x: 0, y: -8)
     }

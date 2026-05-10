@@ -49,7 +49,7 @@ struct SearchResultRow: View {
                 } label: {
                     Image(systemName: "checkmark")
                         .font(.system(size: 14, weight: .bold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.appOnPrimary)
                         .frame(width: 34, height: 34)
                         .background(Color.appPrimary)
                         .clipShape(Circle())
@@ -73,7 +73,7 @@ struct SearchResultRow: View {
                 } label: {
                     Text(L10n.Common.add)
                         .font(.system(size: 13, weight: .bold))
-                        .foregroundStyle(.white)
+                        .foregroundStyle(Color.appOnPrimary)
                         .padding(.horizontal, 16)
                         .frame(height: 34)
                         .background(Color.appPrimary)
@@ -83,7 +83,7 @@ struct SearchResultRow: View {
             }
         }
         .padding(14)
-        .background(Color.white.opacity(0.9))
+        .background(Color.appSurface.opacity(0.9))
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 

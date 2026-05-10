@@ -162,7 +162,7 @@ struct UserProfileView: View {
         }
         .frame(maxWidth: .infinity)
         .frame(height: 84)
-        .background(Color.white.opacity(0.9))
+        .background(Color.appSurface.opacity(0.9))
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         .shadow(color: Color.appTitle.opacity(0.04), radius: 18, x: 0, y: 8)
     }
@@ -177,7 +177,7 @@ struct UserProfileView: View {
                     HStack(spacing: 8) {
                         if viewModel.isLoading {
                             ProgressView()
-                                .tint(.white)
+                                .tint(Color.appOnPrimary)
                         } else {
                             Image(systemName: "person.badge.plus")
                                 .font(.system(size: 15, weight: .semibold))
@@ -186,7 +186,7 @@ struct UserProfileView: View {
                                 .font(.system(size: 16, weight: .semibold))
                         }
                     }
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.appOnPrimary)
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
                     .background(Color.appPrimary)
