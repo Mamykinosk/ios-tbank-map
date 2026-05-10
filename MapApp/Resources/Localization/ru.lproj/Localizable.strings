@@ -12,14 +12,14 @@
 
 /* Start */
 "start.getStarted.action" = "Начать";
-"start.curateYourJorney" = "Собери своё путешествие";
-"start.startSubtitle" = "Сохраняй любимые места, истории и моменты на личной карте путешествий.";
+"start.curateYourJorney" = "Сохраняйте свои путешествия";
+"start.startSubtitle" = "Каждая миля - воспоминание, каждое место - история.";
 
 /* Auth - Register */
 "auth.register.title" = "Создать аккаунт";
-"auth.register.subtitle" = "Присоединяйся и начни собирать свои воспоминания.";
+"auth.register.subtitle" = "Начните сохранять свои путешествия уже сегодня";
 "auth.register.username.title" = "Имя пользователя";
-"auth.register.confirmPassword.title" = "Подтвердите пароль";
+"auth.register.confirmPassword.title" = "Повторите пароль";
 "auth.register.username.placeholder" = "Введите имя пользователя";
 "auth.register.alreadyHaveAccount" = "Уже есть аккаунт?";
 "auth.register.loginNow" = "Войти";
@@ -27,7 +27,7 @@
 
 /* Auth - Login */
 "auth.login.title" = "С возвращением";
-"auth.login.subtitle" = "Войдите, чтобы продолжить путешествие.";
+"auth.login.subtitle" = "Продолжите путешествие по своим воспоминаниям";
 "auth.login.login.action" = "Войти";
 "auth.login.forgotPassword" = "Забыли пароль?";
 "auth.login.orConnectWith" = "Или войдите через";
@@ -35,8 +35,8 @@
 "auth.login.registerNow" = "Зарегистрироваться";
 
 /* Auth - Recovery */
-"auth.recovery.title" = "Сброс пароля";
-"auth.recovery.subtitle" = "Введите email, и мы отправим ссылку для сброса пароля.";
+"auth.recovery.title" = "Восстановление пароля";
+"auth.recovery.subtitle" = "Введите email, и мы отправим ссылку для восстановления пароля.";
 "auth.recovery.sendResetLink.action" = "Отправить ссылку";
 "auth.recovery.backToSingIn" = "Вернуться ко входу";
 
@@ -145,11 +145,60 @@
 "friends.emptyFriendsHint" = "Найдите людей и добавьте их, чтобы видеть их воспоминания о путешествиях.";
 "friends.friend" = "Друг";
 "friends.sent" = "Отправлено";
+"friends.alreadyAdded" = "Заявка уже отправлена";
 
-/* Added from existing Xcode localization */
-"" = "";
-"••••••••" = "••••••••";
-"hello@travelmemorize.com" = "hello@travelmemorize.com";
-"Sign Out" = "Выйти";
-"Travel Memorize" = "Travel Memorize";
-"Вы вошли в приложение" = "Вы вошли в приложение";
+/* User */
+"userTitle" = "Профиль пользователя";
+
+/* Character count */
+"%lld / %lld" = "%1$lld / %2$lld";
+
+/* Edit Profile */
+"editProfile.title" = "Редактировать профиль";
+"editProfile.back" = "Назад";
+"editProfile.settings" = "Настройки";
+"editProfile.personalIdentity" = "Личные данные";
+"editProfile.changeProfilePicture" = "Изменить фото профиля";
+"editProfile.saveChanges.action" = "Сохранить изменения";
+
+"editProfile.username.title" = "Имя пользователя";
+"editProfile.username.helper" = "Только латинские буквы, цифры и подчёркивания.";
+"editProfile.email.title" = "Электронная почта";
+"editProfile.bio.title" = "О себе";
+"editProfile.bio.placeholder" = "Расскажите о своём путешествии...";
+"editProfile.location.title" = "Местоположение";
+"editProfile.location.placeholder" = "Лиссабон, Португалия";
+
+"editProfile.accountPrivacy.title" = "Конфиденциальность";
+"editProfile.accountPrivacy.subtitle" = "Управляйте видимостью данных и сохранностью аккаунта.";
+"editProfile.deactivateAccount.action" = "Деактивировать аккаунт";
+
+"editProfile.message.profileUpdated" = "Профиль обновлён.";
+
+"editProfile.error.emailInUse" = "Эта почта уже используется.";
+"editProfile.error.network" = "Ошибка сети. Проверьте подключение и попробуйте снова.";
+"editProfile.error.requiresRecentLogin" = "В целях безопасности войдите снова перед сменой почты.";
+"editProfile.error.updateFailed" = "Не удалось обновить профиль. Попробуйте снова.";
+
+/* Profile */
+"profile.defaultDisplayName" = "Путешественник";
+"profile.defaultUsername" = "@traveler";
+"profile.editProfile.action" = "Редактировать профиль";
+"profile.logout.action" = "Выйти";
+"profile.logout.error" = "Не удалось выйти. Попробуйте снова.";
+
+"profile.preferences.title" = "Настройки";
+"profile.preferences.language" = "Язык";
+"profile.preferences.darkMode" = "Тёмная тема";
+
+"profile.language.english" = "Английский";
+"profile.language.russian" = "Русский";
+
+"profile.stats.memories" = "Воспоминания";
+"profile.stats.countries" = "Страны";
+"profile.stats.cities" = "Города";
+"friends.accept" = "Принять заявку";
+"friends.reject" = "Отклонить заявку";
+
+/* Settings */
+"Settings" = "Настройки";

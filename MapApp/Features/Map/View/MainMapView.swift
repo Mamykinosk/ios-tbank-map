@@ -111,7 +111,7 @@ struct MainMapView: View {
                     .font(.system(size: 18, weight: .medium))
                     .foregroundStyle(Color.appPlaceholder)
 
-                Text(L10n.Memories.searchPlaceholder)
+                Text(L10n.Memories.Search.placeholder)
                     .font(.system(size: 15, weight: .regular))
                     .foregroundStyle(Color.appPlaceholder)
 
@@ -187,7 +187,7 @@ struct MainMapView: View {
                 }
                 .padding(24)
             }
-            .navigationTitle(L10n.Memories.searchMemoriesTitle)
+            .navigationTitle(L10n.Memories.SearchMemories.title)
             .navigationBarTitleDisplayMode(.inline)
             .navigationDestination(item: $selectedSearchMemory) { memory in
                 MemoryDetailsView(viewModel: viewModel, memory: memory)
@@ -219,7 +219,7 @@ struct MainMapView: View {
             TextField(
                 "",
                 text: $viewModel.searchText,
-                prompt: Text(L10n.Memories.searchPlaceholder)
+                prompt: Text(L10n.Memories.Search.placeholder)
                     .foregroundColor(Color.appPlaceholder)
             )
             .font(.system(size: 16, weight: .medium))

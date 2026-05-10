@@ -66,7 +66,7 @@ final class ProfileViewModel {
             try AuthService.shared.signOut()
             return true
         } catch {
-            errorMessage = String(localized: L10n.Profile.logoutError)
+            errorMessage = L10n.Profile.Logout.error
             return false
         }
     }
@@ -95,7 +95,7 @@ final class ProfileViewModel {
 struct ProfileStat: Identifiable, Hashable {
     let id = UUID()
     let value: String
-    let title: LocalizedStringKey
+    let title: String
 
     static func == (lhs: ProfileStat, rhs: ProfileStat) -> Bool {
         lhs.id == rhs.id && lhs.value == rhs.value
@@ -115,7 +115,7 @@ enum ProfileLanguage: String, CaseIterable, Identifiable {
         rawValue
     }
 
-    var title: LocalizedStringKey {
+    var title: String {
         switch self {
         case .english:
             L10n.Profile.Language.english

@@ -5,6 +5,7 @@ struct MainTabView: View {
 
     @State private var selectedTab: AppTab = .map
     @State private var memoriesViewModel = MemoriesViewModel()
+    @State private var friendsViewModel = FriendsViewModel()
 
     var body: some View {
         @Bindable var memoriesViewModel = memoriesViewModel
@@ -16,7 +17,7 @@ struct MainTabView: View {
             case .feed:
                 MemoriesFeedView(selectedTab: $selectedTab, viewModel: memoriesViewModel)
             case .friends:
-                FriendsView(selectedTab: $selectedTab)
+                FriendsView(selectedTab: $selectedTab, viewModel: friendsViewModel)
             case .profile:
                 MainView(selectedTab: $selectedTab)
             }

@@ -1,0 +1,9 @@
+strings:
+  inputs:
+    - MapApp/Resources/Localization/en.lproj/Localizable.strings
+  outputs:
+    - templateName: structured-swift5
+      output: MapApp/Core/Localization/L10n.swift
+      params:
+        enumName: L10n
+

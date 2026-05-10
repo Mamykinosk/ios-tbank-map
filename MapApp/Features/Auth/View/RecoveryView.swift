@@ -65,12 +65,12 @@ struct RecoveryView: View {
 
     private var headerSection: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text(L10n.Auth.Recovery.resetPasswordTitle)
+            Text(L10n.Auth.Recovery.title)
                 .font(.system(size: 36, weight: .bold))
                 .tracking(-0.9)
                 .foregroundStyle(Color.appTitle)
 
-            Text(L10n.Auth.Recovery.resetPasswordSubtitle)
+            Text(L10n.Auth.Recovery.subtitle)
                 .font(.system(size: 16, weight: .regular))
                 .foregroundStyle(Color.appSecondary.opacity(0.8))
                 .lineSpacing(4)
@@ -81,7 +81,7 @@ struct RecoveryView: View {
     private var formSection: some View {
         VStack(alignment: .leading, spacing: 32) {
             VStack(alignment: .leading, spacing: 8) {
-                Text(L10n.Auth.Common.emailTitle)
+                Text(L10n.Auth.Common.Email.title)
                     .font(.system(size: 12, weight: .bold))
                     .tracking(1.2)
                     .foregroundStyle(Color.appPrimary)
@@ -102,6 +102,7 @@ struct RecoveryView: View {
                     .padding(.horizontal, 24)
                     .frame(height: 56)
                     .background(Color.appFieldBackground)
+                    .cornerRadius(28)
                     .overlay {
                         Capsule()
                             .stroke(Color.appPrimary.opacity(0.05), lineWidth: 1)
@@ -127,7 +128,7 @@ struct RecoveryView: View {
                             ProgressView()
                                 .tint(.white)
                         } else {
-                            Text(L10n.Auth.Recovery.sendResetLinkAction)
+                            Text(L10n.Auth.Recovery.SendResetLink.action)
                                 .font(.system(size: 16, weight: .semibold))
                             Image(systemName: "paperplane")
                                 .font(.system(size: 14, weight: .semibold))

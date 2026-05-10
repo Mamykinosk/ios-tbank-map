@@ -67,14 +67,14 @@ struct RegisterView: View {
             }
             .padding(.bottom, 24)
 
-            Text(L10n.Auth.Register.registerTitle)
+            Text(L10n.Auth.Register.title)
                 .font(.system(size: 36, weight: .bold))
                 .tracking(-0.9)
                 .foregroundStyle(Color.appTitle)
                 .multilineTextAlignment(.center)
                 .padding(.bottom, 8)
 
-            Text(L10n.Auth.Register.registerSubtitle)
+            Text(L10n.Auth.Register.subtitle)
                 .font(.system(size: 16, weight: .medium))
                 .foregroundStyle(Color.appSecondary.opacity(0.8))
                 .multilineTextAlignment(.center)
@@ -85,28 +85,28 @@ struct RegisterView: View {
     private var formCard: some View {
         VStack(spacing: 20) {
             RegisterInputField(
-                title: L10n.Auth.Register.usernameTitle,
+                title: L10n.Auth.Register.Username.title,
                 text: $authViewModel.username,
-                placeholder: L10n.Auth.Register.usernamePlaceholder,
+                placeholder: L10n.Auth.Register.Username.placeholder,
                 systemImage: "person"
             )
 
             RegisterInputField(
-                title: L10n.Auth.Common.emailTitle,
+                title: L10n.Auth.Common.Email.title,
                 text: $authViewModel.email,
-                placeholder: LocalizedStringKey("hello@travelmemorize.com"),
+                placeholder: "hello@travelmemorize.com",
                 systemImage: "at"
             )
 
             RegisterSecureField(
-                title: L10n.Auth.Common.passwordTitle,
+                title: L10n.Auth.Common.Password.title,
                 text: $authViewModel.password,
                 placeholder: "••••••••",
                 systemImage: "lock"
             )
 
             RegisterSecureField(
-                title: L10n.Auth.Register.confirmPasswordTitle,
+                title: L10n.Auth.Register.ConfirmPassword.title,
                 text: $authViewModel.confirmPassword,
                 placeholder: "••••••••",
                 systemImage: "checkmark.shield"
@@ -128,7 +128,7 @@ struct RegisterView: View {
                         ProgressView()
                             .tint(.white)
                     } else {
-                        Text(L10n.Auth.Register.registerAction)
+                        Text(L10n.Auth.Register.action)
                             .font(.system(size: 16, weight: .semibold))
                             .tracking(0.4)
                     }
@@ -175,9 +175,9 @@ struct RegisterView: View {
 }
 
 private struct RegisterInputField: View {
-    let title: LocalizedStringKey
+    let title: String
     @Binding var text: String
-    let placeholder: LocalizedStringKey
+    let placeholder: String
     let systemImage: String
 
     var body: some View {
@@ -202,14 +202,15 @@ private struct RegisterInputField: View {
             .padding(.horizontal, 20)
             .frame(height: 55)
             .background(Color.appFieldBackground)
+            .cornerRadius(28)
         }
     }
 }
 
 private struct RegisterSecureField: View {
-    let title: LocalizedStringKey
+    let title: String
     @Binding var text: String
-    let placeholder: LocalizedStringKey
+    let placeholder: String
     let systemImage: String
 
     @State private var isSecure = true
@@ -226,6 +227,7 @@ private struct RegisterSecureField: View {
                 Group {
                     if isSecure {
                         SecureField("", text: $text, prompt: Text(placeholder).foregroundStyle(Color.appPlaceholder))
+                            .cornerRadius(28)
                     } else {
                         TextField("", text: $text, prompt: Text(placeholder).foregroundStyle(Color.appPlaceholder))
                             .textInputAutocapitalization(.never)
@@ -247,6 +249,7 @@ private struct RegisterSecureField: View {
             .padding(.horizontal, 20)
             .frame(height: 55)
             .background(Color.appFieldBackground)
+            .cornerRadius(28)
         }
     }
 }

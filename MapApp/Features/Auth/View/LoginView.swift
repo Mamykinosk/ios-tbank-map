@@ -35,14 +35,14 @@ struct LoginView: View {
                         }
                         .padding(.bottom, 24)
 
-                        Text(L10n.Auth.Login.loginTitle)
+                        Text(L10n.Auth.Login.title)
                             .font(.system(size: 36, weight: .bold))
                             .kerning(-0.9)
                             .foregroundStyle(Color.appTitle)
                             .multilineTextAlignment(.center)
                             .padding(.bottom, 8)
 
-                        Text(L10n.Auth.Login.loginSubtitle)
+                        Text(L10n.Auth.Login.subtitle)
                             .font(.system(size: 16, weight: .medium))
                             .foregroundStyle(Color.appSecondary.opacity(0.8))
                             .multilineTextAlignment(.center)
@@ -53,7 +53,7 @@ struct LoginView: View {
                     VStack(alignment: .leading, spacing: 32) {
                         VStack(alignment: .leading, spacing: 24) {
                             VStack(alignment: .leading, spacing: 8) {
-                                Text(L10n.Auth.Common.emailTitle)
+                                Text(L10n.Auth.Common.Email.title)
                                     .font(.system(size: 11, weight: .bold))
                                     .kerning(1.1)
                                     .foregroundStyle(Color.appPrimary)
@@ -68,6 +68,7 @@ struct LoginView: View {
                                         .padding(.horizontal, 20)
                                         .frame(height: 55)
                                         .background(Color.appFieldBackground)
+                                        .cornerRadius(28)
 
                                     Image(systemName: "at")
                                         .font(.system(size: 17, weight: .semibold))
@@ -78,7 +79,7 @@ struct LoginView: View {
 
                             VStack(alignment: .leading, spacing: 8) {
                                 HStack {
-                                    Text(L10n.Auth.Common.passwordTitle)
+                                    Text(L10n.Auth.Common.Password.title)
                                         .font(.system(size: 11, weight: .bold))
                                         .kerning(1.1)
                                         .foregroundStyle(Color.appPrimary)
@@ -102,6 +103,7 @@ struct LoginView: View {
                                         .padding(.horizontal, 20)
                                         .frame(height: 55)
                                         .background(Color.appFieldBackground)
+                                        .cornerRadius(28)
 
                                     Image(systemName: "lock")
                                         .font(.system(size: 16, weight: .medium))
@@ -126,7 +128,7 @@ struct LoginView: View {
                                         ProgressView()
                                             .tint(.white)
                                     } else {
-                                        Text(L10n.Auth.Login.loginAction)
+                                        Text(L10n.Auth.Login.Login.action)
                                             .font(.system(size: 16, weight: .semibold))
                                     }
                                 }

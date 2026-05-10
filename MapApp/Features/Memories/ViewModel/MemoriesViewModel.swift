@@ -146,7 +146,7 @@ final class MemoriesViewModel {
             try await MemoryService.shared.createMemory(from: draft)
 
             isLoading = false
-            successMessage = L10n.Message.memorySaved
+            successMessage = L10n.Memories.Message.saved
             isAddMemoryPresented = false
             pendingCoordinate = nil
             draft.reset()
@@ -172,7 +172,7 @@ final class MemoriesViewModel {
             )
 
             isLoading = false
-            successMessage = L10n.Message.memoryUpdated
+            successMessage = L10n.Memories.Message.updated
 
             if let index = memories.firstIndex(where: { $0.id == updatedMemory.id }) {
                 memories[index] = updatedMemory
@@ -202,7 +202,7 @@ final class MemoriesViewModel {
 
                 await MainActor.run {
                     self.isLoading = false
-                    self.successMessage = L10n.Message.memoryDeleted
+                    self.successMessage = L10n.Memories.Message.deleted
                     self.memories.removeAll { $0.id == memory.id }
 
                     if self.selectedMemoryForDetails?.id == memory.id {

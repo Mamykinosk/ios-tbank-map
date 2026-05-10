@@ -116,15 +116,15 @@ struct EditProfileView: View {
 
         return VStack(spacing: 32) {
             EditProfileTextField(
-                title: L10n.EditProfile.usernameTitle,
+                title: L10n.EditProfile.Username.title,
                 text: $viewModel.username,
-                helper: L10n.EditProfile.usernameHelper
+                helper: L10n.EditProfile.Username.helper
             )
             .textInputAutocapitalization(.never)
             .autocorrectionDisabled()
 
             EditProfileTextField(
-                title: L10n.EditProfile.emailTitle,
+                title: L10n.EditProfile.Email.title,
                 text: $viewModel.email,
                 keyboardType: .emailAddress
             )
@@ -132,15 +132,15 @@ struct EditProfileView: View {
             .autocorrectionDisabled()
 
             EditProfileTextField(
-                title: L10n.EditProfile.locationTitle,
+                title: L10n.EditProfile.Location.title,
                 text: $viewModel.location,
                 icon: "mappin",
-                placeholder: L10n.EditProfile.locationPlaceholder,
+                placeholder: L10n.EditProfile.Location.placeholder,
                 placeholderColor: Color.appPlaceholder
             )
 
             EditProfileBioField(
-                title: L10n.EditProfile.bioTitle,
+                title: L10n.EditProfile.Bio.title,
                 text: $viewModel.bio,
                 limit: viewModel.bioLimit
             )
@@ -165,7 +165,7 @@ struct EditProfileView: View {
                             .font(.system(size: 20, weight: .semibold))
                     }
 
-                    Text(L10n.EditProfile.saveChangesAction)
+                    Text(L10n.EditProfile.SaveChanges.action)
                         .font(.system(size: 16, weight: .semibold))
                 }
                 .foregroundStyle(.white)
@@ -206,12 +206,12 @@ struct EditProfileView: View {
 
     private var privacySection: some View {
         VStack(spacing: 0) {
-            Text(L10n.EditProfile.accountPrivacyTitle)
+            Text(L10n.EditProfile.AccountPrivacy.title)
                 .font(.system(size: 14, weight: .bold))
                 .foregroundStyle(Color.appTitle)
                 .padding(.bottom, 8)
 
-            Text(L10n.EditProfile.accountPrivacySubtitle)
+            Text(L10n.EditProfile.AccountPrivacy.subtitle)
                 .font(.system(size: 12, weight: .regular))
                 .lineSpacing(0)
                 .multilineTextAlignment(.center)
@@ -222,7 +222,7 @@ struct EditProfileView: View {
             Button {
                 // Account deactivation flow will be added with backend support.
             } label: {
-                Text(L10n.EditProfile.deactivateAccount)
+                Text(L10n.EditProfile.DeactivateAccount.action)
                     .font(.system(size: 12, weight: .bold))
                     .tracking(1.2)
                     .textCase(.uppercase)
@@ -243,11 +243,11 @@ struct EditProfileView: View {
 }
 
 private struct EditProfileTextField: View {
-    let title: LocalizedStringKey
+    let title: String
     @Binding var text: String
-    var helper: LocalizedStringKey?
+    var helper: String?
     var icon: String?
-    var placeholder: LocalizedStringKey?
+    var placeholder: String?
     var placeholderColor: Color?
     var keyboardType: UIKeyboardType = .default
 
@@ -297,7 +297,7 @@ private struct EditProfileTextField: View {
 }
 
 private struct EditProfileBioField: View {
-    let title: LocalizedStringKey
+    let title: String
     @Binding var text: String
     let limit: Int
 
@@ -330,7 +330,7 @@ private struct EditProfileBioField: View {
                     }
 
                 if text.isEmpty {
-                    Text(L10n.EditProfile.bioPlaceholder)
+                    Text(L10n.EditProfile.Bio.placeholder)
                         .font(.system(size: 16, weight: .regular))
                         .foregroundStyle(Color.appPlaceholder)
                         .padding(.horizontal, 20)

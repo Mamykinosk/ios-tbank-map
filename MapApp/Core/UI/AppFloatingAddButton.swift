@@ -9,7 +9,7 @@ struct AppFloatingAddButton: View {
                 .font(.system(size: 26, weight: .medium))
                 .foregroundStyle(Color.appFabIcon)
                 .frame(width: 56, height: 56)
-                .background(Color.appFabBackground)
+                .background(Color.appGreenGlow.opacity(0.8))
                 .clipShape(Circle())
                 .shadow(color: Color.appFabBackground.opacity(0.4), radius: 24, x: 0, y: 8)
         }

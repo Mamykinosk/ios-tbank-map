@@ -184,8 +184,8 @@ struct AddMemoryView: View {
     }
 
     private func memoryTextField(
-        title: LocalizedStringKey,
-        placeholder: LocalizedStringKey,
+        title: String,
+        placeholder: String,
         text: Binding<String>
     ) -> some View {
         VStack(alignment: .leading, spacing: 8) {
@@ -231,8 +231,8 @@ struct AddMemoryView: View {
     }
 
     private func memoryTextEditor(
-        title: LocalizedStringKey,
-        placeholder: LocalizedStringKey,
+        title: String,
+        placeholder: String,
         text: Binding<String>
     ) -> some View {
         VStack(alignment: .leading, spacing: 8) {

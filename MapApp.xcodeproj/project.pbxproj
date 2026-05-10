@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		770498922F9B90BF00B2DE9F /* MapboxMaps in Frameworks */ = {isa = PBXBuildFile; productRef = 770498912F9B90BF00B2DE9F /* MapboxMaps */; };
 		771F9DF42F72B02D00E4D71E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 771F9DF32F72B02D00E4D71E /* README.md */; };
+		7732B6822FAA7C2E007EF768 /* swiftgen.yml in Resources */ = {isa = PBXBuildFile; fileRef = 7732B6812FAA7C27007EF768 /* swiftgen.yml */; };
 		77832EEF2F7B3A990070B1F2 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 77832EEE2F7B3A990070B1F2 /* FirebaseAuth */; };
 		77832EF12F7B3A990070B1F2 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 77832EF02F7B3A990070B1F2 /* FirebaseFirestore */; };
 		77832EF32F7B3A990070B1F2 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 77832EF22F7B3A990070B1F2 /* FirebaseStorage */; };
@@ -36,6 +37,7 @@
 		771F9DB02F72AEA500E4D71E /* MapAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		771F9DBA2F72AEA500E4D71E /* MapAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MapAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		771F9DF32F72B02D00E4D71E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		7732B6812FAA7C27007EF768 /* swiftgen.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = swiftgen.yml; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -101,6 +103,7 @@
 		771F9D9A2F72AEA300E4D71E = {
 			isa = PBXGroup;
 			children = (
+				7732B6812FAA7C27007EF768 /* swiftgen.yml */,
 				771F9DF32F72B02D00E4D71E /* README.md */,
 				771F9DA52F72AEA300E4D71E /* MapApp */,
 				771F9DB32F72AEA500E4D71E /* MapAppTests */,
@@ -230,6 +233,7 @@
 			packageReferences = (
 				77832EED2F7B3A990070B1F2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				770498442F9B8FC300B2DE9F /* XCRemoteSwiftPackageReference "mapbox-maps-ios" */,
+				7732B6802FAA7594007EF768 /* XCRemoteSwiftPackageReference "SwiftGenPlugin" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 771F9DA42F72AEA300E4D71E /* Products */;
@@ -248,6 +252,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7732B6822FAA7C2E007EF768 /* swiftgen.yml in Resources */,
 				771F9DF42F72B02D00E4D71E /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -601,6 +606,14 @@
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 11.0.0;
+			};
+		};
+		7732B6802FAA7594007EF768 /* XCRemoteSwiftPackageReference "SwiftGenPlugin" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwiftGen/SwiftGenPlugin";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.6.2;
 			};
 		};
 		77832EED2F7B3A990070B1F2 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {

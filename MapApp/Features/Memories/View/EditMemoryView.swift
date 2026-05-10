@@ -225,7 +225,7 @@ struct EditMemoryView: View {
     }
 
     private func editTextField(
-        title: LocalizedStringKey,
+        title: String,
         text: Binding<String>
     ) -> some View {
         VStack(alignment: .leading, spacing: 6) {
@@ -268,7 +268,7 @@ struct EditMemoryView: View {
     }
 
     private func editTextEditor(
-        title: LocalizedStringKey,
+        title: String,
         text: Binding<String>
     ) -> some View {
         VStack(alignment: .leading, spacing: 6) {
