@@ -93,17 +93,15 @@ private final class MemoryImageCache {
 
     private let memoryCache = NSCache<NSURL, UIImage>()
     private let diskCache: URLCache
-    private let cacheAge: TimeInterval = 30 * 24 * 60 * 60
-    private let cachedAtKey = "cachedAt"
 
     private init() {
-        memoryCache.countLimit = 250
-        memoryCache.totalCostLimit = 80 * 1024 * 1024
+        memoryCache.countLimit = Self.memoryCountLimit
+        memoryCache.totalCostLimit = Self.memoryTotalCostLimit
 
         diskCache = URLCache(
-            memoryCapacity: 50 * 1024 * 1024,
-            diskCapacity: 300 * 1024 * 1024,
-            diskPath: "MemoryPhotoCache"
+            memoryCapacity: Self.diskMemoryCapacity,
+            diskCapacity: Self.diskCapacity,
+            diskPath: Self.diskPath
         )
     }
 
@@ -140,7 +138,7 @@ private final class MemoryImageCache {
         let cachedResponse = CachedURLResponse(
             response: response,
             data: data,
-            userInfo: [cachedAtKey: Date()],
+            userInfo: [Self.cachedAtKey: Date()],
             storagePolicy: .allowed
         )
         diskCache.storeCachedResponse(cachedResponse, for: request)
@@ -149,10 +147,20 @@ private final class MemoryImageCache {
     }
 
     private func isFresh(_ cachedResponse: CachedURLResponse) -> Bool {
-        guard let cachedAt = cachedResponse.userInfo?[cachedAtKey] as? Date else {
+        guard let cachedAt = cachedResponse.userInfo?[Self.cachedAtKey] as? Date else {
             return false
         }
 
-        return Date().timeIntervalSince(cachedAt) < cacheAge
+        return Date().timeIntervalSince(cachedAt) < Self.cacheAge
     }
+}
+
+private extension MemoryImageCache {
+    static let memoryCountLimit = 250
+    static let memoryTotalCostLimit = 80 * 1024 * 1024
+    static let diskMemoryCapacity = 50 * 1024 * 1024
+    static let diskCapacity = 300 * 1024 * 1024
+    static let diskPath = "MemoryPhotoCache"
+    static let cacheAge: TimeInterval = 30 * 24 * 60 * 60
+    static let cachedAtKey = "cachedAt"
 }

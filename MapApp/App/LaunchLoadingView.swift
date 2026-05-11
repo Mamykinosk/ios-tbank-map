@@ -12,7 +12,7 @@ struct LaunchLoadingView: View {
                 logo
 
                 VStack(spacing: 8) {
-                    Text("Travel Memorize")
+                    Text(L10n.Start.appTitle)
                         .font(.system(size: 30, weight: .heavy))
                         .foregroundStyle(Color.appTitle)
                         .multilineTextAlignment(.center)

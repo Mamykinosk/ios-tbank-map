@@ -424,6 +424,8 @@ internal enum L10n {
     }
   }
   internal enum Start {
+    /// Travel Memorize
+    internal static var appTitle: String { L10n.tr("Localizable", "start.appTitle", fallback: "Travel Memorize") }
     /// Curate your journey
     internal static var curateYourJorney: String { L10n.tr("Localizable", "start.curateYourJorney", fallback: "Curate your journey") }
     /// Save your favorite places, stories, and moments on a personal travel map.

@@ -11,6 +11,7 @@
 "common.search" = "Search";
 
 /* Start */
+"start.appTitle" = "Travel Memorize";
 "start.getStarted.action" = "Get started";
 "start.curateYourJorney" = "Curate your journey";
 "start.startSubtitle" = "Save your favorite places, stories, and moments on a personal travel map.";
