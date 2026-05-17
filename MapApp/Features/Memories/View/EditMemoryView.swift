@@ -88,7 +88,7 @@ struct EditMemoryView: View {
             dangerZone
         }
         .padding(32)
-        .background(Color.white)
+        .background(Color.appSurface)
         .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
         .shadow(color: Color.black.opacity(0.03), radius: 25, x: 0, y: 12)
     }
@@ -304,13 +304,13 @@ struct EditMemoryView: View {
                 Group {
                     if viewModel.isLoading {
                         ProgressView()
-                            .tint(.white)
+                            .tint(Color.appOnPrimary)
                     } else {
                         Text(L10n.Memories.saveChanges)
                             .font(.system(size: 16, weight: .semibold))
                     }
                 }
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.appOnPrimary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
                 .background(draft.isValid ? Color.appPrimary : Color.appPrimary.opacity(0.4))

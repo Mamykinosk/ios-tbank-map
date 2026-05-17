@@ -25,7 +25,7 @@ struct MemoryGridCard: View {
 
             contentSection
         }
-        .background(Color.white)
+        .background(Color.appSurface)
         .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
         .shadow(color: Color.appTitle.opacity(0.05), radius: 24, x: 0, y: 10)
     }

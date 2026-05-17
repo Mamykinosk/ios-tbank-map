@@ -12,11 +12,11 @@ struct RequestRow: View {
             avatar(senderName: request.sender?.username ?? "U")
 
             VStack(alignment: .leading, spacing: 4) {
-                Text(request.sender?.username ?? String(localized: "friends.unknownUser"))
+                Text(request.sender?.username ?? L10n.Friends.unknownUser)
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(Color.appTitle)
 
-                Text(request.sender?.email ?? String(localized: "friends.friendRequest"))
+                Text(request.sender?.email ?? L10n.Friends.friendRequest)
                     .font(.system(size: 13, weight: .medium))
                     .foregroundStyle(Color.appSecondary)
                     .lineLimit(1)
@@ -29,7 +29,7 @@ struct RequestRow: View {
             } label: {
                 Image(systemName: "checkmark")
                     .font(.system(size: 14, weight: .bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.appOnPrimary)
                     .frame(width: 34, height: 34)
                     .background(Color.appPrimary)
                     .clipShape(Circle())
@@ -49,7 +49,7 @@ struct RequestRow: View {
             .buttonStyle(.plain)
         }
         .padding(14)
-        .background(Color.white.opacity(0.9))
+        .background(Color.appSurface.opacity(0.9))
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         .contentShape(Rectangle())
         .onTapGesture {

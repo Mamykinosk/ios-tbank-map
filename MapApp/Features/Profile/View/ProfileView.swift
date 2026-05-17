@@ -2,12 +2,16 @@ import SwiftUI
 
 struct ProfileView: View {
     @Environment(AppCoordinator.self) private var router
+    @Environment(AppLanguageStore.self) private var languageStore
+    @Environment(AppThemeStore.self) private var themeStore
     @Environment(AuthSessionStore.self) private var authSession
 
     @State private var viewModel = ProfileViewModel()
-    @State private var isLanguagePickerPresented = false
+    @State private var isLanguageSelectorExpanded = false
 
     var body: some View {
+        @Bindable var router = router
+        @Bindable var themeStore = themeStore
         @Bindable var viewModel = viewModel
 
         ZStack {
@@ -19,7 +23,7 @@ struct ProfileView: View {
                     VStack(spacing: 0) {
                         profileHeader
 
-                        preferencesSection(isDarkModeEnabled: $viewModel.isDarkModeEnabled)
+                        preferencesSection(isDarkModeEnabled: $themeStore.isDarkModeEnabled)
                             .padding(.top, 48)
 
                         actionsSection
@@ -34,7 +38,7 @@ struct ProfileView: View {
                                 .padding(.top, 16)
                         }
 
-                        Spacer(minLength: 112)
+                        Spacer(minLength: 160)
                     }
                     .frame(maxWidth: 448)
                     .padding(.horizontal, 24)
@@ -42,28 +46,21 @@ struct ProfileView: View {
                     .frame(maxWidth: .infinity)
                 }
             }
+
+            VStack {
+                Spacer()
+
+                AppBottomTabBar(selectedTab: $router.selectedMainTab)
+            }
+            .ignoresSafeArea(edges: .bottom)
         }
         .onAppear {
             Task {
                 await viewModel.loadProfile(user: authSession.currentUser)
             }
         }
-        .confirmationDialog(
-            L10n.Profile.Preferences.language,
-            isPresented: $isLanguagePickerPresented,
-            titleVisibility: .visible
-        ) {
-            ForEach(ProfileLanguage.allCases) { language in
-                Button {
-                    viewModel.selectLanguage(language)
-                } label: {
-                    Text(language.title)
-                }
-            }
-
-            Button(role: .cancel) {} label: {
-                Text(L10n.EditProfile.back)
-            }
+        .onDisappear {
+            viewModel.stopStatsListening()
         }
         .navigationBarBackButtonHidden(true)
     }
@@ -119,7 +116,7 @@ struct ProfileView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .frame(height: 79)
-                .background(Color.white)
+                .background(Color.appSurface)
                 .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
                 .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
             }
@@ -144,29 +141,78 @@ struct ProfileView: View {
                 }
 
                 Button {
-                    isLanguagePickerPresented = true
+                    withAnimation(.snappy(duration: 0.22)) {
+                        isLanguageSelectorExpanded.toggle()
+                    }
                 } label: {
                     ProfilePreferenceRow(
                         systemImage: "globe",
                         title: L10n.Profile.Preferences.language
                     ) {
                         HStack(spacing: 8) {
-                            Text(viewModel.selectedLanguage.title)
+                            Text(languageStore.selectedLanguage.title)
                                 .font(.system(size: 12, weight: .semibold))
                                 .foregroundStyle(Color.appPrimary)
 
                             Image(systemName: "chevron.down")
                                 .font(.system(size: 9, weight: .semibold))
                                 .foregroundStyle(Color.profileChevron)
+                                .rotationEffect(.degrees(isLanguageSelectorExpanded ? 180 : 0))
                         }
                     }
                 }
                 .buttonStyle(.plain)
+
+                if isLanguageSelectorExpanded {
+                    languageOptions
+                        .transition(.opacity.combined(with: .move(edge: .top)))
+                }
             }
             .padding(8)
             .background(Color.profileSettingsBackground)
             .clipShape(RoundedRectangle(cornerRadius: 32, style: .continuous))
         }
+    }
+
+    private var languageOptions: some View {
+        VStack(spacing: 4) {
+            ForEach(ProfileLanguage.allCases) { language in
+                Button {
+                    withAnimation(.snappy(duration: 0.22)) {
+                        languageStore.selectLanguage(language)
+                        isLanguageSelectorExpanded = false
+                    }
+                } label: {
+                    HStack(spacing: 12) {
+                        Text(language.title)
+                            .font(.system(size: 14, weight: .semibold))
+                            .foregroundStyle(Color.appTitle)
+
+                        Spacer()
+
+                        if languageStore.selectedLanguage == language {
+                            Image(systemName: "checkmark.circle.fill")
+                                .font(.system(size: 17, weight: .semibold))
+                                .foregroundStyle(Color.appPrimary)
+                        } else {
+                            Circle()
+                                .stroke(Color.profileChevron.opacity(0.7), lineWidth: 1)
+                                .frame(width: 17, height: 17)
+                        }
+                    }
+                    .padding(.horizontal, 16)
+                    .frame(height: 48)
+                    .background(
+                        languageStore.selectedLanguage == language
+                            ? Color.profileLanguageSelectedBackground
+                            : Color.appSurface
+                    )
+                    .clipShape(RoundedRectangle(cornerRadius: 18, style: .continuous))
+                }
+                .buttonStyle(.plain)
+            }
+        }
+        .padding(.top, 2)
     }
 
     private var actionsSection: some View {
@@ -181,7 +227,7 @@ struct ProfileView: View {
                     Text(L10n.Profile.EditProfile.action)
                         .font(.system(size: 14, weight: .semibold))
                 }
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.appOnPrimary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
                 .background(Color.appPrimary)
@@ -245,7 +291,7 @@ private struct ProfileAvatarView: View {
             .frame(width: 104, height: 104)
             .clipShape(Circle())
             .padding(4)
-            .background(Color.white)
+            .background(Color.appSurface)
             .clipShape(Circle())
             .shadow(color: .black.opacity(0.10), radius: 25, x: 0, y: 20)
 
@@ -254,11 +300,11 @@ private struct ProfileAvatarView: View {
                     .fill(Color.appPrimary)
 
                 Circle()
-                    .stroke(Color.white.opacity(0.16), lineWidth: 1)
+                    .stroke(Color.appOnPrimary.opacity(0.16), lineWidth: 1)
 
                 Image(systemName: "gearshape.fill")
                     .font(.system(size: 11, weight: .bold))
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.appOnPrimary)
             }
             .frame(width: 25, height: 25)
             .shadow(color: .black.opacity(0.10), radius: 15, x: 0, y: 10)
@@ -300,7 +346,7 @@ private struct ProfilePreferenceRow<Trailing: View>: View {
         }
         .padding(.horizontal, 16)
         .frame(height: 52)
-        .background(Color.white)
+        .background(Color.appSurface)
         .contentShape(Rectangle())
     }
 }
@@ -317,7 +363,7 @@ private struct ProfileSwitch: View {
                 .frame(width: 40, height: 20)
                 .overlay(alignment: isOn ? .trailing : .leading) {
                     Circle()
-                        .fill(Color.white)
+                        .fill(Color.appOnPrimary)
                         .frame(width: 16, height: 16)
                         .shadow(color: .black.opacity(0.05), radius: 2, x: 0, y: 1)
                         .padding(.horizontal, 2)
@@ -328,15 +374,18 @@ private struct ProfileSwitch: View {
 }
 
 private extension Color {
-    static let profileSettingsBackground = Color(red: 246 / 255, green: 243 / 255, blue: 238 / 255)
-    static let profileLogoutBackground = Color(red: 240 / 255, green: 237 / 255, blue: 232 / 255)
-    static let profileChevron = Color(red: 193 / 255, green: 200 / 255, blue: 195 / 255)
-    static let profileAvatarTop = Color(red: 36 / 255, green: 35 / 255, blue: 44 / 255)
-    static let profileAvatarBottom = Color(red: 67 / 255, green: 102 / 255, blue: 77 / 255)
+    static let profileSettingsBackground = Color.appFieldBackground
+    static let profileLogoutBackground = Color.appMuted
+    static let profileLanguageSelectedBackground = Color.appSuccessBackground
+    static let profileChevron = Color.appPlaceholder
+    static let profileAvatarTop = Color.appMuted
+    static let profileAvatarBottom = Color.appAccent
 }
 
 #Preview {
     ProfileView()
         .environment(AppCoordinator())
+        .environment(AppLanguageStore())
+        .environment(AppThemeStore())
         .environment(AuthSessionStore())
 }

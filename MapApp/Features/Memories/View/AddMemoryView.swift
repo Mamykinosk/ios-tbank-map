@@ -271,7 +271,7 @@ struct AddMemoryView: View {
                 HStack(spacing: 8) {
                     if viewModel.isLoading {
                         ProgressView()
-                            .tint(.white)
+                            .tint(Color.appOnPrimary)
                     } else {
                         Image(systemName: "sparkles")
                             .font(.system(size: 16, weight: .semibold))
@@ -280,7 +280,7 @@ struct AddMemoryView: View {
                             .font(.system(size: 16, weight: .semibold))
                     }
                 }
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.appOnPrimary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
                 .background(viewModel.draft.isValid ? Color.appPrimary : Color.appPrimary.opacity(0.4))
@@ -311,7 +311,7 @@ struct AddMemoryView: View {
         .padding(.horizontal, 24)
         .padding(.top, 16)
         .padding(.bottom, 32)
-        .background(Color.white.opacity(0.9))
+        .background(Color.appSurface.opacity(0.9))
         .clipShape(
             UnevenRoundedRectangle(
                 topLeadingRadius: 32,

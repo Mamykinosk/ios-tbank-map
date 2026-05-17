@@ -23,7 +23,7 @@ struct RequestProfileView: View {
 
         let sender = request.sender ?? FriendUser(
             id: request.senderId,
-            username: String(localized: "friends.unknownUser"),
+            username: L10n.Friends.unknownUser,
             email: ""
         )
 
@@ -56,7 +56,7 @@ struct RequestProfileView: View {
                 topBar
             }
         }
-        .navigationTitle(showsCustomBackButton ? "" : String(localized: "friends.friendRequest"))
+        .navigationTitle(showsCustomBackButton ? "" : L10n.Friends.friendRequest)
         .navigationBarTitleDisplayMode(.inline)
         .task {
             viewModel.startListening()
@@ -89,7 +89,7 @@ struct RequestProfileView: View {
 
             Spacer()
 
-            Text(String(localized: "friends.friendRequest"))
+            Text(L10n.Friends.friendRequest)
                 .font(.system(size: 20, weight: .semibold))
                 .tracking(-0.5)
                 .foregroundStyle(Color.appPrimary)
@@ -169,7 +169,7 @@ struct RequestProfileView: View {
         }
         .frame(maxWidth: .infinity)
         .frame(height: 84)
-        .background(Color.white.opacity(0.9))
+        .background(Color.appSurface.opacity(0.9))
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         .shadow(color: Color.appTitle.opacity(0.04), radius: 18, x: 0, y: 8)
     }
@@ -198,7 +198,7 @@ struct RequestProfileView: View {
                 HStack(spacing: 8) {
                     if viewModel.isLoading {
                         ProgressView()
-                            .tint(.white)
+                            .tint(Color.appOnPrimary)
                     } else {
                         Image(systemName: "checkmark")
                             .font(.system(size: 15, weight: .semibold))
@@ -207,7 +207,7 @@ struct RequestProfileView: View {
                             .font(.system(size: 16, weight: .semibold))
                     }
                 }
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.appOnPrimary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 56)
                 .background(Color.appPrimary)
@@ -285,7 +285,7 @@ struct RequestProfileView: View {
                     HStack(spacing: 8) {
                         if viewModel.isLoading {
                             ProgressView()
-                                .tint(.white)
+                                .tint(Color.appOnPrimary)
                         } else {
                             Image(systemName: "person.badge.plus")
                                 .font(.system(size: 15, weight: .semibold))
@@ -294,7 +294,7 @@ struct RequestProfileView: View {
                                 .font(.system(size: 16, weight: .semibold))
                         }
                     }
-                    .foregroundStyle(.white)
+                    .foregroundStyle(Color.appOnPrimary)
                     .frame(maxWidth: .infinity)
                     .frame(height: 56)
                     .background(Color.appPrimary)
@@ -333,7 +333,7 @@ struct RequestProfileView: View {
                 }
                 .frame(maxWidth: .infinity)
                 .padding(28)
-                .background(Color.white.opacity(0.75))
+                .background(Color.appSurface.opacity(0.75))
                 .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
             } else {
                 ForEach(viewModel.memories.prefix(3)) { memory in
@@ -375,7 +375,7 @@ struct RequestProfileView: View {
             Spacer()
         }
         .padding(14)
-        .background(Color.white.opacity(0.9))
+        .background(Color.appSurface.opacity(0.9))
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
     }
 

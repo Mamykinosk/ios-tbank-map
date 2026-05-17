@@ -44,7 +44,7 @@ struct AppTopBar: View {
         }
         .padding(.horizontal, 24)
         .frame(height: 64)
-        .background(Color.white.opacity(0.82))
+        .background(Color.appSurface.opacity(0.82))
     }
 }
 

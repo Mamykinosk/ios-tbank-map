@@ -11,6 +11,7 @@
 "common.search" = "Поиск";
 
 /* Start */
+"start.appTitle" = "Travel Memorize";
 "start.getStarted.action" = "Начать";
 "start.curateYourJorney" = "Сохраняйте свои путешествия";
 "start.startSubtitle" = "Каждая миля - воспоминание, каждое место - история.";

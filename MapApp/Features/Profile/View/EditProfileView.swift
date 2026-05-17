@@ -69,7 +69,7 @@ struct EditProfileView: View {
         .padding(.horizontal, 24)
         .frame(height: 64)
         .frame(maxWidth: .infinity)
-        .background(Color.white.opacity(0.8))
+        .background(Color.appSurface.opacity(0.8))
         .background(.ultraThinMaterial)
     }
 
@@ -94,7 +94,7 @@ struct EditProfileView: View {
 
                         Image(systemName: "camera")
                             .font(.system(size: 12, weight: .bold))
-                            .foregroundStyle(.white)
+                            .foregroundStyle(Color.appOnPrimary)
                     }
                     .frame(width: 36, height: 36)
                 }
@@ -159,7 +159,7 @@ struct EditProfileView: View {
                 HStack(spacing: 8) {
                     if viewModel.isLoading {
                         ProgressView()
-                            .tint(.white)
+                            .tint(Color.appOnPrimary)
                     } else {
                         Image(systemName: "checkmark.circle")
                             .font(.system(size: 20, weight: .semibold))
@@ -168,7 +168,7 @@ struct EditProfileView: View {
                     Text(L10n.EditProfile.SaveChanges.action)
                         .font(.system(size: 16, weight: .semibold))
                 }
-                .foregroundStyle(.white)
+                .foregroundStyle(Color.appOnPrimary)
                 .frame(maxWidth: .infinity)
                 .frame(height: 64)
                 .background(

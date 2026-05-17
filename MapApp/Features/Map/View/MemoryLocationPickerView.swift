@@ -76,7 +76,7 @@ struct MemoryLocationPickerView: View {
                     .font(.system(size: 16, weight: .bold))
                     .foregroundStyle(Color.appPrimary)
                     .frame(width: 44, height: 44)
-                    .background(Color.white.opacity(0.9))
+                    .background(Color.appSurface.opacity(0.9))
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
@@ -88,7 +88,7 @@ struct MemoryLocationPickerView: View {
                 .foregroundStyle(Color.appTitle)
                 .padding(.horizontal, 18)
                 .frame(height: 44)
-                .background(Color.white.opacity(0.9))
+                .background(Color.appSurface.opacity(0.9))
                 .clipShape(Capsule())
 
             Spacer()
@@ -100,7 +100,7 @@ struct MemoryLocationPickerView: View {
                     .font(.system(size: 18, weight: .semibold))
                     .foregroundStyle(Color.appPrimary)
                     .frame(width: 44, height: 44)
-                    .background(Color.white.opacity(0.9))
+                    .background(Color.appSurface.opacity(0.9))
                     .clipShape(Circle())
             }
             .buttonStyle(.plain)
@@ -123,7 +123,7 @@ struct MemoryLocationPickerView: View {
             Spacer()
         }
         .padding(18)
-        .background(Color.white.opacity(0.92))
+        .background(Color.appSurface.opacity(0.92))
         .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         .shadow(color: Color.black.opacity(0.08), radius: 24, x: 0, y: 8)
     }

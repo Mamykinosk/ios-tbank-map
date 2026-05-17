@@ -123,7 +123,7 @@ struct MainMapView: View {
             }
             .padding(.horizontal, 18)
             .frame(height: 60)
-            .background(Color.white.opacity(0.96))
+            .background(Color.appSurface.opacity(0.96))
             .clipShape(Capsule())
             .shadow(color: Color.appTitle.opacity(0.05), radius: 18, x: 0, y: 8)
         }
@@ -145,7 +145,7 @@ struct MainMapView: View {
                             .font(.system(size: 22, weight: .semibold))
                             .foregroundStyle(Color.appPrimary)
                             .frame(width: 56, height: 56)
-                            .background(Color.white)
+                            .background(Color.appSurface)
                             .clipShape(Circle())
                             .shadow(color: Color.black.opacity(0.06), radius: 30, x: 0, y: 8)
                     }
@@ -240,7 +240,7 @@ struct MainMapView: View {
         }
         .padding(.horizontal, 18)
         .frame(height: 56)
-        .background(Color.white.opacity(0.96))
+        .background(Color.appSurface.opacity(0.96))
         .clipShape(Capsule())
         .shadow(color: Color.appTitle.opacity(0.04), radius: 16, x: 0, y: 8)
     }
@@ -262,7 +262,7 @@ struct MainMapView: View {
         }
         .frame(maxWidth: .infinity)
         .padding(32)
-        .background(Color.white.opacity(0.75))
+        .background(Color.appSurface.opacity(0.75))
         .clipShape(RoundedRectangle(cornerRadius: 28, style: .continuous))
     }
 
@@ -301,7 +301,7 @@ struct MainMapView: View {
                     .foregroundStyle(Color.appPlaceholder)
             }
             .padding(14)
-            .background(Color.white.opacity(0.9))
+            .background(Color.appSurface.opacity(0.9))
             .clipShape(RoundedRectangle(cornerRadius: 24, style: .continuous))
         }
         .buttonStyle(.plain)

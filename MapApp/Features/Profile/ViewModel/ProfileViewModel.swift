@@ -2,12 +2,13 @@ import Foundation
 import Observation
 import SwiftUI
 import FirebaseAuth
+import FirebaseFirestore
 
 @MainActor
 @Observable
 final class ProfileViewModel {
-    var displayName = String(localized: "profile.defaultDisplayName")
-    var username = String(localized: "profile.defaultUsername")
+    var displayName = L10n.Profile.defaultDisplayName
+    var username = L10n.Profile.defaultUsername
     var bio = ""
     var avatarImageName: String?
     var stats: [ProfileStat] = [
@@ -16,13 +17,13 @@ final class ProfileViewModel {
         ProfileStat(value: "0", title: L10n.Profile.Stats.memories)
     ]
 
-    var isDarkModeEnabled = false
-    var selectedLanguage: ProfileLanguage = .english
     var errorMessage: String?
     var isLoading = false
+    private var memoriesListener: ListenerRegistration?
 
     func loadProfile(user: User?) async {
         guard let user else {
+            stopStatsListening()
             errorMessage = ProfileServiceError.unauthenticated.localizedDescription
             return
         }
@@ -36,12 +37,19 @@ final class ProfileViewModel {
                 authEmail: user.email
             )
             apply(profile: profile, displayName: user.displayName)
+            startStatsListening(userId: user.uid)
         } catch {
             errorMessage = error.localizedDescription
             syncAuthProfile(displayName: user.displayName, email: user.email)
+            startStatsListening(userId: user.uid)
         }
 
         isLoading = false
+    }
+
+    func stopStatsListening() {
+        memoriesListener?.remove()
+        memoriesListener = nil
     }
 
     func syncAuthProfile(displayName authDisplayName: String?, email: String?) {
@@ -53,10 +61,6 @@ final class ProfileViewModel {
            !emailPrefix.isEmpty {
             username = "@" + emailPrefix.lowercased()
         }
-    }
-
-    func selectLanguage(_ language: ProfileLanguage) {
-        selectedLanguage = language
     }
 
     func logout() -> Bool {
@@ -90,6 +94,40 @@ final class ProfileViewModel {
             ProfileStat(value: "\(profile.stats.memoriesCount)", title: L10n.Profile.Stats.memories)
         ]
     }
+
+    private func startStatsListening(userId: String) {
+        stopStatsListening()
+
+        memoriesListener = MemoryService.shared.listenMemories(userId: userId) { [weak self] result in
+            Task { @MainActor in
+                guard let self else { return }
+
+                switch result {
+                case .success(let memories):
+                    self.applyStats(from: memories)
+
+                case .failure(let error):
+                    self.errorMessage = error.localizedDescription
+                }
+            }
+        }
+    }
+
+    private func applyStats(from memories: [Memory]) {
+        stats = [
+            ProfileStat(value: "\(uniqueCount(in: memories) { $0.country })", title: L10n.Profile.Stats.countries),
+            ProfileStat(value: "\(uniqueCount(in: memories) { $0.city })", title: L10n.Profile.Stats.cities),
+            ProfileStat(value: "\(memories.count)", title: L10n.Profile.Stats.memories)
+        ]
+    }
+
+    private func uniqueCount(in memories: [Memory], keyPath: (Memory) -> String) -> Int {
+        Set(
+            memories
+                .map { keyPath($0).trimmingCharacters(in: .whitespacesAndNewlines) }
+                .filter { !$0.isEmpty }
+        ).count
+    }
 }
 
 struct ProfileStat: Identifiable, Hashable {
@@ -104,23 +142,5 @@ struct ProfileStat: Identifiable, Hashable {
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(value)
-    }
-}
-
-enum ProfileLanguage: String, CaseIterable, Identifiable {
-    case english = "English"
-    case russian = "Russian"
-
-    var id: String {
-        rawValue
-    }
-
-    var title: String {
-        switch self {
-        case .english:
-            L10n.Profile.Language.english
-        case .russian:
-            L10n.Profile.Language.russian
-        }
     }
 }
